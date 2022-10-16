@@ -24,6 +24,9 @@ stages:
           - ls
           - '# 执行编译命令'
           - cd script && npm install
+          - ''
+          - cd ../ && pwd && ls
+          - git status
         caches:
           - ~/.npm
           - ~/.yarn
