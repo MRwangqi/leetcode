@@ -23,6 +23,10 @@ stages:
           - ''
           - npm config set registry https://registry.npmmirror.com
           - ''
+          - pwd
+          - ''
+          - ls
+          - ''
           - '# 执行编译命令'
           - cd script && npm install && npm run build
         artifacts:
