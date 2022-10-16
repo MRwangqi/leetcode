@@ -169,7 +169,7 @@ function executeProblem(problemJson, tagJson) {
      // 以 slug 名称创建文件夹
      var path = "../problems/index.json"
      // 将 data 转成 string
-     const buffer = JSON.stringify(data);
+     const buffer = JSON.stringify(data,"","\t");
      // 将 data 保存到文件中
      writeFileRecursive(path, buffer, function (err) {
          if (err) console.error(err);
