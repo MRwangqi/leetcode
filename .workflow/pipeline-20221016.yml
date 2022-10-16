@@ -3,11 +3,15 @@ name: pipeline-20221016
 displayName: 每日一题脚本
 triggers:
   trigger: auto
+  push:
+    branches:
+      prefix:
+        - ''
   schedule:
     - cron: '* 0 0 ? * 1 *'
 stages:
   - name: stage-a9981f56
-    displayName: 切分支
+    displayName: npm 构建
     strategy: naturally
     trigger: auto
     executor: []
