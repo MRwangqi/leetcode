@@ -35,7 +35,7 @@ clone 项目后，启动 gitee pages，当前仓库启动的 gitee 服务为 htt
 
 #### request
 
-path 为 `分类题目` 中返回的 path 只
+path 为 `分类题目` 中返回的 path 值
 
 > ~/{path}.json
 
