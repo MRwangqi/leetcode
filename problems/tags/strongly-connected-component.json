@@ -1,0 +1,28 @@
+[
+	{
+		"questionId": "1613",
+		"questionFrontendId": "1489",
+		"questionType": "Main",
+		"categoryTitle": "Algorithms",
+		"title": "Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree",
+		"titleSlug": "find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree",
+		"difficulty": "Hard",
+		"isPaidOnly": false,
+		"translatedTitle": "找到最小生成树里的关键边和伪关键边",
+		"isNewQuestion": false,
+		"frequency": "tZ94ug"
+	},
+	{
+		"questionId": "1691",
+		"questionFrontendId": "1568",
+		"questionType": "Main",
+		"categoryTitle": "Algorithms",
+		"title": "Minimum Number of Days to Disconnect Island",
+		"titleSlug": "minimum-number-of-days-to-disconnect-island",
+		"difficulty": "Hard",
+		"isPaidOnly": false,
+		"translatedTitle": "使陆地分离的最少天数",
+		"isNewQuestion": false,
+		"frequency": ""
+	}
+]

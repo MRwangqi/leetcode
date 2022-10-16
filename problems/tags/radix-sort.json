@@ -1,0 +1,41 @@
+[
+	{
+		"questionId": "164",
+		"questionFrontendId": "164",
+		"questionType": "Main",
+		"categoryTitle": "Algorithms",
+		"title": "Maximum Gap",
+		"titleSlug": "maximum-gap",
+		"difficulty": "Hard",
+		"isPaidOnly": false,
+		"translatedTitle": "最大间距",
+		"isNewQuestion": false,
+		"frequency": "fICICfg"
+	},
+	{
+		"questionId": "948",
+		"questionFrontendId": "912",
+		"questionType": "Main",
+		"categoryTitle": "Algorithms",
+		"title": "Sort an Array",
+		"titleSlug": "sort-an-array",
+		"difficulty": "Medium",
+		"isPaidOnly": false,
+		"translatedTitle": "排序数组",
+		"isNewQuestion": false,
+		"frequency": "EBUZLgg"
+	},
+	{
+		"questionId": "2422",
+		"questionFrontendId": "2343",
+		"questionType": "Main",
+		"categoryTitle": "Algorithms",
+		"title": "Query Kth Smallest Trimmed Number",
+		"titleSlug": "query-kth-smallest-trimmed-number",
+		"difficulty": "Medium",
+		"isPaidOnly": false,
+		"translatedTitle": "裁剪数字后查询第 K 小的数字",
+		"isNewQuestion": false,
+		"frequency": ""
+	}
+]

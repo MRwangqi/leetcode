@@ -1,0 +1,28 @@
+[
+	{
+		"questionId": "1300",
+		"questionFrontendId": "1192",
+		"questionType": "Main",
+		"categoryTitle": "Algorithms",
+		"title": "Critical Connections in a Network",
+		"titleSlug": "critical-connections-in-a-network",
+		"difficulty": "Hard",
+		"isPaidOnly": false,
+		"translatedTitle": "查找集群内的「关键连接」",
+		"isNewQuestion": false,
+		"frequency": "TLFs0g"
+	},
+	{
+		"questionId": "1000437",
+		"questionFrontendId": "LCP 54",
+		"questionType": "Main",
+		"categoryTitle": "Algorithms",
+		"title": "夺回据点",
+		"titleSlug": "s5kipK",
+		"difficulty": "Hard",
+		"isPaidOnly": false,
+		"translatedTitle": "夺回据点",
+		"isNewQuestion": false,
+		"frequency": ""
+	}
+]

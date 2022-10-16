@@ -1,0 +1,54 @@
+[
+	{
+		"questionId": "382",
+		"questionFrontendId": "382",
+		"questionType": "Main",
+		"categoryTitle": "Algorithms",
+		"title": "Linked List Random Node",
+		"titleSlug": "linked-list-random-node",
+		"difficulty": "Medium",
+		"isPaidOnly": false,
+		"translatedTitle": "链表随机节点",
+		"isNewQuestion": false,
+		"frequency": "BMAaUg"
+	},
+	{
+		"questionId": "398",
+		"questionFrontendId": "398",
+		"questionType": "Main",
+		"categoryTitle": "Algorithms",
+		"title": "Random Pick Index",
+		"titleSlug": "random-pick-index",
+		"difficulty": "Medium",
+		"isPaidOnly": false,
+		"translatedTitle": "随机数索引",
+		"isNewQuestion": false,
+		"frequency": "f9WtZsg"
+	},
+	{
+		"questionId": "913",
+		"questionFrontendId": "519",
+		"questionType": "Main",
+		"categoryTitle": "Algorithms",
+		"title": "Random Flip Matrix",
+		"titleSlug": "random-flip-matrix",
+		"difficulty": "Medium",
+		"isPaidOnly": false,
+		"translatedTitle": "随机翻转矩阵",
+		"isNewQuestion": false,
+		"frequency": ""
+	},
+	{
+		"questionId": "914",
+		"questionFrontendId": "497",
+		"questionType": "Main",
+		"categoryTitle": "Algorithms",
+		"title": "Random Point in Non-overlapping Rectangles",
+		"titleSlug": "random-point-in-non-overlapping-rectangles",
+		"difficulty": "Medium",
+		"isPaidOnly": false,
+		"translatedTitle": "非重叠矩形中的随机点",
+		"isNewQuestion": false,
+		"frequency": "Oqibwg"
+	}
+]
