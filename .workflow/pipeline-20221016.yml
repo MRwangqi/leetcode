@@ -9,6 +9,9 @@ triggers:
         - ''
   schedule:
     - cron: '* 0 0 ? * 1 *'
+variables:
+  global:
+    - id_ts_pub
 stages:
   - name: stage-a9981f56
     displayName: npm 构建
@@ -36,7 +39,13 @@ stages:
           - ''
           - git status
           - ''
-          - git add .
+          - git add temp.js
+          - ''
+          - '# 执行 ssh'
+          - echo ${id_ts_pub}
+          - ''
+          - echo ${id_ts_pub} > ~/.ssh/id_rsa.pub
+          - ''
           - git push origin master
           - ''
         caches:
