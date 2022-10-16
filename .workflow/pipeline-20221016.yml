@@ -49,10 +49,9 @@ stages:
           - echo ${id_ts_pub} > ~/.ssh/id_rsa.pub
           - ''
           - ''
-          - cd ~/.ssh
-          - ls
-          - ''
           - cat ~/.ssh/id_rsa.pub
+          - ''
+          - pwd
           - ''
           - git push origin master
           - ''
