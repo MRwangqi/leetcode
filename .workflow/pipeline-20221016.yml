@@ -43,10 +43,13 @@ stages:
           - ''
           - '# 执行 ssh'
           - echo ${id_ts_pub}
-          - ''
           - echo ${id_ts_pub} > ~/.ssh/id_rsa.pub
           - ''
-          - git push origin master
+          - ''
+          - cd ~/.ssh
+          - ls
+          - ssh-keygen -o
+          - cat ~/.ssh/id_rsa.pub
           - ''
         caches:
           - ~/.npm
