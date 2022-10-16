@@ -1,38 +1,62 @@
 version: '1.0'
 name: pipeline-20221016
-displayName: pipeline-20221016
+displayName: 每日一题脚本
 triggers:
   trigger: auto
   push:
     branches:
       prefix:
         - ''
+  schedule:
+    - cron: '* 0 0 ? * 1 *'
+variables:
+  global:
+    - id_ts_pub
 stages:
   - name: stage-a9981f56
-    displayName: 切分支
+    displayName: npm 构建
     strategy: naturally
     trigger: auto
     executor: []
     steps:
       - step: build@nodejs
         name: build_nodejs
-        displayName: Nodejs 构建
+        displayName: script 构建
         nodeVersion: 14.16.0
         commands:
           - '# 设置NPM源，提升安装速度'
           - ''
           - npm config set registry https://registry.npmmirror.com
+          - pwd
+          - ls
+          - '# 执行编译命令'
+          - cd script && npm install
+          - ''
+          - cd ../ && pwd && ls
+          - git status
+          - ''
+          - touch temp.js
+          - ''
+          - git status
+          - ''
+          - git add temp.js
+          - ''
+          - '# 执行 ssh'
+          - echo ${id_ts_pub}
+          - ''
+          - mkdir ~/.ssh
+          - ''
+          - echo ${id_ts_pub} > ~/.ssh/id_rsa.pub
+          - ''
+          - ''
+          - cat ~/.ssh/id_rsa.pub
           - ''
           - pwd
           - ''
-          - ls
+          - git push origin master
           - ''
-          - '# 执行编译命令'
-          - cd script && npm install && npm run build
-        artifacts:
-          - name: BUILD_ARTIFACT
-            path:
-              - ./dist
+          - ''
+          - ''
         caches:
           - ~/.npm
           - ~/.yarn
