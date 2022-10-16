@@ -31,6 +31,14 @@ stages:
           - ''
           - cd ../ && pwd && ls
           - git status
+          - ''
+          - touch temp.js
+          - ''
+          - git status
+          - ''
+          - git add .
+          - git push origin master
+          - ''
         caches:
           - ~/.npm
           - ~/.yarn
