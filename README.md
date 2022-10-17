@@ -121,3 +121,42 @@ id 为 `获取精选分类` 中返回的 id 值
 	...
 ]
 ```
+
+## 五、获取所有题目
+
+目前拿到的所有题目是通过 leetcode 的 graphql 进行查询 allQuestionUrls 文件，具体可查看 script/problem.js 脚本，目前查询返回的内容如下，可以将 questionUrl 放置到浏览器下载查看：
+```
+{
+  data: {
+    allQuestionUrls: {
+      questionUrl: 'https://questions.leetcode.cn/production/20221016220552_questions_include_main_regular_user.json',
+      __typename: 'QuestionURLNode'
+    }
+  }
+}
+```
+
+#### request
+
+
+
+> ~/problems/index.json
+
+例如 https://codelang.gitee.io/leetcode/problems/index.json
+
+```
+[
+	{
+		"questionId": "2",
+		"questionFrontendId": "2",
+		"questionType": "Main",
+		"categoryTitle": "Algorithms",
+		"title": "Add Two Numbers",
+		"titleSlug": "add-two-numbers",
+		"difficulty": "Medium",
+		"translatedTitle": "两数相加",
+		"frequency": "311UVcg"
+	}
+]
+
+```

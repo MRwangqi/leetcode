@@ -43,7 +43,7 @@ function fetchAllProblems(url) {
 
         // length 为 2821，leetcode 做了 ip 调用次数校验，不能频繁请求，需要手动做分段请求
         var start = 0
-        var end = 500// 2821
+        var end = 2// 2821
 
         for (let i = start, len = end; i < end; ++i) {
             var problem = json[i]
@@ -60,7 +60,7 @@ function fetchAllProblems(url) {
         }
 
         var data = []
-        for (let i = start, len = json.length; i < end; ++i) {
+        for (let i = 0, len = json.length; i < len; ++i) {
             data.push(problem)
         }
         console.log(json.length)
