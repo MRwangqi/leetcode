@@ -1,0 +1,80 @@
+[
+	{
+		"questionId": "1060",
+		"questionFrontendId": "1062",
+		"questionType": "Main",
+		"categoryTitle": "Algorithms",
+		"title": "Longest Repeating Substring",
+		"titleSlug": "longest-repeating-substring",
+		"difficulty": "Medium",
+		"isPaidOnly": true,
+		"translatedTitle": "最长重复子串",
+		"isNewQuestion": false,
+		"frequency": "bqZ0Sg"
+	},
+	{
+		"questionId": "1122",
+		"questionFrontendId": "1044",
+		"questionType": "Main",
+		"categoryTitle": "Algorithms",
+		"title": "Longest Duplicate Substring",
+		"titleSlug": "longest-duplicate-substring",
+		"difficulty": "Hard",
+		"isPaidOnly": false,
+		"translatedTitle": "最长重复子串",
+		"isNewQuestion": false,
+		"frequency": "fODjEdg"
+	},
+	{
+		"questionId": "1838",
+		"questionFrontendId": "1698",
+		"questionType": "Main",
+		"categoryTitle": "Algorithms",
+		"title": "Number of Distinct Substrings in a String",
+		"titleSlug": "number-of-distinct-substrings-in-a-string",
+		"difficulty": "Medium",
+		"isPaidOnly": true,
+		"translatedTitle": "字符串的不同子字符串个数",
+		"isNewQuestion": false,
+		"frequency": ""
+	},
+	{
+		"questionId": "2051",
+		"questionFrontendId": "1923",
+		"questionType": "Main",
+		"categoryTitle": "Algorithms",
+		"title": "Longest Common Subpath",
+		"titleSlug": "longest-common-subpath",
+		"difficulty": "Hard",
+		"isPaidOnly": false,
+		"translatedTitle": "最长公共子路径",
+		"isNewQuestion": false,
+		"frequency": "MikDtg"
+	},
+	{
+		"questionId": "2091",
+		"questionFrontendId": "1977",
+		"questionType": "Main",
+		"categoryTitle": "Algorithms",
+		"title": "Number of Ways to Separate Numbers",
+		"titleSlug": "number-of-ways-to-separate-numbers",
+		"difficulty": "Hard",
+		"isPaidOnly": false,
+		"translatedTitle": "划分数字的方案数",
+		"isNewQuestion": false,
+		"frequency": ""
+	},
+	{
+		"questionId": "2326",
+		"questionFrontendId": "2223",
+		"questionType": "Main",
+		"categoryTitle": "Algorithms",
+		"title": "Sum of Scores of Built Strings",
+		"titleSlug": "sum-of-scores-of-built-strings",
+		"difficulty": "Hard",
+		"isPaidOnly": false,
+		"translatedTitle": "构造字符串的总得分和",
+		"isNewQuestion": false,
+		"frequency": ""
+	}
+]

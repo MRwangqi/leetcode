@@ -1,0 +1,54 @@
+[
+	{
+		"questionId": "192",
+		"questionFrontendId": "192",
+		"questionType": "Main",
+		"categoryTitle": "Shell",
+		"title": "Word Frequency",
+		"titleSlug": "word-frequency",
+		"difficulty": "Medium",
+		"isPaidOnly": false,
+		"translatedTitle": "统计词频",
+		"isNewQuestion": false,
+		"frequency": "jfLtqg"
+	},
+	{
+		"questionId": "193",
+		"questionFrontendId": "193",
+		"questionType": "Main",
+		"categoryTitle": "Shell",
+		"title": "Valid Phone Numbers",
+		"titleSlug": "valid-phone-numbers",
+		"difficulty": "Easy",
+		"isPaidOnly": false,
+		"translatedTitle": "有效电话号码",
+		"isNewQuestion": false,
+		"frequency": "fFvAMgg"
+	},
+	{
+		"questionId": "194",
+		"questionFrontendId": "194",
+		"questionType": "Main",
+		"categoryTitle": "Shell",
+		"title": "Transpose File",
+		"titleSlug": "transpose-file",
+		"difficulty": "Medium",
+		"isPaidOnly": false,
+		"translatedTitle": "转置文件",
+		"isNewQuestion": false,
+		"frequency": ""
+	},
+	{
+		"questionId": "195",
+		"questionFrontendId": "195",
+		"questionType": "Main",
+		"categoryTitle": "Shell",
+		"title": "Tenth Line",
+		"titleSlug": "tenth-line",
+		"difficulty": "Easy",
+		"isPaidOnly": false,
+		"translatedTitle": "第十行",
+		"isNewQuestion": false,
+		"frequency": "f2jtfPg"
+	}
+]
