@@ -136,13 +136,16 @@ id 为 `获取精选分类` 中返回的 id 值
 }
 ```
 
-#### request
+*** 注意：尽量不要调用该接口，数据量太大了 ***
 
+#### request
 
 
 > ~/problems/index.json
 
 例如 https://codelang.gitee.io/leetcode/problems/index.json
+
+#### response
 
 ```
 [
@@ -160,3 +163,14 @@ id 为 `获取精选分类` 中返回的 id 值
 ]
 
 ```
+
+
+## 五、获取题目详情
+
+#### request
+
+titleSlug 为题目数据中获取，该值可以从 topic、tags 等接口中都能拿到
+
+> ~/problems/{titleSlug}/index.json
+
+例如 https://codelang.gitee.io/leetcode/problems/add-two-numbers/index.json
