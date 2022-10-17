@@ -12,10 +12,9 @@ clone 项目后，启动 gitee pages，当前仓库启动的 gitee 服务为 htt
 
 #### request
 
-> ~/problems/index.json
+> ~/tags/index.json
 
-例如： https://codelang.gitee.io/leetcode/problems/index.json
-
+例如： https://codelang.gitee.io/leetcode/tags/index.json
 
 #### response
 
@@ -25,7 +24,7 @@ clone 项目后，启动 gitee pages，当前仓库启动的 gitee 服务为 htt
 		"tag": "栈",
 		"title": "stack",
 		"nums": 160,
-		"path": "problems/tags/stack.json"
+		"path": "tags/stack/index.json"
 	},
 	...
 ]
@@ -39,7 +38,7 @@ path 为 `分类题目` 中返回的 path 值
 
 > ~/{path}.json
 
-例如 https://codelang.gitee.io/leetcode/problems/tags/stack.json
+例如 https://codelang.gitee.io/leetcode/tags/stack/index.json
 
 #### response
 ```
