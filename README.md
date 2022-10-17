@@ -184,7 +184,7 @@ titleSlug 为题目数据中获取，该值可以从 topic、tags 等接口中�
 	<li>不：每个 <code>seq[i]</code> 只能分给 <code>A</code> 和 <code>B</code> 二者中的一个，不能既属于 <code>A</code> 也属于 <code>B</code> 。</li>
 	<li><code>A</code> 或 <code>B</code> 中的元素在原字符串中可以不连续。</li>
 	<li><code>A.length + B.length = seq.length</code></li>
-	<li>深度最小：<code>max(depth(A), depth(B))</code>&nbsp;的可能取值最小。&nbsp;</li>
+	<li>最小：<code>max(depth(A), depth(B))</code>&nbsp;的可能取值最小。&nbsp;</li>
 </ul>
 
 ```
