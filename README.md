@@ -8,7 +8,7 @@ leetcode 数据获取：
 
 
 
-clone 项目后，开通 github pages，当前仓库启动的 gitee 服务为 https://mrwangqi.github.io/leetcode/
+clone 项目后，开通 github pages，当前仓库启动的 github 服务为 https://mrwangqi.github.io/leetcode/
 下面的请求链接以 `~` 代替
 
 
