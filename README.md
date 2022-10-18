@@ -194,3 +194,28 @@ titleSlug 为题目数据中获取，该值可以从 topic、tags 等接口中�
 </ul>
 
 ```
+
+
+## 七、获取题目题解
+
+#### request
+
+titleSlug 为题目数据中获取，该值可以从 topic、tags 等接口中都能拿到
+
+> ~/solution/{titleSlug}/index.json
+
+例如 https://mrwangqi.github.io/leetcode/solution/add-two-numbers/index.json
+
+#### response
+
+
+```
+{
+	"titleSlug": "add-two-numbers",
+	"slug": "hua-jie-suan-fa-2-liang-shu-xiang-jia-by-guanpengc",
+	"url": "https://leetcode-cn.com/problems/add-two-numbers/solution/hua-jie-suan-fa-2-liang-shu-xiang-jia-by-guanpengc/",
+	"content": "### 思路\n\n- 标签：链表\n- 将两个链表看成是相同长度的进行遍历，...."
+}
+```
+
+题解内容 content 为 markdown 格式
