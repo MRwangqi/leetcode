@@ -6,8 +6,16 @@ leetcode 数据获取：
 - 题目分类获取
 - 分类题目列表
 
-clone 项目后，启动 gitee pages，当前仓库启动的 gitee 服务为 https://codelang.gitee.io/leetcode
+
+
+clone 项目后，开通 github pages，当前仓库启动的 gitee 服务为 https://mrwangqi.github.io/leetcode/
 下面的请求链接以 `~` 代替
+
+
+
+
+
+## 
 
 ## 一、 获取分类题目
 
@@ -15,7 +23,7 @@ clone 项目后，启动 gitee pages，当前仓库启动的 gitee 服务为 htt
 
 > ~/tags/index.json
 
-例如： https://codelang.gitee.io/leetcode/tags/index.json
+例如： https://mrwangqi.github.io/leetcode/tags/index.json
 
 #### response
 
@@ -39,7 +47,7 @@ path 为 `分类题目` 中返回的 path 值
 
 > ~/{path}.json
 
-例如 https://codelang.gitee.io/leetcode/tags/stack/index.json
+例如 https://mrwangqi.github.io/leetcode/tags/stack/index.json
 
 #### response
 ```
@@ -67,7 +75,7 @@ path 为 `分类题目` 中返回的 path 值
 
 > ~/topic/index.json
 
-例如： https://codelang.gitee.io/leetcode/topic/index.json
+例如： https://mrwangqi.github.io/leetcode/topic/index.json
 
 #### response
 
@@ -98,7 +106,7 @@ id 为 `获取精选分类` 中返回的 id 值
 
 > ~/topic/{id}/index.json
 
-例如 https://codelang.gitee.io/leetcode/topic/2cktkvj/index.json
+例如 https://mrwangqi.github.io/leetcode/topic/2cktkvj/index.json
 
 
 #### response
@@ -144,7 +152,7 @@ id 为 `获取精选分类` 中返回的 id 值
 
 > ~/problems/index.json
 
-例如 https://codelang.gitee.io/leetcode/problems/index.json
+例如 https://mrwangqi.github.io/leetcode/problems/index.json
 
 #### response
 
@@ -174,7 +182,7 @@ titleSlug 为题目数据中获取，该值可以从 topic、tags 等接口中�
 
 > ~/problems/{titleSlug}/index.json
 
-例如 https://codelang.gitee.io/leetcode/problems/add-two-numbers/index.json
+例如 https://mrwangqi.github.io/leetcode/problems/add-two-numbers/index.html
 
 #### response
 
