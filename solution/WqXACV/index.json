@@ -1,0 +1,6 @@
+{
+	"titleSlug": "WqXACV",
+	"slug": "lcs-02wan-cheng-yi-ban-ti-mu-by-leetcode-gx0i",
+	"url": "https://leetcode-cn.com/problems/WqXACV/solution/lcs-02wan-cheng-yi-ban-ti-mu-by-leetcode-gx0i/",
+	"content": "```python3\nfrom collections import Counter\nclass Solution:\n    def halfQuestions(self, questions: List[int]) -> int:\n        dic = Counter(questions)\n        alist = sorted(dic.items(),key=lambda x:x[1])\n        n = len(questions)//2\n        res = 0\n        for i in range(len(alist)-1,-1,-1):\n            if n>0:\n                n-=alist[i][1]\n                res += 1\n            else:\n                break\n        return res\n\n```\n"
+}

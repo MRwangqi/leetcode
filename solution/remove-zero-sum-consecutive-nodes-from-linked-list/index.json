@@ -1,0 +1,6 @@
+{
+	"titleSlug": "remove-zero-sum-consecutive-nodes-from-linked-list",
+	"slug": "java-hashmap-liang-ci-bian-li-ji-ke-by-shane-34",
+	"url": "https://leetcode-cn.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/solution/java-hashmap-liang-ci-bian-li-ji-ke-by-shane-34/",
+	"content": "```Java\nclass Solution {\n    public ListNode removeZeroSumSublists(ListNode head) {\n        ListNode dummy = new ListNode(0);\n        dummy.next = head;\n\n        Map<Integer, ListNode> map = new HashMap<>();\n\n        // 首次遍历建立 节点处链表和<->节点 哈希表\n        // 若同一和出现多次会覆盖，即记录该sum出现的最后一次节点\n        int sum = 0;\n        for (ListNode d = dummy; d != null; d = d.next) {\n            sum += d.val;\n            map.put(sum, d);\n        }\n\n        // 第二遍遍历 若当前节点处sum在下一处出现了则表明两结点之间所有节点和为0 直接删除区间所有节点\n        sum = 0;\n        for (ListNode d = dummy; d != null; d = d.next) {\n            sum += d.val;\n            d.next = map.get(sum).next;\n        }\n\n        return dummy.next;\n    }\n}\n```\n![image.png](https://pic.leetcode-cn.com/14b65bb30c8a6dc8ac20ddb63b3b59bbb63c942cf57201cb439137dc91ffd697-image.png)\n"
+}

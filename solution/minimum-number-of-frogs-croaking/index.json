@@ -1,0 +1,6 @@
+{
+	"titleSlug": "minimum-number-of-frogs-croaking",
+	"slug": "-by-wa-pian-d-iiqq",
+	"url": "https://leetcode-cn.com/problems/minimum-number-of-frogs-croaking/solution/-by-wa-pian-d-iiqq/",
+	"content": "### 解题思路\n\n来个c，就多一只青蛙。\n来个k，就少一只青蛙。\nc以外字符来的时候，一定要保证他前一个字符出现过，比如来个a，那么之前必然有个o\n\n\n### 代码\n\n```java\nclass Solution {\n\n\tstatic int[] ids;\n\tstatic {\n\t\tids = new int[26];\n\t\tids['c' - 'a'] = 0;\n\t\tids['r' - 'a'] = 1;\n\t\tids['o' - 'a'] = 2;\n\t\tids['a' - 'a'] = 3;\n\t\tids['k' - 'a'] = 4;\n\t}\n\n\tpublic int minNumberOfFrogs(String croakOfFrogs) {\n\t\tint[] croak = new int[5];\n\t\tint ans = 0, cnt = 0;\n\t\tfor (int i = 0; i < croakOfFrogs.length(); i++) {\n\t\t\tint c = ids[croakOfFrogs.charAt(i) - 'a'];\n\t\t\tif (c == 0) {\n\t\t\t\tcroak[c]++;\n\t\t\t\tans = Math.max(ans, ++cnt);\n\t\t\t} else if (croak[c - 1] == 0) {\n\t\t\t\treturn -1;\n\t\t\t} else if (c == 4) {\n\t\t\t\tcroak[c - 1]--;\n\t\t\t\tcnt--;\n\t\t\t} else {\n\t\t\t\tcroak[c - 1]--;\n\t\t\t\tcroak[c]++;\n\t\t\t}\n\t\t}\n\t\treturn cnt == 0 ? ans : -1;\n\t}\n\n}\n```"
+}

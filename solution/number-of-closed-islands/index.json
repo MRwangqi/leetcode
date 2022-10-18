@@ -1,0 +1,6 @@
+{
+	"titleSlug": "number-of-closed-islands",
+	"slug": "by-ilylm-z48o",
+	"url": "https://leetcode-cn.com/problems/number-of-closed-islands/solution/by-ilylm-z48o/",
+	"content": "# 思路\r\n当岛屿**没有在最外圈时**，肯定是封闭岛屿；当岛屿在最外圈时，肯定不是封闭岛屿。\r\n\r\n依照这个思路进行DFS，分别向上下左右四个方向。sr,sc表示当前行列，is表示当前是否是封闭岛屿(初始true)。\r\n\r\n检查当前位置是否在最外圈，如果在最外圈则返回false；\r\n\r\n# 代码\r\n```\r\nclass Solution {\r\npublic:\r\n    bool dfs(vector<vector<int>>& g, int sr, int sc,bool is){\r\n        g[sr][sc] = 1; //走过变1\r\n        \r\n        if(sr==0 || sr==g.size()-1 || sc==0 || sc==g[0].size()-1) is = false; \r\n        //如果在边界则不是封闭岛屿\r\n\r\n        if(sr-1>=0 && g[sr-1][sc]==0) //左\r\n            is = dfs(g,sr-1,sc,is);\r\n        if(sr+1<=g.size()-1 && g[sr+1][sc]==0) //右\r\n            is = dfs(g,sr+1,sc,is);\r\n        if(sc-1>=0 && g[sr][sc-1]==0) //下\r\n            is = dfs(g,sr,sc-1,is);\r\n        if(sc+1<=g[0].size()-1 && g[sr][sc+1]==0) //上\r\n            is = dfs(g,sr,sc+1,is);\r\n        return is;\r\n    }\r\n\r\n    int closedIsland(vector<vector<int>>& grid) {\r\n        int ans = 0;\r\n        for(int i=0; i<grid.size(); i++){\r\n            for(int j=0; j<grid[0].size(); j++){\r\n                if(grid[i][j]==0){\r\n                    if(dfs(grid,i,j,true)) ans++; \r\n                }\r\n            }\r\n        }\r\n        return ans;\r\n    }\r\n};\r\n```\r\n"
+}

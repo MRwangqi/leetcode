@@ -1,0 +1,6 @@
+{
+	"titleSlug": "powerful-integers",
+	"slug": "mo-ni-by-wyppeng-c4ld",
+	"url": "https://leetcode-cn.com/problems/powerful-integers/solution/mo-ni-by-wyppeng-c4ld/",
+	"content": "### 解题思路\n\n\n### 代码\n\n```cpp\nclass Solution {\npublic:\n    vector<int> powerfulIntegers(int x, int y, int bound) {\n        vector<int >xs,ys;\n        vector<int >ans;\n        int prex=1,prey=1;\n        xs.emplace_back(1);\n        ys.emplace_back(1);\n        while(prex*x<=bound&&x!=1){\n            prex*=x;\n            xs.emplace_back(prex);\n        }\n        while(prey*y<=bound&&y!=1){\n            prey*=y;\n            ys.emplace_back(prey);\n        }\n        int hash[1000010];\n        memset(hash,0,sizeof(hash));\n\n        for(int i=0;i<xs.size();++i){\n            for(int j=0;j<ys.size();++j){\n                int tmp=xs[i]+ys[j];\n                if(tmp<=bound)\n                hash[tmp]=1;\n            }\n        }\n        for(int i=0;i<1000010;++i){\n            if(hash[i])\n            ans.emplace_back(i);\n        }\n\n        return ans;\n\n    }\n};\n```"
+}

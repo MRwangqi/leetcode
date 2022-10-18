@@ -1,0 +1,6 @@
+{
+	"titleSlug": "group-sold-products-by-the-date",
+	"slug": "group_concat-by-xiao-lang-gou-cto-un90",
+	"url": "https://leetcode-cn.com/problems/group-sold-products-by-the-date/solution/group_concat-by-xiao-lang-gou-cto-un90/",
+	"content": "### 解题思路\n此处撰写解题思路\ngroup_concat(\n    [去重：DISTINCT] ‘字符串’ [排序：group by 字符串 asc/desc] 分隔符：seperator ','\n)\n将group by产生的同一个分组中的值连接起来，返回一个字符串结果。\n所以最后是对sell_date分组才能达到效果，\ngroup by sell_date\n \n### 代码\n\n```mysql\n# Write your MySQL query statement below\nselect sell_date, \n        COUNT(DISTINCT product)AS 'num_sold',\n         GROUP_CONCAT(\n             DISTINCT product ORDER by  product asc SEPARATOR ','\n    )AS products\n    from Activities\n    GROUP by sell_date\n    ORDER by sell_date;\n \n \n```"
+}

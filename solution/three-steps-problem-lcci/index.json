@@ -1,0 +1,6 @@
+{
+	"titleSlug": "three-steps-problem-lcci",
+	"slug": "dashu-by-serene-mcnulty9uv-reyb",
+	"url": "https://leetcode-cn.com/problems/three-steps-problem-lcci/solution/dashu-by-serene-mcnulty9uv-reyb/",
+	"content": "### 解题思路\n此处撰写解题思路\n\n### 代码\n\n```typescript\nfunction waysToStep(n: number): number {\n    // dp[i]代表跳到i阶的可能数，dp[i] = dp[i-1]+dp[i-2]+dp[i-3]\n    let dp: number[] = new Array(n);\n    dp[0] = 1;\n    dp[1] = dp[0] + 1;\n    dp[2] = dp[1] + dp[0] + 1;\n    for (let i = 3; i < n; i++) dp[i] = (dp[i - 1] + dp[i - 2] + dp[i - 3])%1000000007\n    return dp[n - 1];\n}\n\n```"
+}

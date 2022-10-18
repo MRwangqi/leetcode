@@ -1,0 +1,6 @@
+{
+	"titleSlug": "snapshot-array",
+	"slug": "zai-fang-by-pandaoknight-s3pv",
+	"url": "https://leetcode-cn.com/problems/snapshot-array/solution/zai-fang-by-pandaoknight-s3pv/",
+	"content": "### 解法一：这次也是为了直接用sort.SearchInts拆分了2个简单数组出来\n一些主要注意的边界：\n1. 需要返回的是 <=snap_id 的值，故须使用：`sort.SearchInts(..., snap_id+1)-1`\n2. 这个算法需要做初始化打底，不能不打底。不然，我们get要写复杂些，来处理返回0的情况。\n\n### 代码\n```golang\ntype SnapshotArray struct {\n    Id int\n    Ids [][]int\n    Arr [][]int\n}\n\nfunc Constructor(l int) SnapshotArray {\n    var ids, arr [][]int\n    for i:=0; i<l; i++ {\n        ids = append(ids, []int{0})\n        arr = append(arr, []int{0})\n    }\n    return SnapshotArray{0, ids, arr}\n}\n\nfunc (p *SnapshotArray) Set(index int, val int)  {\n    var n = len(p.Ids[index])\n    if p.Id > p.Ids[index][n-1] {\n        p.Ids[index] = append(p.Ids[index], p.Id)\n        p.Arr[index] = append(p.Arr[index], val)\n    } else {\n        p.Arr[index][n-1] = val\n    }\n}\n\nfunc (p *SnapshotArray) Snap() int {\n    var ret = p.Id\n    p.Id++\n    return ret\n}\n\nfunc (p *SnapshotArray) Get(index int, snap_id int) int {\n    return p.Arr[index][sort.SearchInts(p.Ids[index], snap_id+1)-1]\n}\n```"
+}

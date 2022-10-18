@@ -1,0 +1,6 @@
+{
+	"titleSlug": "sub-sort-lcci",
+	"slug": "yi-bian-bian-li-shuang-zhi-zhen-by-chen-wei-zhe",
+	"url": "https://leetcode-cn.com/problems/sub-sort-lcci/solution/yi-bian-bian-li-shuang-zhi-zhen-by-chen-wei-zhe/",
+	"content": "### 解题思路\n\n默认升序（降序也只是改一点代码，不影响）\n\n原理：如果左侧最大值大于中间的最小值，则一定会被中间序列包括；同理，如果右侧最小值大于中间的最大值，则一定会被中间序列包括。\n\n一遍遍历 + 两个指针（两次扫描可一次遍历完成）\n\n1、从前向后扫描数组，判断当前array[i]是否比max小，是则将last置为当前array下标i，否则更新max;\n\n2、从后向前扫描数组，判断当前array[len - 1 - i]是否比min大，是则将first置位当前下标len - 1 - i，否则更新min;\n\n3、返回{first， last}\n\n\n### 代码\n\n```java\nclass Solution {\n    public int[] subSort(int[] array) {\n        if(array == null || array.length == 0) return new int[]{-1, -1};\n        int last = -1, first = -1;\n        int max = Integer.MIN_VALUE;\n        int min = Integer.MAX_VALUE;\n        int len = array.length;\n        for(int i = 0; i < len; i++){\n            if(array[i] < max){\n                last = i;\n            }else{\n                max = Math.max(max, array[i]);\n            }\n\n            if(array[len - 1 - i] > min){\n                first = len - 1 - i;\n            }else{\n                min = Math.min(min, array[len - 1 - i]);\n            }\n        }\n        return new int[] {first, last};\n    }\n}\n```"
+}

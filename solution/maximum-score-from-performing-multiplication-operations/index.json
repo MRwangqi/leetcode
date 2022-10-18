@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximum-score-from-performing-multiplication-operations",
+	"slug": "c-by-liu-xiang-3-ll4l",
+	"url": "https://leetcode-cn.com/problems/maximum-score-from-performing-multiplication-operations/solution/c-by-liu-xiang-3-ll4l/",
+	"content": "### 思路\r\n1. 定义`dp[l][r][i]`, 表示`nums[l, r]`已经选了`i`个的最大乘积和;\r\n   转移方程为:\r\n $dp[l][r][i] = max(dp[l+1][r][i+1] + nums[l] * mul[i], dp[l][r-1][i+1] + nums[r] * mul[i])$, 这样处理会超时;\r\n2. 定义`dp[l][i]`, 表示`nums[l:]`已经选了`i`个的最大乘积和, 可以计算出`r=l+(n-i-1)`;\r\n   转移方程为:\r\n$dp[l][i] = max(dp[l+1][i+1] + nums[l] * mul[i], dp[l][i+1] + nums[r] * mul[i])$, 不会超时;\r\n```\r\nclass Solution {\r\npublic:\r\n    int maximumScore(vector<int>& nums, vector<int>& multipliers) {\r\n        int n = nums.size();\r\n        int m = multipliers.size();\r\n        vector<vector<int>> f(m, vector<int>(m, -1));\r\n\r\n        function<int(int, int)> dfs = [&](int l, int i) -> int {\r\n            if (i == m) {\r\n                return 0;\r\n            }\r\n            if (f[l][i] != -1) {\r\n                return f[l][i];\r\n            }\r\n            int left  = dfs(l + 1, i + 1) + nums[l] * multipliers[i];\r\n            int right = dfs(l, i + 1) + nums[n - i + l - 1] * multipliers[i];\r\n            return f[l][i] = max(left, right);\r\n        };\r\n\r\n        return dfs(0, 0);\r\n    }\r\n};\r\n```\r\n"
+}

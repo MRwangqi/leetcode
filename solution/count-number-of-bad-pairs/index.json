@@ -1,0 +1,6 @@
+{
+	"titleSlug": "count-number-of-bad-pairs",
+	"slug": "by-endlesscheng-uam3",
+	"url": "https://leetcode-cn.com/problems/count-number-of-bad-pairs/solution/by-endlesscheng-uam3/",
+	"content": "[视频讲解](https://www.bilibili.com/video/bv1gB4y1k7Jz) 已出炉，欢迎点赞三连，在评论区分享你对这场双周赛的看法~\r\n\r\n---  \r\n \r\n将题目中的式子变形得\r\n\r\n$$\r\n\\textit{nums}[i]-i \\ne \\textit{nums}[j]-j\r\n$$\r\n\r\n为了方便计算，我们可以算出满足\r\n\r\n$$\r\n\\textit{nums}[i]-i = \\textit{nums}[j]-j\r\n$$\r\n\r\n的下标对数，这可以用哈希表一边遍历，一边统计。然后用所有对数 $\\dfrac{n(n-1)}{2}$ 减去，即为答案。\r\n\r\n```py [sol1-Python3]\r\nclass Solution:\r\n    def countBadPairs(self, nums: List[int]) -> int:\r\n        n, cnt = len(nums), Counter()\r\n        ans = n * (n - 1) // 2\r\n        for i, num in enumerate(nums):\r\n            ans -= cnt[num - i]  # 有 cnt[num - i] 个相同的\r\n            cnt[num - i] += 1\r\n        return ans\r\n```\r\n\r\n```go [sol1-Go]\r\nfunc countBadPairs(nums []int) int64 {\r\n\tn := len(nums)\r\n\tans := n * (n - 1) / 2\r\n\tcnt := map[int]int{}\r\n\tfor i, num := range nums {\r\n\t\tans -= cnt[num-i] // 有 cnt[num-i] 个相同的\r\n\t\tcnt[num-i]++\r\n\t}\r\n\treturn int64(ans)\r\n}\r\n```\r\n\r\n#### 注\r\n\r\n一些标题上的暗示：[1512. 好数对的数目](https://leetcode.cn/problems/number-of-good-pairs/)"
+}

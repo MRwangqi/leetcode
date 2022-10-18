@@ -1,0 +1,6 @@
+{
+	"titleSlug": "minimum-length-of-string-after-deleting-similar-ends",
+	"slug": "1750-shan-chu-zi-fu-chuan-liang-duan-xia-tzpq",
+	"url": "https://leetcode-cn.com/problems/minimum-length-of-string-after-deleting-similar-ends/solution/1750-shan-chu-zi-fu-chuan-liang-duan-xia-tzpq/",
+	"content": "### 解题思路\n\n递归消除两端\n\n### 代码\n\n```java\nclass Solution {\n\tpublic int minimumLength(String s) {\n\t\tchar[] cs = s.toCharArray();\n\t\treturn this.minimumLength(cs, 0, cs.length - 1);\n\t}\n\n\tprivate int minimumLength(char[] cs, int L, int R) {\n\t\tif (L > R) {\n\t\t\treturn 0;\n\t\t}\n\t\tif (L == R) {\n\t\t\treturn 1;\n\t\t}\n\t\tif (cs[L] != cs[R]) {\n\t\t\treturn R - L + 1;\n\t\t}\n\t\tint l = L;\n\t\tint r = R;\n\t\twhile (l <= r && (l == L || cs[l] == cs[l - 1])) {\n\t\t\tl++;\n\t\t}\n\t\twhile (l <= r && (r == R || cs[r] == cs[r + 1])) {\n\t\t\tr--;\n\t\t}\n\t\treturn this.minimumLength(cs, l, r);\n\t}\n}\n```"
+}

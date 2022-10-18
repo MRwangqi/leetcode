@@ -1,0 +1,6 @@
+{
+	"titleSlug": "check-if-array-is-sorted-and-rotated",
+	"slug": "java-ji-bai-100-0ms-by-gxx-zl-ld2t",
+	"url": "https://leetcode-cn.com/problems/check-if-array-is-sorted-and-rotated/solution/java-ji-bai-100-0ms-by-gxx-zl-ld2t/",
+	"content": "```\r\npublic boolean check(int[] nums) {\r\n    int len = nums.length;\r\n    int sum = 0;\r\n    for (int i = 1; i < len; i++) {\r\n        if (nums[i] < nums[i - 1]) {\r\n            if (sum != 0) {\r\n                return false;\r\n            }\r\n            sum++;\r\n        }\r\n    }\r\n    return sum == 0 || nums[0] >= nums[len - 1];\r\n}\r\n```\r\n\r\n0ms 击败100%Java用户\r\n39MB 击败80%Java用户\r\n\r\n时间复杂度O(n)\r\n空间复杂度O(1)\r\n\r\n分情况处理\r\n"
+}

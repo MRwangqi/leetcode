@@ -1,0 +1,6 @@
+{
+	"titleSlug": "swap-numbers-lcci",
+	"slug": "javascriptban-jie-ti-si-lu-by-ityou-o-cncx",
+	"url": "https://leetcode-cn.com/problems/swap-numbers-lcci/solution/javascriptban-jie-ti-si-lu-by-ityou-o-cncx/",
+	"content": "\n[详细刷题视频合集](https://xiaochen1024.com/series/6196129fc1553b002e57bef5/6196208ec1553b002e57bef6)      \n      [刷题笔记](https://xiaochen1024.com/courseware/60b4f11ab1aa91002eb53b18)\n```\nvar swapNumbers = function(numbers) {\n   numbers[0] =numbers[0]^numbers[1];\n   numbers[1] =numbers[0]^numbers[1];\n   numbers[0]=numbers[0]^numbers[1];\n   return numbers;\n};\n\n```\n"
+}

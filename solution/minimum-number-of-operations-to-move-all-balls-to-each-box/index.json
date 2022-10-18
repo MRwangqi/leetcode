@@ -1,0 +1,6 @@
+{
+	"titleSlug": "minimum-number-of-operations-to-move-all-balls-to-each-box",
+	"slug": "by-sao-hei-chu-e-wei-dang-yu-min-7y6z",
+	"url": "https://leetcode-cn.com/problems/minimum-number-of-operations-to-move-all-balls-to-each-box/solution/by-sao-hei-chu-e-wei-dang-yu-min-7y6z/",
+	"content": "```\r\nclass Solution {\r\npublic:\r\n    vector<int> minOperations(string boxes) {\r\n        vector<int>ans;\r\n        int n = boxes.length();\r\n        int cnt = 0,sum=0;\r\n        vector<int>pre(n+1);\r\n        vector<int>post(n);\r\n        pre[0] = 0;\r\n        for(int i = 0; i < n;++i)\r\n        if(boxes[i]=='1')cnt++;\r\n        for(int i = 0; i < n;++i){\r\n            pre[i+1] = pre[i] + (boxes[i]=='1');\r\n            post[i] =cnt-pre[i];\r\n            if(boxes[i]=='1')\r\n            sum+=i;\r\n        }\r\n        ans.push_back(sum);\r\n        for(int i = 1; i < n;++i){\r\n            sum+=pre[i];\r\n            sum-=post[i];\r\n            ans.push_back(sum);\r\n        }\r\n        return ans;\r\n\r\n    }\r\n};\r\n```\r\n"
+}

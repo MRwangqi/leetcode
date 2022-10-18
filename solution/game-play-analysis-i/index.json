@@ -1,0 +1,6 @@
+{
+	"titleSlug": "game-play-analysis-i",
+	"slug": "by-eip-1-0-c-lyb1",
+	"url": "https://leetcode-cn.com/problems/game-play-analysis-i/solution/by-eip-1-0-c-lyb1/",
+	"content": "# Write your MySQL query statement below\r\n#巧妙使用min聚合函数\r\nselect player_id,min(event_date) as 'first_login'\r\nfrom Activity\r\ngroup by player_id"
+}

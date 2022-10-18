@@ -1,0 +1,6 @@
+{
+	"titleSlug": "check-if-the-sentence-is-pangram",
+	"slug": "c-by-angy-x-5p7g",
+	"url": "https://leetcode-cn.com/problems/check-if-the-sentence-is-pangram/solution/c-by-angy-x-5p7g/",
+	"content": "```\r\nclass Solution \r\n{\r\npublic:\r\n    bool checkIfPangram(string sentence) \r\n    {\r\n        int num[26];\r\n        for (int i = 0; i < 26; i ++)\r\n        {\r\n            num[i] = 0;\r\n        }\r\n        for(int i = 0; i < sentence.size(); i ++)\r\n        {\r\n            num[sentence[i] - 'a'] ++;\r\n        }\r\n        for(int i = 0; i < 26; i ++)\r\n        {\r\n            if(num[i] == 0)\r\n            {\r\n                return false;\r\n            }\r\n        }\r\n        return true;\r\n    }\r\n};\r\n```\r\n![image.png](https://pic.leetcode-cn.com/1665645369-ocvajj-image.png)\r\n"
+}

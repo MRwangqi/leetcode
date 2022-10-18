@@ -1,0 +1,6 @@
+{
+	"titleSlug": "time-needed-to-inform-all-employees",
+	"slug": "by-blade-2a-2kci",
+	"url": "https://leetcode-cn.com/problems/time-needed-to-inform-all-employees/solution/by-blade-2a-2kci/",
+	"content": "# 思路\r\n1. 首先我们先看题目信息，求的是总负责人发出消息到所有员工收到信息的时间。\r\n2. 我们求出每一个员工获取信息的时间然后取最大值即可，因为最后一名员工收到信息时，前面所有员工已经收到信息\r\n3. 在代码实现时，由于一个负责人可以负责多个员工，从员工向总负责人遍历时会产生重复情况\r\n4. 所以我们可以记忆化员工的获取时间\r\n# 代码\r\n```\r\nclass Solution {\r\n    int[] dp, manager, informTime;\r\n    public int numOfMinutes(int n, int headID, int[] manager, int[] informTime) {\r\n        // 记录最长时间\r\n        int time = 0;\r\n        this.manager = manager;\r\n        this.informTime = informTime;\r\n        // dp数组记忆化每一个员工获取到信息所需时间\r\n        dp = new int[n];\r\n        // 遍历进行消息获取\r\n        for (int i = 0; i < n; i++) {\r\n            time = Math.max(time, getTime(i));\r\n        }\r\n        return time;\r\n    }\r\n    // 以当前员工为起点往上遍历获取时间\r\n    private int getTime(int i) {\r\n        // 信息是总负责人发出的，所以每一个员工往上遍历一定会遍历到总负责人，返回总负责人的时间\r\n        if (manager[i] == -1) return informTime[i];\r\n        // 如果当前的 i 编号的员工的时间以及算出就返回\r\n        if (dp[i] > 0) return dp[i];\r\n        int res = informTime[i] + getTime(manager[i]);\r\n        // 记录当前员工从总负责人发出后获取所需到信息所需时间\r\n        dp[i] = res;\r\n        return res;\r\n    }\r\n}\r\n```\r\n"
+}

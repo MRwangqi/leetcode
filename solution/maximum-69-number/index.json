@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximum-69-number",
+	"slug": "6-he-9-zu-cheng-de-zui-da-shu-zi-by-leetcode-solut",
+	"url": "https://leetcode-cn.com/problems/maximum-69-number/solution/6-he-9-zu-cheng-de-zui-da-shu-zi-by-leetcode-solut/",
+	"content": "#### 方法一：模拟\n\n现在把 `9` 翻转成 `6` 是不合理的，因为它会使得数字变小。因此我们应当找到 `num` 中最高位的 `6`，将其翻转成 `9`。\n\n```C++ [sol1-C++]\nclass Solution {\npublic:\n    int maximum69Number(int num) {\n        string s = to_string(num);\n        for (char& ch: s) {\n            if (ch == '6') {\n                ch = '9';\n                break;\n            }\n        }\n        return stoi(s);\n    }\n};\n```\n\n```Python [sol1-Python3]\nclass Solution:\n    def maximum69Number(self, num: int) -> int:\n        return int(str(num).replace(\"6\", \"9\", 1))\n```\n\n**复杂度分析**\n\n- 时间复杂度：$O(\\log \\textit{num})$，表示 $\\textit{num}$ 的位数。\n\n- 空间复杂度：$O(\\log \\textit{num})$。为了代码编写方便，我们使用额外的字符串来存储 $\\textit{num}$，使得可以直接修改特定位置的数字。"
+}

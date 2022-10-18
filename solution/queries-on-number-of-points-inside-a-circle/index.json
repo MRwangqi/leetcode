@@ -1,0 +1,6 @@
+{
+	"titleSlug": "queries-on-number-of-points-inside-a-circle",
+	"slug": "by-angy-x-3ep8",
+	"url": "https://leetcode-cn.com/problems/queries-on-number-of-points-inside-a-circle/solution/by-angy-x-3ep8/",
+	"content": "### 解题思路\n此处撰写解题思路\n\n### 代码\n\n```cpp\nclass Solution \n{\npublic:\n    vector<int> countPoints(vector<vector<int>>& points, vector<vector<int>>& queries) \n    {\n        int size1, size2;\n        size1 = points.size();\n        size2 = queries.size();\n        vector<int> count;\n        int num = 0;\n        for(int i = 0; i < size2; i ++)\n        {\n            num = 0;\n            for(int j = 0; j < size1; j ++)\n            {\n                if((points[j][0] - queries[i][0]) * (points[j][0] - queries[i][0]) + (points[j][1] - queries[i][1]) * (points[j][1] - queries[i][1]) <= queries[i][2] * queries[i][2])\n                {\n                    num ++;\n                }\n            }\n            count.push_back(num);\n        }\n        return count;\n    }\n};\n```"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "remove-letter-to-equalize-frequency",
+	"slug": "by-100000000000001-o89u",
+	"url": "https://leetcode-cn.com/problems/remove-letter-to-equalize-frequency/solution/by-100000000000001-o89u/",
+	"content": "---\n### 求解思路\n1. 从左到右随机去除一个字符\n2. 对去除后字符统计不同字符出现的次数，如果出现的次数去重后集合长度为 1, 代表剩余字符出现的频率相同\n\n---\n### 代码\n\n```python3\nclass Solution:\n    def equalFrequency(self, word: str) -> bool:\n        return any(len(set(Counter(word[:i]+word[i+1:]).values()))==1  for i in range(len(word)))\n```\n\n---\n### 复杂度分析\n![image.png](https://pic.leetcode-cn.com/1665759754-bycEwc-image.png)\n\n---\n### 刷题经验分享\n[刷题经验贴](https://leetcode-cn.com/circle/discuss/PZO1if/) ——  **系统化快速学习刷题与总结**"
+}

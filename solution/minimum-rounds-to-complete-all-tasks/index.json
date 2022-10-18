@@ -1,0 +1,6 @@
+{
+	"titleSlug": "minimum-rounds-to-complete-all-tasks",
+	"slug": "by-tsreaper-wsmq",
+	"url": "https://leetcode-cn.com/problems/minimum-rounds-to-complete-all-tasks/solution/by-tsreaper-wsmq/",
+	"content": "## 解法：分类讨论\r\n按每种任务的数量分类讨论：\r\n* 若这种任务只有 $1$ 个，则无法完成；\r\n* 若这种任务只有 $2$ 个，可以一次完成；\r\n* 若这种任务数量是 $3$ 的倍数，显然每次完成 $3$ 个是最快的；\r\n* 若这种任务数量除 $3$ 余 $1$，需要每次完成 $3$ 个，最后 $4$ 个分两次完成；\r\n* 若这种任务数量除 $3$ 余 $2$，需要每次完成 $3$ 个，最后完成 $2$ 个。\r\n\r\n## 参考代码（c++）\r\n```c++\r\nclass Solution {\r\npublic:\r\n    int minimumRounds(vector<int>& tasks) {\r\n        map<int, int> cnt;\r\n        for (int x : tasks) cnt[x]++;\r\n        int ans = 0;\r\n        for (auto it = cnt.begin(); it != cnt.end(); it++) {\r\n            int x = it->second;\r\n            if (x == 1) return -1;\r\n            else if (x == 2) ans++;\r\n            else if (x % 3 == 0) ans += x / 3;\r\n            else ans += x / 3 + 1;\r\n        }\r\n        return ans;\r\n    }\r\n};\r\n```"
+}

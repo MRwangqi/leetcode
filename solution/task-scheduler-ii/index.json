@@ -1,0 +1,6 @@
+{
+	"titleSlug": "task-scheduler-ii",
+	"slug": "by-tsreaper-o13q",
+	"url": "https://leetcode-cn.com/problems/task-scheduler-ii/solution/by-tsreaper-o13q/",
+	"content": "## 解法：模拟\r\n维护一个 `unordered_map<int, int> mp`，`mp[x]` 表示类型为 `x` 的任务最近一次的结束时间。按顺序枚举所有任务，设当前任务类型为 `x`，执行当前任务之前已经经过了 `t` 的时间，那么：\r\n* 若 `t - mp[x] >= space`，说明冷却时间已经结束，可以直接执行任务。`t += 1`，并更新 `mp[x] = t`。\r\n* 若 `t - mp[x] < space`，说明冷却时间还未结束。根据题意，此时最早能执行类型 `x` 任务的时间是 `mp[x] + space + 1`。因此 `t = mp[x] + space + 1`，并更新 `mp[x] = t`。\r\n\r\n复杂度 $\\mathcal{O}(n)$。\r\n\r\n## 参考代码（c++）\r\n```c++\r\nclass Solution {\r\npublic:\r\n    long long taskSchedulerII(vector<int>& tasks, int space) {\r\n        int n = tasks.size();\r\n        unordered_map<int, long long> mp;\r\n        for (int x : tasks) mp[x] = -1e18;\r\n        long long ans = 0;\r\n        for (int i = 0; i < n; i++) {\r\n            long long &last = mp[tasks[i]];\r\n            if (ans - last >= space) ans++, last = ans;\r\n            else ans = last + space + 1, last = ans;\r\n        }\r\n        return ans;\r\n    }\r\n};\r\n```"
+}

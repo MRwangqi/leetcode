@@ -1,0 +1,6 @@
+{
+	"titleSlug": "master-mind-lcci",
+	"slug": "by-100000000000001-u2jk",
+	"url": "https://leetcode-cn.com/problems/master-mind-lcci/solution/by-100000000000001-u2jk/",
+	"content": "---\n### 求解思路\n1. 先求解猜中个数  `guess_right` ， 借助 `zip` 函数来求解， 比较字符串中的每一个字符\n2. 再求解伪猜中个数 `guess_other`， 借助 `Counter` 函数来求解， 获取字符串中同一个字母出现的最小次数\n3. 由于 猜中个数 不能算入 伪猜中个数中， 返回 `[guess_right, guess_other-guess_right]`\n\n\n---\n### 代码\n\n```python3\nclass Solution:\n    def masterMind(self, solution: str, guess: str) -> List[int]:\n        s_map, g_map = Counter(solution), Counter(guess)\n        guess_right = sum(x==y for x,y in zip(solution,guess))\n        guess_other = sum(min(s_map[key], g_map[key])  for key in set(solution) & set(guess))\n        return [guess_right, guess_other-guess_right]\n```\n\n---\n### 复杂度分析\n![image.png](https://pic.leetcode-cn.com/1665584563-CGBiSz-image.png)\n\n\n---\n### 刷题经验分享\n[刷题经验贴](https://leetcode-cn.com/circle/discuss/PZO1if/) ——  **系统化快速学习刷题与总结**"
+}

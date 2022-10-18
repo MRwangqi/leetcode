@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximum-sum-of-an-hourglass",
+	"slug": "bian-li-by-endlesscheng-k17h",
+	"url": "https://leetcode-cn.com/problems/maximum-sum-of-an-hourglass/solution/bian-li-by-endlesscheng-k17h/",
+	"content": "[视频讲解](https://www.bilibili.com/video/BV1kd4y1q7fC) 已出炉，欢迎点赞三连，在评论区分享你对这场周赛的看法~\r\n\r\n---\r\n\r\n按题意模拟即可。 \r\n\r\n```py [sol1-Python3]\r\nclass Solution:\r\n    def maxSum(self, grid: List[List[int]]) -> int:\r\n        return max(grid[i - 1][j - 1] + grid[i - 1][j] + grid[i - 1][j + 1] + grid[i][j] +\r\n                   grid[i + 1][j - 1] + grid[i + 1][j] + grid[i + 1][j + 1]\r\n                   for i in range(1, len(grid) - 1) for j in range(1, len(grid[i]) - 1))\r\n```\r\n\r\n```go [sol1-Go]\r\nfunc maxSum(grid [][]int) (ans int) {\r\n\tfor i := 1; i < len(grid)-1; i++ {\r\n\t\tfor j := 1; j < len(grid[i])-1; j++ {\r\n\t\t\tans = max(ans, grid[i-1][j-1]+grid[i-1][j]+grid[i-1][j+1]+grid[i][j]+grid[i+1][j-1]+grid[i+1][j]+grid[i+1][j+1])\r\n\t\t}\r\n\t}\r\n\treturn\r\n}\r\n\r\nfunc max(a, b int) int { if b > a { return b }; return a }\r\n```\r\n\r\n#### 复杂度分析\r\n\r\n- 时间复杂度：$O(mn)$，其中 $m$ 和 $n$ 分别为 $\\textit{grid}$ 的行数和列数。\r\n- 空间复杂度：$O(1)$，仅用到若干变量。\r\n"
+}

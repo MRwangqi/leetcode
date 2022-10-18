@@ -1,0 +1,6 @@
+{
+	"titleSlug": "make-sum-divisible-by-p",
+	"slug": "java-by-kaslanla-t5ak",
+	"url": "https://leetcode-cn.com/problems/make-sum-divisible-by-p/solution/java-by-kaslanla-t5ak/",
+	"content": "\n### 代码\n\n```java\nclass Solution {\n    public int minSubarray(int[] nums, int p) {\n        long s = 0L;\n        for(int i = 0; i < nums.length; i++) {\n            s += nums[i];\n        }\n        if(s % p == 0) return 0;\n        int rest = (int)(s % p);\n        Map<Long, Integer> map = new HashMap<>();\n        //添加余数为0的下标为0，防止[1,3,5] 5 无法提取到[1,3]这个答案\n        map.put(0L, 0);\n        long sum = 0;\n        int ans = nums.length;\n        for (int i = 0; i < nums.length; i++) {\n            sum += nums[i];\n            long cr = sum % p;\n            // rest = cr - x -> x = cr - rest\n            int idx = map.getOrDefault(cr >= rest ? (cr - rest) : (cr - rest + p), -1);\n            if(idx >= 0){\n                ans = Math.min(i + 1 - idx, ans);\n            }\n            map.put(cr, i + 1);\n        }\n        return ans == nums.length ? -1:ans;\n    }\n}\n```"
+}

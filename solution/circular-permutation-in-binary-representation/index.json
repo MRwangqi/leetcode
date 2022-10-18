@@ -1,0 +1,6 @@
+{
+	"titleSlug": "circular-permutation-in-binary-representation",
+	"slug": "-by-wa-pian-d-7qi5",
+	"url": "https://leetcode-cn.com/problems/circular-permutation-in-binary-representation/solution/-by-wa-pian-d-7qi5/",
+	"content": "### 解题思路\n\n暴力尝试，回溯\n\n### 代码\n\n```java\nclass Solution {\n\n\n\n\tList<Integer> ans;\n\tint n;\n\n\tpublic List<Integer> circularPermutation(int n, int start) {\n\t\tans = new ArrayList<>();\n\t\tthis.n = n;\n\t\tboolean[] used = new boolean[1 << n];\n\t\tthis.f(start, used, 1);\n\t\treturn ans;\n\t}\n\n\tprivate boolean f(int start, boolean[] used, int idx) {\n\t\tans.add(start);\n\t\tif (idx == 1 << n) {\n\t\t\treturn true;\n\t\t}\n\t\tused[start] = true;\n\t\tfor (int i = 0; i < n; i++) {\n\t\t\tint num = start ^ (1 << i);\n\t\t\tif (!used[num] && this.f(num, used, idx + 1)) {\n\t\t\t\treturn true;\n\t\t\t}\n\t\t}\n\t\tused[start] = false;\n\t\tans.add(ans.size() - 1);\n\t\treturn false;\n\t}\n\n\n}\n```"
+}

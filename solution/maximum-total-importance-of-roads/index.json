@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximum-total-importance-of-roads",
+	"slug": "by-endlesscheng-9p6y",
+	"url": "https://leetcode-cn.com/problems/maximum-total-importance-of-roads/solution/by-endlesscheng-9p6y/",
+	"content": "本题的 [视频讲解](https://www.bilibili.com/video/BV1iF41157dG/) 已出炉，欢迎三连~\r\n\r\n---\r\n\r\n\r\n设点 $i$ 的度数（与点 $i$ 相邻的城市数）为 $\\textit{deg}[i]$，点 $i$ 被安排的整数值为 $p[i]$，问题即最大化\r\n\r\n$$\r\n\\sum_{i=0}^{n-1} \\textit{deg}[i]\\cdot p[i]\r\n$$\r\n\r\n根据 [排序不等式](https://baike.baidu.com/item/%E6%8E%92%E5%BA%8F%E4%B8%8D%E7%AD%89%E5%BC%8F/7775728) 可知，$\\textit{deg}$ 最小的安排 $1$，次小的安排 $2$，依此类推。因此排序后累加即得到答案。\r\n\r\n```Python [sol1-Python3]\r\nclass Solution:\r\n    def maximumImportance(self, n: int, roads: List[List[int]]) -> int:\r\n        deg = [0] * n\r\n        for x, y in roads:\r\n            deg[x] += 1\r\n            deg[y] += 1\r\n        deg.sort()\r\n        return sum(d * i for i, d in enumerate(deg, 1))\r\n```\r\n\r\n```go [sol1-Go]\r\nfunc maximumImportance(n int, roads [][]int) (ans int64) {\r\n\tdeg := make([]int, n)\r\n\tfor _, r := range roads {\r\n\t\tdeg[r[0]]++\r\n\t\tdeg[r[1]]++\r\n\t}\r\n\tsort.Ints(deg)\r\n\tfor i, d := range deg {\r\n\t\tans += int64(d) * int64(i+1)\r\n\t}\r\n\treturn\r\n}\r\n```\r\n"
+}

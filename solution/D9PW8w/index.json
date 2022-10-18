@@ -1,0 +1,6 @@
+{
+	"titleSlug": "D9PW8w",
+	"slug": "an-zhao-ti-yi-mo-ni-by-endlesscheng-41jb",
+	"url": "https://leetcode-cn.com/problems/D9PW8w/solution/an-zhao-ti-yi-mo-ni-by-endlesscheng-41jb/",
+	"content": "```py [sol1-Python]\r\nclass Solution:\r\n    def transportationHub(self, path: List[List[int]]) -> int:\r\n        nodes = set()\r\n        out_deg = Counter()\r\n        in_deg = Counter()\r\n        for x, y in path:\r\n            nodes.add(x)\r\n            nodes.add(y)\r\n            out_deg[x] += 1\r\n            in_deg[y] += 1\r\n        for x in nodes:\r\n            if out_deg[x] == 0 and in_deg[x] == len(nodes) - 1:\r\n                return x\r\n        return -1\r\n```\r\n \r\n```go [sol1-Go]\r\nfunc transportationHub(path [][]int) int {\r\n\tnodes := map[int]struct{}{}\r\n\toutDeg := map[int]int{}\r\n\tinDeg := map[int]int{}\r\n\tfor _, p := range path {\r\n\t\tx, y := p[0], p[1]\r\n\t\tnodes[x] = struct{}{}\r\n\t\tnodes[y] = struct{}{}\r\n\t\toutDeg[x]++\r\n\t\tinDeg[y]++\r\n\t}\r\n\tfor x := range nodes {\r\n\t\tif outDeg[x] == 0 && inDeg[x] == len(nodes)-1 {\r\n\t\t\treturn x\r\n\t\t}\r\n\t}\r\n\treturn -1\r\n}\r\n```"
+}

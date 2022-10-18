@@ -1,0 +1,6 @@
+{
+	"titleSlug": "ccw6C7",
+	"slug": "shu-xue-yi-ge-xun-huan-ji-ke-by-o240qnhz-g8x2",
+	"url": "https://leetcode-cn.com/problems/ccw6C7/solution/shu-xue-yi-ge-xun-huan-ji-ke-by-o240qnhz-g8x2/",
+	"content": "### 解题思路\nn(i+j) - ij = k解得j = (k-n*i) / (n-i)\n\n### 代码\n\n```python3\nclass Solution:\n    def paintingPlan(self, n: int, k: int) -> int:\n        if k == n**2 or k == 0: return 1\n        elif k < n: return 0\n        else:\n            comb = [math.comb(n,i) for i in range(0,n)]\n            ans = 0\n            for i in range(0,n):\n                if (k-n*i) % (n-i) == 0 and (j := (k-n*i) // (n-i)) >= 0 and j < n:\n                    ans += comb[i] * comb[j]\n            return ans\n```"
+}

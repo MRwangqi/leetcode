@@ -1,0 +1,6 @@
+{
+	"titleSlug": "successful-pairs-of-spells-and-potions",
+	"slug": "pai-xu-er-fen-fa-by-mungred-8hdl",
+	"url": "https://leetcode-cn.com/problems/successful-pairs-of-spells-and-potions/solution/pai-xu-er-fen-fa-by-mungred-8hdl/",
+	"content": "> Problem: [2300. 咒语和药水的成功对数](https://leetcode.cn/problems/successful-pairs-of-spells-and-potions/description/)\n\n[TOC]\n\n# 思路\n> 先对数组排序，然后用二分法查找数组中大于等于目标值的数的个数\n# Code\n```C++ []\nclass Solution {\npublic:\n    //返回数组中大于等于target的数的个数\n    int find(vector<int>& potions,double target){\n        int l = 0,r = potions.size()-1;\n        while(l<=r){\n            int mid = (l+r)/2;\n            if(potions[mid]>=target){\n                r = mid-1;\n            }else{\n                l = mid+1;\n            }\n        }\n        return potions.size()-1-r;\n    }\n    vector<int> successfulPairs(vector<int>& spells, vector<int>& potions, long long success) {\n        vector<int> ans(spells.size(),0);\n        sort(potions.begin(),potions.end());\n        for(int i = 0;i<spells.size();i++){\n            double t = (double)success/spells[i];\n            ans[i] = find(potions,t);\n        }\n        return ans;\n    }\n};\n```\n"
+}

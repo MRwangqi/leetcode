@@ -1,0 +1,6 @@
+{
+	"titleSlug": "remove-sub-folders-from-the-filesystem",
+	"slug": "java-1233-shan-chu-zi-wen-jian-jia-by-wa-l11d",
+	"url": "https://leetcode-cn.com/problems/remove-sub-folders-from-the-filesystem/solution/java-1233-shan-chu-zi-wen-jian-jia-by-wa-l11d/",
+	"content": "### 解题思路\n\nHashMap 字典树\n\n### 代码\n\n```java\nclass Solution {\n\tpublic List<String> removeSubfolders(String[] folder) {\n\t\tArrays.sort(folder, (a, b) -> a.length() - b.length());\n\t\tList<String> ans = new ArrayList<>();\n\t\tNode root = new Node();\n\t\tfor (String path : folder) {\n\t\t\tString[] d = path.split(\"/\");\n\t\t\tNode node = root;\n\t\t\tfor (int i = 0; i < d.length; i++) {\n\t\t\t\tnode = node.computeIfAbsent(d[i], k -> new Node());\n\t\t\t\tif (node.end) {\n\t\t\t\t\tbreak;\n\t\t\t\t}\n\t\t\t}\n\t\t\tif (!node.end) {\n\t\t\t\tnode.end = true;\n\t\t\t\tans.add(path);\n\t\t\t}\n\t\t}\n\t\treturn ans;\n\t}\n\n\tclass Node extends HashMap<String, Node> {\n\t\tboolean end;\n\t}\n}\n```"
+}

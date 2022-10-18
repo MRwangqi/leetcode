@@ -1,0 +1,6 @@
+{
+	"titleSlug": "pairs-with-sum-lcci",
+	"slug": "by-xiaowei_algorithm-k5an",
+	"url": "https://leetcode-cn.com/problems/pairs-with-sum-lcci/solution/by-xiaowei_algorithm-k5an/",
+	"content": "**解题思路：**\r\n\r\n1. 排序之后使用双指针，是最容易理解的\r\n2. 相当于进阶版的两数之和\r\n\r\n**代码如下：**\r\n\r\n\r\n```java\r\nclass Solution {\r\n    public List<List<Integer>> pairSums(int[] nums, int target) {\r\n        List<List<Integer>> list = new ArrayList<>();\r\n        if (nums == null || nums.length == 0) {\r\n            return list;\r\n        }\r\n        int n = nums.length;\r\n        Arrays.sort(nums);\r\n        int left = 0;\r\n        int right = n - 1;\r\n        while (left < right) {\r\n            int x = nums[left];\r\n            int y = nums[right];\r\n            if (x + y == target) {\r\n                List<Integer> temp = new ArrayList<>();\r\n                temp.add(x);\r\n                temp.add(y);\r\n                list.add(temp);\r\n                left++;\r\n                right--;\r\n            } else if (x + y > target) {\r\n                right--;\r\n            } else {\r\n                left++;\r\n            }\r\n        }\r\n        return list;\r\n    }\r\n}\r\n```\r\n"
+}

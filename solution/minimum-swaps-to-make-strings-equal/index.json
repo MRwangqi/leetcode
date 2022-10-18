@@ -1,0 +1,6 @@
+{
+	"titleSlug": "minimum-swaps-to-make-strings-equal",
+	"slug": "-by-wa-pian-d-xb1o",
+	"url": "https://leetcode-cn.com/problems/minimum-swaps-to-make-strings-equal/solution/-by-wa-pian-d-xb1o/",
+	"content": "### 解题思路\n\n贪心\n\n x，y要奇偶性相同\n\n x x  这种形式一次 \n y y\n\n x y  这种形式两次\n y x\n\n 对应位置不同的情况进行计数\n x/2的结果是x组一次交换数量，同理y\n x%2的结果是x组两次交换数量，同理y\n\n### 代码\n\n```java\nclass Solution {\n    \n\tpublic int minimumSwap(String s1, String s2) {\n\t\tint x = 0, y = 0;\n\t\tfor (int i = 0; i < s1.length(); i++) {\n\t\t\tif (s1.charAt(i) != s2.charAt(i)) {\n\t\t\t\tif (s1.charAt(i) == 'x') {\n\t\t\t\t\tx++;\n\t\t\t\t} else {\n\t\t\t\t\ty++;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tif ((x & 1) != (y & 1)) {\n\t\t\treturn -1;\n\t\t}\n\t\treturn x / 2 + y / 2 + x % 2 + y % 2;\n\t}\n\n}\n```"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "length-of-the-longest-alphabetical-continuous-substring",
+	"slug": "by-endlesscheng-rant",
+	"url": "https://leetcode-cn.com/problems/length-of-the-longest-alphabetical-continuous-substring/solution/by-endlesscheng-rant/",
+	"content": "[视频讲解](https://www.bilibili.com/video/BV1AP411p7pK) 已出炉，欢迎点赞三连，在评论区分享你对这场周赛的看法~\r\n\r\n```py [sol1-Python3]\r\nclass Solution:\r\n    def longestContinuousSubstring(self, s: str) -> int:\r\n        ans = start = 0\r\n        for i in range(1, len(s)):\r\n            if ord(s[i]) != ord(s[i - 1]) + 1:\r\n                ans = max(ans, i - start)\r\n                start = i  # 新起点\r\n        return max(ans, len(s) - start)\r\n```\r\n\r\n```go [sol1-Go]\r\nfunc longestContinuousSubstring(s string) (ans int) {\r\n\tstart := 0\r\n\tfor i := 1; i < len(s); i++ {\r\n\t\tif s[i] != s[i-1]+1 {\r\n\t\t\tans = max(ans, i-start)\r\n\t\t\tstart = i // 新起点\r\n\t\t}\r\n\t}\r\n\treturn max(ans, len(s)-start)\r\n}\r\n\r\nfunc max(a, b int) int { if b > a { return b }; return a }\r\n```\r\n\r\n#### 复杂度分析\r\n\r\n- 时间复杂度：$O(n)$，其中 $n$ 为 $s$ 的长度。\r\n- 空间复杂度：$O(1)$，仅用到若干变量。\r\n"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "evaluate-the-bracket-pairs-of-a-string",
+	"slug": "by-hai-na-bai-chuan-11-eq2w",
+	"url": "https://leetcode-cn.com/problems/evaluate-the-bracket-pairs-of-a-string/solution/by-hai-na-bai-chuan-11-eq2w/",
+	"content": "### 解题思路\n此处撰写解题思路\n\n### 代码\n\n```golang\nfunc evaluate(s string, knowledge [][]string) string {\n    m:=map[string]string{}\n    for _,arr:=range knowledge{\n        m[arr[0]]=arr[1]\n    }\n    nums:=[]byte{}\n    n:=len(s)\n    for i:=0;i<n;i++{\n        key:=\"\"\n        if s[i]=='('{\n            j:=i+1\n            for ;j<n&&s[j]!=')';j++{\n            }\n            key = s[i+1:j]\n            val,ok:=m[key]\n            if ok{\n                for k:=0;k<len(val);k++{\n                    nums  =append(nums,val[k])\n                }\n            }else{\n                nums = append(nums,'?')\n            }\n            \n            i=j\n        }else{\n            nums = append(nums,s[i])\n        }\n    }\n    return string(nums)\n}\n```"
+}

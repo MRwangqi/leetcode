@@ -1,0 +1,6 @@
+{
+	"titleSlug": "decode-the-message",
+	"slug": "jian-hua-dai-ma-de-xiao-ji-qiao-by-endle-i81p",
+	"url": "https://leetcode-cn.com/problems/decode-the-message/solution/jian-hua-dai-ma-de-xiao-ji-qiao-by-endle-i81p/",
+	"content": "本题 [视频讲解](https://www.bilibili.com/video/BV1Yf4y1Z7Ac) 已出炉，欢迎点赞三连~\r\n\r\n---\r\n\r\n把空格映射到空格上，这样就不需要额外判断空格了。\r\n\r\n```py [sol1-Python3]\r\nclass Solution:\r\n    def decodeMessage(self, key: str, message: str) -> str:\r\n        mp = {' ': ' '}\r\n        i = 0\r\n        for c in key:\r\n            if c not in mp:\r\n                mp[c] = ascii_lowercase[i]\r\n                i += 1\r\n        return ''.join(mp[c] for c in message)\r\n```\r\n\r\n```go [sol1-Go]\r\nfunc decodeMessage(key, message string) string {\r\n\tmp := ['z' + 1]byte{' ': ' '}\r\n\tcur := byte('a')\r\n\tfor _, c := range key {\r\n\t\tif mp[c] == 0 {\r\n\t\t\tmp[c] = cur\r\n\t\t\tcur++\r\n\t\t}\r\n\t}\r\n\ts := []byte(message)\r\n\tfor i, c := range s {\r\n\t\ts[i] = mp[c]\r\n\t}\r\n\treturn string(s)\r\n}\r\n```"
+}

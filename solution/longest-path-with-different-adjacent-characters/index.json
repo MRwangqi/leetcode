@@ -1,0 +1,6 @@
+{
+	"titleSlug": "longest-path-with-different-adjacent-characters",
+	"slug": "by-tsreaper-xj80",
+	"url": "https://leetcode-cn.com/problems/longest-path-with-different-adjacent-characters/solution/by-tsreaper-xj80/",
+	"content": "## 解法：DP\r\n与经典的 [DP 求树直径](https://blog.csdn.net/IAMLSL/article/details/116400270) 基本相同，只不过 $f[x]$ 表示的是以 $x$ 为根节点的一条最长相邻点无相同字符的路径。当子节点的字符与当前节点相同时，不能参与答案更新。\r\n\r\n## 参考代码（c++）\r\n```c++\r\nclass Solution {\r\n    vector<vector<int>> e;\r\n    string s;\r\n    int ans = 0;\r\n\r\n    int dp(int sn) {\r\n        int a = 0, b = 0;\r\n        for (int fn : e[sn]) {\r\n            if (s[sn] == s[fn]) {\r\n                // 子节点字符与当前节点相同，不参与更新答案\r\n                dp(fn);\r\n            } else {\r\n                // 子节点字符与当前节点不同，正常更新答案\r\n                int t = dp(fn);\r\n                if (t > a) b = a, a = t;\r\n                else if (t > b) b = t;\r\n            }\r\n        }\r\n        ans = max(ans, a + b + 1);\r\n        return a + 1;\r\n    }\r\n\r\npublic:\r\n    int longestPath(vector<int>& parent, string s) {\r\n        e = vector<vector<int>>(parent.size());\r\n        this->s = s;\r\n        for (int i = 1; i < parent.size(); i++) e[parent[i]].push_back(i);\r\n        dp(0);\r\n        return ans;\r\n    }\r\n};\r\n```\r\n"
+}

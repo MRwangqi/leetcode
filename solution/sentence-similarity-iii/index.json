@@ -1,0 +1,6 @@
+{
+	"titleSlug": "sentence-similarity-iii",
+	"slug": "by-semaphoreex-oyz6",
+	"url": "https://leetcode-cn.com/problems/sentence-similarity-iii/solution/by-semaphoreex-oyz6/",
+	"content": "```cpp\nbool areSentencesSimilar(string sentence1, string sentence2) {\n    stringstream ss1(sentence1), ss2(sentence2);\n    deque<string> a, b;\n    string w;\n    while (ss1 >> w) a.push_back(w);\n    while (ss2 >> w) b.push_back(w);\n    while (!a.empty() && !b.empty() && a.front() == b.front()) {\n        a.pop_front();\n        b.pop_front();\n    }\n    while (!a.empty() && !b.empty() && a.back() == b.back()) {\n        a.pop_back();\n        b.pop_back();\n    }\n\n    return a.empty() || b.empty();\n}\n```"
+}

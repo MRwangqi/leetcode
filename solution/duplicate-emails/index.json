@@ -1,0 +1,6 @@
+{
+	"titleSlug": "duplicate-emails",
+	"slug": "cha-zhao-zhong-fu-de-dian-zi-you-xiang-by-leetcode",
+	"url": "https://leetcode-cn.com/problems/duplicate-emails/solution/cha-zhao-zhong-fu-de-dian-zi-you-xiang-by-leetcode/",
+	"content": "#### 方法一：使用 `GROUP BY` 和临时表\n\n**算法**\n\n重复的电子邮箱存在多次。要计算每封电子邮件的存在次数，我们可以使用以下代码。\n\n```mysql [d8EiS4CT-MySQL]\nselect Email, count(Email) as num\nfrom Person\ngroup by Email;\n```\n\n\n```\n| Email   | num |\n|---------|-----|\n| a@b.com | 2   |\n| c@d.com | 1   |\n```\n\n以此作为临时表，我们可以得到下面的解决方案。\n\n```mysql [GeXvS7ji-MySQL]\nselect Email from\n(\n  select Email, count(Email) as num\n  from Person\n  group by Email\n) as statistic\nwhere num > 1\n;\n```\n\n\n#### 方法二：使用 `GROUP BY` 和 `HAVING` 条件\n\n向 `GROUP BY` 添加条件的一种更常用的方法是使用 `HAVING` 子句，该子句更为简单高效。\n\n所以我们可以将上面的解决方案重写为：\n\n```mysql [ShYdkDn6-MySQL]\nselect Email\nfrom Person\ngroup by Email\nhaving count(Email) > 1;\n```\n"
+}

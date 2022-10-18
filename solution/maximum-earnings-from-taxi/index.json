@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximum-earnings-from-taxi",
+	"slug": "by-wanglongjiang-zg4t",
+	"url": "https://leetcode-cn.com/problems/maximum-earnings-from-taxi/solution/by-wanglongjiang-zg4t/",
+	"content": "### 解题思路\n思路：动态规划 二分查找\n首先将rides按照end进行排序。\n设dp[i]截止第i个乘客的最大订单金额，状态转移方程为：\n当接第i个订单，dp[i]=dp[j]+rides[i].end-rides[i].start+rides[i].tip，其中j为用rides[i].start二分查找end时间\n还可以不接第i个订单，dp[i] = max(dp[i-1],dp[i])\n\n时间复杂度：O(mlogm)，m=rides.length\n空间复杂度：O(m)\n\n### 代码\n\n```python3\nclass Solution:\n    def maxTaxiEarnings(self, n: int, rides: List[List[int]]) -> int:\n        m = len(rides)\n        rides.sort(key=lambda r: r[1])  # 按照订单结束时间排序\n        endtimes = [t[1] for t in rides]  # 提取出结束时间，方便二分查找\n        dp = [0] * m\n        for i in range(m):\n            profit = rides[i][1] - rides[i][0] + rides[i][2]  # 计算当前订单利润\n            j = bisect_right(endtimes, rides[i][0])\n            if j > 0:\n                profit += dp[j - 1]  # 选中当前订单的利润\n            dp[i] = max(profit, dp[i - 1])  # 从选中当前订单、不选中当前订单中选择利润较大的\n        return dp[-1]\n\n```"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "count-number-of-distinct-integers-after-reverse-operations",
+	"slug": "by-priceless-brahmaguptatvb-vcry",
+	"url": "https://leetcode-cn.com/problems/count-number-of-distinct-integers-after-reverse-operations/solution/by-priceless-brahmaguptatvb-vcry/",
+	"content": "> Problem: [2442. 反转之后不同整数的数目](https://leetcode.cn/problems/count-number-of-distinct-integers-after-reverse-operations/description/)\n\n[TOC]\n\n# 思路\n> hash + 一次遍历 \n\n# 复杂度\n- 时间复杂度: \n> $O(n)$\n\n# Code\n```C []\n\nint reversal(int x)\n{\n    int res = 0;\n    while (x) {\n        res = res * 10 + x % 10;\n        x = x / 10;\n    }\n\n    return res;\n}\nint countDistinctIntegers(int* nums, int numsSize){\n    int i, t, ans = 0, hash[1000001] = {0};\n\n    for (i = 0; i < numsSize; i++) {           \n        if (!hash[nums[i]]) {\n            ans++;\n            hash[nums[i]] = 1;\n        }\n\n        t = reversal(nums[i]);  \n        if (!hash[t]) {\n            ans++;\n            hash[t] = 1; \n        }\n    }\n\n    return ans;\n}\n```\n"
+}

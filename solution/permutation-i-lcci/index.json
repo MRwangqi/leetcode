@@ -1,0 +1,6 @@
+{
+	"titleSlug": "permutation-i-lcci",
+	"slug": "by-kayleh-kfv2",
+	"url": "https://leetcode-cn.com/problems/permutation-i-lcci/solution/by-kayleh-kfv2/",
+	"content": "```java\r\nclass Solution {\r\n    List<String> res = new ArrayList<>();\r\n    char[] chars;\r\n\r\n    public String[] permutation(String S) {\r\n        chars = S.toCharArray();\r\n        List<Character> road = new ArrayList<>();  // 记录路径\r\n        dfs(road);\r\n        return res.toArray(new String[0]);\r\n    }\r\n\r\n    private void dfs(List<Character> path) {\r\n        if (path.size() == chars.length) { // 递归终止条件 当前路径长度等于字符串长度\r\n            path.stream().map(String::valueOf).reduce(String::concat).ifPresent(res::add);\r\n            return;\r\n        }\r\n\r\n        for (char c : chars) {\r\n            if (path.contains(c)) { // 当前字符已经在路径中，剪枝\r\n                continue;\r\n            }\r\n            path.add(c);\r\n            dfs(path);\r\n            path.remove(path.size() - 1);\r\n        }\r\n    }\r\n}\r\n```\r\n"
+}

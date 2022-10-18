@@ -1,0 +1,6 @@
+{
+	"titleSlug": "swap-salary",
+	"slug": "jiao-huan-gong-zi-by-leetcode",
+	"url": "https://leetcode-cn.com/problems/swap-salary/solution/jiao-huan-gong-zi-by-leetcode/",
+	"content": "#### 方法：使用 `UPDATE` 和 `CASE...WHEN`\n\n**算法**\n \n要想动态地将值设置成列，我们可以在使用 [`CASE...WHEN...`](https://dev.mysql.com/doc/refman/5.7/en/case.html) 流程控制语句的同时使用 [`UPDATE`](https://dev.mysql.com/doc/refman/5.7/en/update.html) 语句。\n\n```MySQL []\nUPDATE salary\nSET\n    sex = CASE sex\n        WHEN 'm' THEN 'f'\n        ELSE 'm'\n    END;\n```"
+}

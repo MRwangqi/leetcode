@@ -1,0 +1,6 @@
+{
+	"titleSlug": "nGK0Fy",
+	"slug": "bu-xu-yao-bian-li-you-shu-xue-fang-fa-by-qcdxctcc",
+	"url": "https://leetcode-cn.com/problems/nGK0Fy/solution/bu-xu-yao-bian-li-you-shu-xue-fang-fa-by-qcdxctcc/",
+	"content": "目标结果是x+y\r\n出现一个\"A\"，有x+y=(2x+y)+y=2x+2y\r\n出现一个\"B\"，有x+y=x+(2y+x)=2x+2y\r\n所以每出现一个A/B，都使x+y的值翻倍\r\n因此结果是2**len(s)\r\n\r\n\r\n\r\nPS：字节跳动内推啦，各位走过路过不要错过呀。\r\nhttps://job.toutiao.com/s/eaHwWsg\r\n实习/正式均可，工作地可选 北京/上海/杭州。有兴趣可私聊戳我。"
+}

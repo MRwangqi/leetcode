@@ -1,0 +1,6 @@
+{
+	"titleSlug": "number-of-different-integers-in-a-string",
+	"slug": "by-100000000000001-dg8j",
+	"url": "https://leetcode-cn.com/problems/number-of-different-integers-in-a-string/solution/by-100000000000001-dg8j/",
+	"content": "\n---\n### 求解思路\n1. 通过非数字字符切割 `re.split(r'\\D+', word)`\n2. 对于 `001` 需要借助 `int` 转为换 `1`\n\n### 代码\n\n```python3\nclass Solution:\n    def numDifferentIntegers(self, word: str) -> int:\n        return len(set(int(d) for d in re.split(r'\\D+', word) if d))\n```\n\n\n### 复杂度分析\n![image.png](https://pic.leetcode-cn.com/1664200387-mcltoO-image.png)\n\n\n---\n\n---\n### 刷题经验分享\n[刷题经验贴](https://leetcode-cn.com/circle/discuss/PZO1if/) ——  **系统化快速学习刷题与总结**"
+}

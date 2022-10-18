@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximize-number-of-subsequences-in-a-string",
+	"slug": "jian-yi-jie-fa-by-zohn-z-fxvm",
+	"url": "https://leetcode-cn.com/problems/maximize-number-of-subsequences-in-a-string/solution/jian-yi-jie-fa-by-zohn-z-fxvm/",
+	"content": "若pattern=\"ac\"，那么认为在text的开始添加'a'或者在text的结尾添加'c'这两种情况能得到最大值。\r\n遍历字符串，并记录初始子序列数量sum，以及'a'和'c'的数量。\r\n- 在开始处添加'a'，则子序列数量=初始子序列数量+'c'的数量。\r\n- 在结尾处添加'c'，则子序列数量=初始子序列数量+'a'的数量。\r\n```java\r\nclass Solution {\r\n    public long maximumSubsequenceCount(String text, String pattern) {\r\n        char front = pattern.charAt(0), back = pattern.charAt(1);\r\n        long sum = 0;\r\n        int fcnt = 0, bcnt = 0;\r\n        // 从后向前遍历，统计pattern[0]和pattenr[1]的数量以及初始子序列数量。\r\n        for(int i = text.length() - 1; i >= 0; i--) {\r\n            char c = text.charAt(i);\r\n            if(c == front) {\r\n                sum += bcnt;\r\n                fcnt++;\r\n            } \r\n            if(c == back){\r\n                bcnt++;\r\n            }\r\n        }\r\n        // 返回初始子序列数量+新增的子序列数量\r\n        return sum + Math.max(bcnt, fcnt);\r\n    }\r\n}\r\n```\r\n"
+}

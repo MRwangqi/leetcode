@@ -1,0 +1,6 @@
+{
+	"titleSlug": "finding-the-users-active-minutes",
+	"slug": "golang-by-chenzhao1999-357p",
+	"url": "https://leetcode-cn.com/problems/finding-the-users-active-minutes/solution/golang-by-chenzhao1999-357p/",
+	"content": "func findingUsersActiveMinutes(logs [][]int, k int) []int {\r\n    m := make(map[int]map[int]struct{})\r\n    for _,log := range logs {\r\n        id := log[0]\r\n        time := log[1]\r\n        if _,ok := m[id];!ok {\r\n            m[id] = make(map[int]struct{})\r\n        }\r\n        m[id][time] = struct{}{}\r\n    }\r\n    ans := make([]int,k)\r\n    for _,v := range m {\r\n        if len(v) <= k {\r\n            ans[len(v)-1]++\r\n        }\r\n    }\r\n    return ans\r\n}"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "minimum-one-bit-operations-to-make-integers-zero",
+	"slug": "zhao-gui-lu-di-gui-by-a-zhu-8o-zndz",
+	"url": "https://leetcode-cn.com/problems/minimum-one-bit-operations-to-make-integers-zero/solution/zhao-gui-lu-di-gui-by-a-zhu-8o-zndz/",
+	"content": "### 解题思路\n看到这个题，本菜鸡的第一反应是自下往上的动态规划，dp[i]表示将i变成0需要的最小操作数。\n\n那么状态转移方程。。好像写不出来。。\n\n比如说n = 2，写成二进制就是10，根据题意可以向3（11）或6（110）转移。\n\n那么3（11），根据题意可以向2（10）或1（01）转移\n\n可以看到2转3，3又转回2了，好像哪里不太对。。\n\n\n所以直接自下往上动态规划行不通，换个思路，找找规律吧\n\n我们不妨把前几个数的最小操作次数枚举出来，并按操作次数排序\n\n![微信截图_20220402102315.png](https://pic.leetcode-cn.com/1648866206-uNBdXD-%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20220402102315.png)\n\n不知道大家看出规律没有\n\n如果n恰好等于2的i次方，那么最小操作数是：1<<(i+1) - 1\n\n如果n不等于2的i次方，那么可以把n拆成x+y，其中x等于2的i次方，y = n-x\n比如看上表，n=11的情况，可以把11拆成8+3，8的最小操作次数是15，3的最小操作次数是2，而11的操作次数恰好等于15-2=13\n\n不难归纳出，假设n的最高位1是第i位，那么dp[n] = dp[1<<i] - dp[n-(1<<i)]\n\n其中dp[1<<i] = 1<<(i+1) - 1;\n\n也不用建啥dp数组，不断把n拆成2^x+y的形式，递归就完事了！      \n\n### 代码\n\n```cpp\nclass Solution {\npublic:\n\n    int minimumOneBitOperations(int n) {\n        if(n <= 1)\n            return n;\n        //找出最高位\n        int pos = 0;\n        for(int i = 0; i < 32; ++i)\n            if(((n >> i) & 1) == 1)\n                pos = i;\n        int x = (1 << (pos+1)) - 1;\n        int y = n - (1<<pos);\n        return x - minimumOneBitOperations(y);\n    }\n};\n```"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximum-average-subarray-i",
+	"slug": "by-libaroma-lsin",
+	"url": "https://leetcode-cn.com/problems/maximum-average-subarray-i/solution/by-libaroma-lsin/",
+	"content": "```\r\ndouble findMaxAverage(int *nums, int numsSize, int k) {\r\n    double sum = 0;\r\n    for (int j = 0; j < k; ++j) {\r\n        sum += nums[j] / (k * 1.0);\r\n    }\r\n    double tem = sum;\r\n    for (int i = k; i < numsSize; ++i) {\r\n        tem += nums[i] / (k * 1.0) - nums[i - k] / (k * 1.0);\r\n        sum = fmax(sum, tem);\r\n    }\r\n    return sum;\r\n}\r\n```\r\n"
+}

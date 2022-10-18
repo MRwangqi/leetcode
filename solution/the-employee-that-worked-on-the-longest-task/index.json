@@ -1,0 +1,6 @@
+{
+	"titleSlug": "the-employee-that-worked-on-the-longest-task",
+	"slug": "mo-ni-by-endlesscheng-ka78",
+	"url": "https://leetcode-cn.com/problems/the-employee-that-worked-on-the-longest-task/solution/mo-ni-by-endlesscheng-ka78/",
+	"content": "[视频讲解](https://www.bilibili.com/video/BV11d4y1i7Gs) 已出炉，欢迎点赞三连，在评论区分享你对这场周赛的看法~\r\n\r\n```py [sol1-Python3]\r\nclass Solution:\r\n    def hardestWorker(self, n: int, logs: List[List[int]]) -> int:\r\n        ans, max_t = logs[0]\r\n        for (_, t1), (i, t) in pairwise(logs):\r\n            t -= t1\r\n            if t > max_t or t == max_t and i < ans:\r\n                ans, max_t = i, t\r\n        return ans\r\n```\r\n\r\n```go [sol1-Go]\r\nfunc hardestWorker(n int, logs [][]int) int {\r\n\tans, maxT := logs[0][0], logs[0][1]\r\n\tfor i := 1; i < len(logs); i++ {\r\n\t\tt := logs[i][1] - logs[i-1][1]\r\n\t\tif t > maxT || t == maxT && logs[i][0] < ans {\r\n\t\t\tans, maxT = logs[i][0], t\r\n\t\t}\r\n\t}\r\n\treturn ans\r\n}\r\n```"
+}

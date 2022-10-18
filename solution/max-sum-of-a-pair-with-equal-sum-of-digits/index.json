@@ -1,0 +1,6 @@
+{
+	"titleSlug": "max-sum-of-a-pair-with-equal-sum-of-digits",
+	"slug": "ha-xi-biao-wei-hu-zui-da-de-liang-ge-by-3ou64",
+	"url": "https://leetcode-cn.com/problems/max-sum-of-a-pair-with-equal-sum-of-digits/solution/ha-xi-biao-wei-hu-zui-da-de-liang-ge-by-3ou64/",
+	"content": "本题 [视频讲解](https://www.bilibili.com/video/BV1GV4y1J7kc) 已出炉，欢迎点赞三连~\r\n\r\n---\r\n\r\n```py [sol1-Python3]\r\nclass Solution:\r\n    def maximumSum(self, nums: List[int]) -> int:\r\n        ans = -1\r\n        mx = defaultdict(int)\r\n        for num in nums:\r\n            # s = sum(int(d) for d in str(num))\r\n            s, x = 0, num\r\n            while x:\r\n                s += x % 10\r\n                x //= 10\r\n            if s in mx: ans = max(ans, mx[s] + num)\r\n            mx[s] = max(mx[s], num)\r\n        return ans\r\n```\r\n\r\n```go [sol1-Go]\r\nfunc maximumSum(nums []int) int {\r\n\tans := -1\r\n\tmx := map[int]int{}\r\n\tfor _, v := range nums {\r\n\t\ts := 0\r\n\t\tfor x := v; x > 0; x /= 10 {\r\n\t\t\ts += x % 10\r\n\t\t}\r\n\t\tif mx[s] > 0 {\r\n\t\t\tans = max(ans, mx[s] + v)\r\n\t\t}\r\n\t\tmx[s] = max(mx[s], v)\r\n\t}\r\n\treturn ans\r\n}\r\n\r\nfunc max(a, b int) int { if b > a { return b }; return a }\r\n```"
+}

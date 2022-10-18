@@ -1,0 +1,6 @@
+{
+	"titleSlug": "number-of-boomerangs",
+	"slug": "jsjie-ti-si-lu-qing-xi-ming-liao-by-inte-tr1f",
+	"url": "https://leetcode-cn.com/problems/number-of-boomerangs/solution/jsjie-ti-si-lu-qing-xi-ming-liao-by-inte-tr1f/",
+	"content": "[详细刷题视频合集](https://xiaochen1024.com/series/6196129fc1553b002e57bef5/6196208ec1553b002e57bef6)      \n      [刷题笔记](https://xiaochen1024.com/courseware/60b4f11ab1aa91002eb53b18)\n```\nvar numberOfBoomerangs = function(points) {\n   \n    let res = 0;\n    for(let i = 0; i < points.length; i++){\n        let map = new Map(); //应该放在里面，表示是i这个点对应其他点的距离和个数\n        for(let j = 0; j < points.length; j++){\n            if(j !== i){\n                let distance = dis(points[i], points[j]);\n                if(map.has(distance)){\n                    map.set(distance, map.get(distance) + 1);\n                }else{\n                    map.set(distance, 1)\n                }\n            }\n        }\n        map.forEach((count, distance) => res += count * (count - 1)); //map.forEach((value, key) => {}) value 在 key 的前面\n    }\n    return res;\n};\n\nfunction dis(x, y){\n    return (y[1] - x[1])* (y[1] - x[1]) + (y[0] - x[0]) * (y[0] - x[0]); //坐标两点距离，是+不是-\n}\n\n```\n"
+}

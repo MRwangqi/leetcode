@@ -1,0 +1,6 @@
+{
+	"titleSlug": "longest-chunked-palindrome-decomposition",
+	"slug": "-by-liupengsay-tipp",
+	"url": "https://leetcode-cn.com/problems/longest-chunked-palindrome-decomposition/solution/-by-liupengsay-tipp/",
+	"content": "### 解题思路\nPython3+贪心+递归\n\n### 代码\n\n```python3\nclass Solution:\n    def longestDecomposition(self, text: str) -> int:\n        n = len(text)\n        if n <= 1:\n            return n\n        length = 1\n        while length*2 <= n:\n            if text[:length] == text[-length:]:\n                return 2 + self.longestDecomposition(text[length:-length])\n            length += 1\n        return 1\n\n```"
+}

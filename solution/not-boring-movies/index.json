@@ -1,0 +1,6 @@
+{
+	"titleSlug": "not-boring-movies",
+	"slug": "you-qu-de-dian-ying-by-leetcode",
+	"url": "https://leetcode-cn.com/problems/not-boring-movies/solution/you-qu-de-dian-ying-by-leetcode/",
+	"content": "\n#### 方法：使用 `MOD()` 函数\n\n**算法**\n\n我们可以使用 `mod(id,2)=1` 来确定奇数 id，然后添加  `description != 'boring'` 来解决问题。\n\n```MySQL []\nselect *\nfrom cinema\nwhere mod(id, 2) = 1 and description != 'boring'\norder by rating DESC\n;\n```"
+}

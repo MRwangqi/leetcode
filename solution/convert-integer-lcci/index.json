@@ -1,0 +1,6 @@
+{
+	"titleSlug": "convert-integer-lcci",
+	"slug": "keng-by-whoway-lt37",
+	"url": "https://leetcode-cn.com/problems/convert-integer-lcci/solution/keng-by-whoway-lt37/",
+	"content": "\r\n## 坑\r\n- `int lowbit( unsigned int val )`\r\n    - 必须使用unsigned ，不能直接int，否则碰到INT_MIN会溢出！！！   \r\n\r\n```cpp\r\nint lowbit( unsigned int val )\r\n{\r\n    int res=0;\r\n    while( val )\r\n    {\r\n        val &= (val-1);\r\n        ++res;\r\n    }\r\n    return res;\r\n}\r\nclass Solution {\r\npublic:\r\n    int convertInteger(int A, int B) {\r\n        A^=B; //异或，不同为1\r\n        //求1的个数\r\n        return lowbit( A );\r\n    }\r\n};\r\n```\r\n"
+}

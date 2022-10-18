@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximum-subarray-sum-with-one-deletion",
+	"slug": "by-newpp-5crs",
+	"url": "https://leetcode-cn.com/problems/maximum-subarray-sum-with-one-deletion/solution/by-newpp-5crs/",
+	"content": "#### 思路\r\ndp方法参考[连续子数组的最大和](https://leetcode.cn/problems/maximum-subarray/)，但现在要区分未删除/删除两个子状态，所以分别用状态`a`和`b`记录，分别表示：\r\n    `a`：未执行任何删除得到的当前子数组最大和\r\n`b`：已经执行删除后得到的当前子数组最大和\r\n\r\n状态更新:\r\n`a`：不用考虑是否删除，直接更新`a = max(a + nums[i], nums[i])`\r\n`b`：考虑执行删除，则当前状态由“之前的最大子数组已经执行了删除，现在只能加上当前的值”和“之前的最大子数组未执行删除，故当前位置可删”更新，即`b = max(b + nums[i], a)`。\r\n\r\n注意事项：\r\n（1）`a, b`中都可以包含“之前子数组值为负，从当前位置重新累积”的状态，不过只需在`a`中更新即可。\r\n（2）题目要求结果子数组非空，所以将`a, b, ans`预设为`arr[0], 0, arr[0]`，然后从位置1开始遍历，避免得到删除了`nums[0]`的空数组即为最大值的情况。\r\n（3）状态更新时因为`b`依赖`a`之前的值，所以先更新`b`，再更新`a`\r\n#### 代码\r\n```\r\nclass Solution:\r\n    def maximumSum(self, arr: List[int]) -> int:\r\n        a, b, ans = arr[0], 0, arr[0]\r\n        for i in arr[1:]:\r\n            b = max(b + i, a)\r\n            a = max(a + i, i)\r\n            ans = max(ans, a, b)\r\n        return ans\r\n```\r\n"
+}

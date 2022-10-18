@@ -1,0 +1,6 @@
+{
+	"titleSlug": "sign-of-the-product-of-an-array",
+	"slug": "java-by-xiao-lang-gou-cto-l5cb",
+	"url": "https://leetcode-cn.com/problems/sign-of-the-product-of-an-array/solution/java-by-xiao-lang-gou-cto-l5cb/",
+	"content": "### 解题思路\n此处撰写解题思路\nJava\n### 代码\n\n```java\nclass Solution {\n    public int arraySign(int[] nums) {\n        //int product=0;\n        int count=0;\n        for(int i=0;i<nums.length;i++){\n            if(nums[i]==0){\n                return 0;\n\n            }else if(nums[i]<0){\n                count++;\n            }\n        }\n        if(count%2==0){\n            return 1;\n        }else {\n            return -1;\n        }\n    }\n}\n\n\n \n```"
+}

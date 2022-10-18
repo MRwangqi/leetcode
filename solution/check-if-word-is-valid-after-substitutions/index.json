@@ -1,0 +1,6 @@
+{
+	"titleSlug": "check-if-word-is-valid-after-substitutions",
+	"slug": "1003jian-cha-ti-huan-hou-de-ci-shi-fou-y-ouo9",
+	"url": "https://leetcode-cn.com/problems/check-if-word-is-valid-after-substitutions/solution/1003jian-cha-ti-huan-hou-de-ci-shi-fou-y-ouo9/",
+	"content": "```python3\n# python3 方法1:模拟\nclass Solution:\n    def isValid(self, s: str) -> bool:\n        while s.find(\"abc\") != -1:\n            s = s.replace(\"abc\",\"\")\n        return s == \"\"\n# Python3 方法2:栈模拟\nclass Solution:\n    def isValid(self, s: str) -> bool:\n        stack = list()\n        for i in s:\n            if i != \"c\":\n                stack.append(i)\n            else:\n                if len(stack) >= 2:\n                    if stack[-1] == \"b\" and stack[-2] == \"a\":\n                        stack.pop()\n                        stack.pop()\n                    else:\n                        return False\n                else:\n                    return False\n        return True if not stack else False\n```\n"
+}

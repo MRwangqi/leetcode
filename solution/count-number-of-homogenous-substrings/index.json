@@ -1,0 +1,6 @@
+{
+	"titleSlug": "count-number-of-homogenous-substrings",
+	"slug": "1759-tong-ji-tong-gou-zi-zi-fu-chuan-de-5d2fz",
+	"url": "https://leetcode-cn.com/problems/count-number-of-homogenous-substrings/solution/1759-tong-ji-tong-gou-zi-zi-fu-chuan-de-5d2fz/",
+	"content": "### 解题思路\n\n窗口，窗口内字符相同。\n\n窗口宽度就是新增的数量。\n\n字符变化时，调整左界。\n\n\n\n### 代码\n\n```java\nclass Solution {\n\tint mod = (int) 1e9 + 7;\n\n\tpublic int countHomogenous(String s) {\n\t\tchar[] cs = s.toCharArray();\n\t\tlong ans = 0;\n\t\tint l = 0, r = 0, len = cs.length;\n\t\tchar c = ' ';\n\t\twhile (r < len) {\n\t\t\tchar cur = cs[r];\n\t\t\tif (cur != c) {\n\t\t\t\tc = cur;\n\t\t\t\tl = r;\n\t\t\t}\n\t\t\tans += r - l + 1;\n\t\t\tans %= mod;\n\t\t\tr++;\n\t\t}\n\t\treturn (int) ans;\n\t}\n}\n```"
+}

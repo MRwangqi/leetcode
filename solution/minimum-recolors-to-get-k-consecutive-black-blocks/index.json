@@ -1,0 +1,6 @@
+{
+	"titleSlug": "minimum-recolors-to-get-k-consecutive-black-blocks",
+	"slug": "c-hua-dong-chuang-kou-jian-dan-qing-xi-b-8e3j",
+	"url": "https://leetcode-cn.com/problems/minimum-recolors-to-get-k-consecutive-black-blocks/solution/c-hua-dong-chuang-kou-jian-dan-qing-xi-b-8e3j/",
+	"content": "```\nclass Solution {\npublic:\n    int minimumRecolors(string blocks, int k) {\n        int ans = INT_MAX, cntw = 0;\n        //cntw 记录white的个数\n        int left = 0, right = 0;\n        int len = blocks.size();\n        while (right < len) {\n            //扩大时更新窗口状态\n            if (blocks[right++] == 'W') {\n                cntw++;\n            }\n            if (right - left == k) {\n                //判断窗口收缩\n                ans = min(ans, cntw);\n                //收缩时更新窗口状态\n                if(blocks[left++] == 'W') {\n                    cntw--;\n                }\n            }\n        }\n        return ans;\n    }\n};\n```\n"
+}

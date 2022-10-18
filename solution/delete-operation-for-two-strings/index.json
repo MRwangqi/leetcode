@@ -1,0 +1,6 @@
+{
+	"titleSlug": "delete-operation-for-two-strings",
+	"slug": "dong-tai-gui-hua-shan-chu-you-san-chong-3byfd",
+	"url": "https://leetcode-cn.com/problems/delete-operation-for-two-strings/solution/dong-tai-gui-hua-shan-chu-you-san-chong-3byfd/",
+	"content": "### 解题思路\n此处撰写解题思路\n\n### 代码\n\n```typescript\nfunction minDistance(word1: string, word2: string): number {\n    // dp[i][j]代表前i个word1和前j个word2相同的最小步数\n    // if(word1.charAt(i-1)==word2.chartAt(j-1))\n    // 等于dp[i-1][j-1]\n    // dp[i][j] = dp[i-1][j-1]\n    // else\n    // 一种是把左边的删了\n    // 一种是把右边的删了\n    // 一种是把两边都删了\n    // dp[i][j] = Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+2)\n    let n = word1.length;\n    let m = word2.length;\n    let dp: number[][] = new Array(n + 1)\n        .fill(0)\n        .map(() => new Array(m + 1).fill(0));\n    for (let i = 0; i <= n; i++) {\n        dp[i][0] = i;\n    }\n    for (let j = 1; j <= m; j++) {\n        dp[0][j] = j;\n    }\n    for (let i = 1; i <= n; i++) {\n        for (let j = 1; j <= m; j++) {\n            if (word1.charAt(i - 1) == word2.charAt(j - 1))\n                dp[i][j] = dp[i - 1][j - 1];\n            else\n                dp[i][j] = Math.min(\n                    dp[i - 1][j - 1] + 2,\n                    dp[i - 1][j] + 1,\n                    dp[i][j - 1] + 1\n                );\n        }\n    }\n    return dp[n][m];\n}\n```"
+}

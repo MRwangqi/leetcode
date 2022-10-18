@@ -1,0 +1,6 @@
+{
+	"titleSlug": "longest-uploaded-prefix",
+	"slug": "by-endlesscheng-n3ta",
+	"url": "https://leetcode-cn.com/problems/longest-uploaded-prefix/solution/by-endlesscheng-n3ta/",
+	"content": "[视频讲解](https://www.bilibili.com/video/BV1tW4y1e7rb) 已出炉，欢迎点赞三连，在评论区分享你对这场双周赛的看法~\r\n\r\n---\r\n \r\n由于最长上传前缀不会减小，因此用一个变量 $x$ 维护即可。\r\n\r\n```py [sol1-Python3]\r\nclass LUPrefix:\r\n    def __init__(self, n: int):\r\n        self.x = 1\r\n        self.s = set()\r\n\r\n    def upload(self, video: int) -> None:\r\n        self.s.add(video)\r\n\r\n    # 时间复杂度：均摊 O(1)\r\n    def longest(self) -> int:\r\n        while self.x in self.s:\r\n            self.x += 1\r\n        return self.x - 1\r\n```\r\n\r\n```go [sol1-Go]\r\ntype LUPrefix struct {\r\n\tx   int\r\n\thas map[int]bool\r\n}\r\n\r\nfunc Constructor(int) LUPrefix {\r\n\treturn LUPrefix{1, map[int]bool{}}\r\n}\r\n\r\nfunc (p LUPrefix) Upload(video int) {\r\n\tp.has[video] = true\r\n}\r\n\r\n// 时间复杂度：均摊 O(1)\r\nfunc (p *LUPrefix) Longest() int {\r\n\tfor p.has[p.x] {\r\n\t\tp.x++\r\n\t}\r\n\treturn p.x - 1\r\n}\r\n```\r\n"
+}

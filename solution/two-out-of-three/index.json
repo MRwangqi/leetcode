@@ -1,0 +1,6 @@
+{
+	"titleSlug": "two-out-of-three",
+	"slug": "java-tong-ji-bai-100-1ms-shi-jian-fu-za-jwozk",
+	"url": "https://leetcode-cn.com/problems/two-out-of-three/solution/java-tong-ji-bai-100-1ms-shi-jian-fu-za-jwozk/",
+	"content": "```\r\npublic List<Integer> twoOutOfThree(int[] nums1, int[] nums2, int[] nums3) {\r\n    int[] cnt1 = new int[101];\r\n    int[] cnt2 = new int[101];\r\n    int[] cnt3 = new int[101];\r\n    for (int i : nums1) {\r\n        if (cnt1[i] == 0) {\r\n            cnt1[i] = 1;\r\n        }\r\n    }\r\n    for (int i : nums2) {\r\n        if (cnt2[i] == 0) {\r\n            cnt2[i] = 1;\r\n        }\r\n    }\r\n    for (int i : nums3) {\r\n        if (cnt3[i] == 0) {\r\n            cnt3[i] = 1;\r\n        }\r\n    }\r\n    List<Integer> ans = new ArrayList<>();\r\n    for (int i = 0; i <= 100; i++) {\r\n        if (cnt1[i] + cnt2[i] + cnt3[i] >= 2) {\r\n            ans.add(i);\r\n        }\r\n    }\r\n    return ans;\r\n}\r\n```\r\n1ms 击败100%Java用户\r\n41.9MB 击败83.95%Java用户\r\n\r\n时间复杂度O(n) n:三个数组元素总数\r\n空间复杂度O(C) C:数组元素范围，这里是101\r\n"
+}

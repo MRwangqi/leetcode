@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximum-number-of-consecutive-values-you-can-make",
+	"slug": "er-xu-cheng-ming-jiu-xu-zui-by-liupengsa-st7d",
+	"url": "https://leetcode-cn.com/problems/maximum-number-of-consecutive-values-you-can-make/solution/er-xu-cheng-ming-jiu-xu-zui-by-liupengsa-st7d/",
+	"content": "### 解题思路\n【儿须成名酒须醉】Python3+脑筋急转弯+贪心动态规划\n- 参见零神题解，使用动态规划，排序后遍历硬币，假设前面能构造[0, x]的数值，那么只要当前硬币数额num<=x+1就能构造到[0,x+num]\n\n### 代码\n- 执行用时：132 ms, 在所有 Python3 提交中击败了 44.74% 的用户\n- 内存消耗：19.2 MB, 在所有 Python3 提交中击败了 38.16% 的用户\n- 通过测试用例：72 / 72\n\n```python3\nclass Solution:\n    def getMaximumConsecutive(self, coins: List[int]) -> int:\n        x = 0\n        coins.sort()\n        for num in coins:\n            if num > x + 1:\n                break\n            x = x + num\n        return x + 1\n```"
+}

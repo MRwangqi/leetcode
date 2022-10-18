@@ -1,0 +1,6 @@
+{
+	"titleSlug": "node-with-highest-edge-score",
+	"slug": "gu-gu-gu-by-fan_of_emptyhope-tqb5",
+	"url": "https://leetcode-cn.com/problems/node-with-highest-edge-score/solution/gu-gu-gu-by-fan_of_emptyhope-tqb5/",
+	"content": "简单模拟，按照题意模拟即可。\r\n\r\n开一个数组 `cnt` 表示到 $i$ 的和，取最大值。\r\n\r\n然后找第一个是最大值的 `cnt[i]` 就是答案。\r\n\r\n时间复杂度 $\\mathcal O(n)$，空间复杂度 $\\mathcal O(n)$。\r\n\r\n代码如下。\r\n\r\n```cpp\r\nclass Solution {\r\npublic:\r\n    int edgeScore(vector<int>& edge) {\r\n        vector<long long>cnt(edge.size(),0);\r\n        for(int i=0;i<edge.size();i++)cnt[edge[i]]+=i;\r\n        long long mx=0;for(int i=0;i<edge.size();i++)mx=max(mx,cnt[i]);\r\n        for(int i=0;i<edge.size();i++)if(cnt[i]==mx)return i;\r\n        return 0;\r\n    }\r\n};\r\n```\r\n\r\n呱呱呱"
+}

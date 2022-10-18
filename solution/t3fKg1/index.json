@@ -1,0 +1,6 @@
+{
+	"titleSlug": "t3fKg1",
+	"slug": "10xing-jie-jue-zhan-dou-by-foxtail-ke2e",
+	"url": "https://leetcode-cn.com/problems/t3fKg1/solution/10xing-jie-jue-zhan-dou-by-foxtail-ke2e/",
+	"content": "做完题目后，来看了一些各位大神的题解，没发现和自己一样的做法，就和大家分享一下吧。\n（解题思路本质上和[@lucifer1004](/u/lucifer1004/)的题解相似）\n\n**核心分析：**\n1、一个任务，最晚启动时刻为：结束时刻-运行时长；\n2、一堆任务里，应该最先被启动的任务，它的最晚启动时刻最小；\n3、对于一堆都已经开始的任务，当系统运行a时长后，所有任务的最晚启动时刻也会集体后移a（或完成）；\n\n**算法步骤：**\n1、按任务的开始时间从小到大逐一加到任务池q；\n2、任务池里的任务，根据它们最晚需要开始启动的时刻（结束时刻-时长-已运行时长），用最小堆维护；\n3、每加入一个新任务T（ts时刻开始）前，如果任务池里的最早启动时刻qs小于ts，让系统从qs运行至ts（或到完成任务），更新系统运行总时长res；\n4、为了方便T和之前任务比较谁需要更早启动，把T转化成T’（最晚启动时刻-res，时长+res），把T’加到任务池\n5、当哨兵假任务添加入任务池后，所有真实任务已完成；\n\n算法复杂度\bO(nlog(n))\n\n```python3 []\nclass Solution:\n    def processTasks(self, tasks) -> int:\n        tasks.append([10**9+1, 10**9+1, 1]) #加个哨兵\n        res, q = 0, []\n        for [s, e, p] in sorted(tasks, key=lambda x:x[0]) :\n            while q and q[0][0]+res < s :\n                if q[0][0]+res >= q[0][1]: heapq.heappop(q) #任务早已完成，移除\n                else : res += min(q[0][1], s) - (q[0][0]+res)\n            heapq.heappush(q, [e-p+1-res, e+1])\n        return res\n```\n"
+}

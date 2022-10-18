@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximum-lcci",
+	"slug": "yi-chong-cun-by-bold-nashavq-lwwq",
+	"url": "https://leetcode-cn.com/problems/maximum-lcci/solution/yi-chong-cun-by-bold-nashavq-lwwq/",
+	"content": "**思路：通过比较 a 和 b 以及 a-b 的符号来判断 a 和 b 的大小**\r\n*返回a的情况：* \r\n    - **a 和 b 符号相同且 a-b >= 0**\r\n    - **a 和 b 符号不相同且 a > 0**\r\n*返回b的情况：* **不是a那就只能返回b了**\r\n\r\n```\r\nclass Solution {\r\n    // n输入为 0或1 \r\n    // 输出一定为 0 -> 1 或 1 -> 0\r\n    public static int filp(int n){\r\n        return n ^ 1;\r\n    }\r\n\r\n    // n是非负数, 返回1\r\n    // n是负数， 返回0\r\n    public static int sign(int n){\r\n        // 相当于判断n的符号位\r\n        return filp( (n >> 31) & 1 );\r\n    }\r\n\r\n    // 这种写法可以防止溢出\r\n    public int maximum(int a, int b) {\r\n        int c = a - b;\r\n        // 依次取出a，b，c的符号位\r\n        int sa = sign(a);\r\n        int sb = sign(b);\r\n        int sc = sign(c);\r\n        // 判断a和b符号是否相同, 不相同则记录为1\r\n        int disSab = sa ^ sb;\r\n        // 相同则记录为1， 与disSab互斥\r\n        int sameSab = filp(disSab);\r\n        // 返回A的情况有两种：\r\n        // 第一种：ab符号相同且a-b大于0（即sameSab = 1 && sc = 1）\r\n        // 第二种：ab符号不相同且a大于0（即disSab = 1 && sa = 1）\r\n        // 注意这两种情况是互斥的（只会出现1+0或者0+1或者0+0）\r\n        int returnA = disSab * sa + sameSab * sc;\r\n        int returnB = filp(returnA);\r\n        return a * returnA + b * returnB;\r\n    }\r\n}\r\n```\r\n"
+}

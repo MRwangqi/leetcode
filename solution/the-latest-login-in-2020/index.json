@@ -1,0 +1,6 @@
+{
+	"titleSlug": "the-latest-login-in-2020",
+	"slug": "by-zui-li-kan-hua-057v",
+	"url": "https://leetcode-cn.com/problems/the-latest-login-in-2020/solution/by-zui-li-kan-hua-057v/",
+	"content": "### 解题思路\r\n使用max函数找出'2020-01-01' 到 '2021-01-01' 之间最晚的那一天就好了\r\n\r\n### 代码\r\n\r\n```mysql\r\n# Write your MySQL query statement below\r\nselect\r\n    user_id,max(time_stamp) as last_stamp \r\nfrom\r\n    Logins\r\nwhere\r\n    time_stamp between '2020-01-01' and '2021-01-01'\r\ngroup by \r\n    user_id\r\n\r\n```"
+}

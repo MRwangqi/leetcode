@@ -1,0 +1,6 @@
+{
+	"titleSlug": "delete-duplicate-emails",
+	"slug": "shan-chu-zhong-fu-de-dian-zi-you-xiang-by-leetcode",
+	"url": "https://leetcode-cn.com/problems/delete-duplicate-emails/solution/shan-chu-zhong-fu-de-dian-zi-you-xiang-by-leetcode/",
+	"content": "#### 方法：使用 `DELETE` 和 `WHERE` 子句\n\n**算法**\n\n我们可以使用以下代码，将此表与它自身在*电子邮箱*列中连接起来。\n\n```mysql [NxFCySp5-MySQL]\nSELECT p1.*\nFROM Person p1,\n    Person p2\nWHERE\n    p1.Email = p2.Email\n;\n```\n\n\n然后我们需要找到其他记录中具有相同电子邮件地址的更大 ID。所以我们可以像这样给 `WHERE` 子句添加一个新的条件。\n\n```mysql [ipkbLsZR-MySQL]\nSELECT p1.*\nFROM Person p1,\n    Person p2\nWHERE\n    p1.Email = p2.Email AND p1.Id > p2.Id\n;\n```\n\n\n因为我们已经得到了要删除的记录，所以我们最终可以将该语句更改为 `DELETE`。\n\n```mysql [ec2Spa6g-MySQL]\nDELETE p1 FROM Person p1,\n    Person p2\nWHERE\n    p1.Email = p2.Email AND p1.Id > p2.Id\n```\n"
+}

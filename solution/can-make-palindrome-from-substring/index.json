@@ -1,0 +1,6 @@
+{
+	"titleSlug": "can-make-palindrome-from-substring",
+	"slug": "-by-wa-pian-d-llq7",
+	"url": "https://leetcode-cn.com/problems/can-make-palindrome-from-substring/solution/-by-wa-pian-d-llq7/",
+	"content": "### 解题思路\n\n奇偶性前缀和\n\n类似问题\n\n   1915. 最美子字符串的数目\n\n### 代码\n\n```java\nclass Solution {\n\n\tpublic List<Boolean> canMakePaliQueries(String s, int[][] queries) {\n\t\tint[] sum = new int[s.length() + 1];\n\t\tfor (int i = 1; i < sum.length; i++) {\n\t\t\tint index = s.charAt(i - 1) - 'a';\n\t\t\tsum[i] = sum[i - 1] ^ (1 << index);\n\t\t}\n\n\t\tList<Boolean> ans = new ArrayList<>();\n\t\tfor (int i = 0; i < queries.length; i++) {\n\t\t\tans.add(Integer.bitCount(sum[queries[i][1] + 1] ^ sum[queries[i][0]]) <= (1 + (queries[i][2] << 1)));\n\t\t}\n\t\treturn ans;\n\t}\n\n\n}\n```"
+}

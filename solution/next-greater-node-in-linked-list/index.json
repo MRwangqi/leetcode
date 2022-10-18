@@ -1,0 +1,6 @@
+{
+	"titleSlug": "next-greater-node-in-linked-list",
+	"slug": "1019lian-biao-zhong-de-xia-yi-ge-geng-da-8299",
+	"url": "https://leetcode-cn.com/problems/next-greater-node-in-linked-list/solution/1019lian-biao-zhong-de-xia-yi-ge-geng-da-8299/",
+	"content": "```python3\n# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\n# Python3 模拟，列表操作\nclass Solution:\n    def nextLargerNodes(self, head: Optional[ListNode]) -> List[int]:\n        stack = list()\n        ref = list()\n        while head:\n            ref.append(head.val)\n            head = head.next\n        nlen = len(ref)\n        res = [0] * nlen\n        ref.reverse()\n        stack.append(ref[0])\n        for i in range(1,nlen):\n            if stack and stack[-1] > ref[i]:\n                res[i] = stack[-1]\n            else:\n                while stack and stack[-1] <= ref[i]:\n                    stack.pop()\n                if stack and stack[-1] > ref[i]:\n                    res[i] = stack[-1]\n            stack.append(ref[i])\n        res.reverse()\n        return res\n```\n"
+}

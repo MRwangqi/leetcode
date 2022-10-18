@@ -1,0 +1,6 @@
+{
+	"titleSlug": "rearrange-characters-to-make-target-string",
+	"slug": "by-100000000000001-tzk9",
+	"url": "https://leetcode-cn.com/problems/rearrange-characters-to-make-target-string/solution/by-100000000000001-tzk9/",
+	"content": "\n---\n### 求解思路\n1. 获取 `s` 字符串中字符的个数映射关系\n2. 找到能够组成 `target_dict = Counter(target)`的最小倍数， 相当于求解最短板的 `key` 的个数\n\n### 代码\n\n```python3\nclass Solution:\n    def rearrangeCharacters(self, s: str, target: str) -> int:\n        target_dict = Counter(target)\n        return min(Counter(s)[key]//target_dict[key] for key in target_dict)\n```\n\n\n### 复杂度分析\n![image.png](https://pic.leetcode-cn.com/1664027357-MNbczX-image.png)\n\n\n---\n\n---\n### 刷题经验分享\n[刷题经验贴](https://leetcode-cn.com/circle/discuss/PZO1if/) ——  **系统化快速学习刷题与总结**"
+}

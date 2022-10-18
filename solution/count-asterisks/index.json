@@ -1,0 +1,6 @@
+{
+	"titleSlug": "count-asterisks",
+	"slug": "by-angy-x-c66r",
+	"url": "https://leetcode-cn.com/problems/count-asterisks/solution/by-angy-x-c66r/",
+	"content": "### 解题思路\n此处撰写解题思路\n\n### 代码\n\n```cpp\nclass Solution \n{\npublic:\n    int countAsterisks(string s) \n    {\n        int num = 0, flag = 0;\n        int size;\n        size = s.length();    \n        for(int i = 0; i < size; i ++)\n        {\n            if(flag == 0 && s[i] == '*')\n            {\n                num ++;\n            }\n            else if(s[i] == '|')\n            {\n                flag = (flag + 1) % 2;\n            }\n        }\n        return num;\n    }\n};\n```\n![image.png](https://pic.leetcode-cn.com/1664589569-KjphJX-image.png)\n\n"
+}

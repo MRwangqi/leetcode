@@ -1,0 +1,6 @@
+{
+	"titleSlug": "find-nearest-point-that-has-the-same-x-or-y-coordinate",
+	"slug": "java-ji-bai-100-1ms-shi-jian-fu-za-du-on-3rb8",
+	"url": "https://leetcode-cn.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/solution/java-ji-bai-100-1ms-shi-jian-fu-za-du-on-3rb8/",
+	"content": "```\r\npublic int nearestValidPoint(int x, int y, int[][] points) {\r\n    int distance = Integer.MAX_VALUE;\r\n    int tmpX = 10001;\r\n    int tmpY = 10001;\r\n    int idx = -1;\r\n    int cnt = 0;\r\n    for (int[] point : points) {\r\n        if (x == point[0] || y == point[1]) {\r\n            int tmp = Math.abs(point[0] - x) + Math.abs(point[1] - y);\r\n            if (tmp < distance) {\r\n                distance = tmp;\r\n\r\n                tmpX = point[0];\r\n                tmpY = point[1];\r\n                idx = cnt;\r\n            } else if (tmp == distance) {\r\n                if (point[0] + point[1] < tmpX + tmpY) {\r\n                    tmpX = point[0];\r\n                    tmpY = point[1];\r\n                    idx = cnt;\r\n                }\r\n            }\r\n        }\r\n        cnt++;\r\n    }\r\n    return idx;\r\n}\r\n```\r\n\r\n1ms 击败100%Java用户\r\n48.6MB 击败84.41%Java用户\r\n\r\n时间复杂度O(n)\r\n空间复杂度O(1)\r\n\r\n注意：Integer.MAX_VALUE相加会溢出~\r\n"
+}

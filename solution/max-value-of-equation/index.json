@@ -1,0 +1,6 @@
+{
+	"titleSlug": "max-value-of-equation",
+	"slug": "er-xu-cheng-ming-jiu-xu-zui-python3dan-d-xryl",
+	"url": "https://leetcode-cn.com/problems/max-value-of-equation/solution/er-xu-cheng-ming-jiu-xu-zui-python3dan-d-xryl/",
+	"content": "### 解题思路\n【儿须成名酒须醉】Python3+单调栈\n\n### 代码\n\n```python3\n\nclass Solution:\n    def findMaxValueOfEquation(self, points, k: int) -> int:\n        n = len(points)\n        ans = float('-inf')\n        stack = []\n        j = 1\n        for i in range(n):\n            while j < n and points[j][0] <= points[i][0]+k:\n                while stack and points[stack[-1]][1] + points[stack[-1]][0] <= points[j][1]+points[j][0]:\n                    stack.pop(-1)\n                stack.append(j)\n                j+=1\n            while stack and stack[0] <= i:\n                stack.pop(0)\n            if stack:\n                ans = max(ans, points[stack[0]][1]+points[i][1]+points[stack[0]][0]-points[i][0])\n        return ans\n\n```"
+}

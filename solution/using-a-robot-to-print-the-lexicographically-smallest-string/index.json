@@ -1,0 +1,6 @@
+{
+	"titleSlug": "using-a-robot-to-print-the-lexicographically-smallest-string",
+	"slug": "by-tsreaper-sx1s",
+	"url": "https://leetcode-cn.com/problems/using-a-robot-to-print-the-lexicographically-smallest-string/solution/by-tsreaper-sx1s/",
+	"content": "## 解法：贪心\r\n本题是经典贪心：求出栈序列的最小字典序。\r\n\r\n我们首先将题目描述进行转化：有一个初始为空的栈，给定字符的入栈顺序，求字典序最小的出栈序列。\r\n\r\n当一个字符入栈后，我们持续检查栈顶元素 $c$。设还未入栈的字符中，字典序最小的字符是 $m$，有以下两种情况。\r\n* $c \\le m$：此时弹出 $c$ 最优。如果此时按兵不动，下一个出栈的将会是大等于 $c$ 的字符，答案不会变优。\r\n* $c > m$：此时不弹出 $c$，等待后续更小的字符入栈。\r\n\r\n所有字符都入栈后，栈内的剩余字符按顺序弹出即可。复杂度 $\\mathcal{O}(n)$。\r\n\r\n## 参考代码（c++）\r\n```c++\r\nclass Solution {\r\npublic:\r\n    string robotWithString(string s) {\r\n        int n = s.size();\r\n        vector<char> f(n + 1);\r\n        f[n] = 'z' + 1;\r\n        for (int i = n - 1; i >= 0; i--) f[i] = min(f[i + 1], s[i]);\r\n\r\n        string ans;\r\n        stack<char> stk;\r\n        for (int i = 0; i < n; i++) {\r\n            stk.push(s[i]);\r\n            while (!stk.empty() && stk.top() <= f[i + 1]) ans.push_back(stk.top()), stk.pop();\r\n        }\r\n        return ans;\r\n    }\r\n};\r\n\r\n```"
+}

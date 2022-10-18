@@ -1,0 +1,6 @@
+{
+	"titleSlug": "customers-who-never-order",
+	"slug": "cong-bu-ding-gou-de-ke-hu-by-leetcode",
+	"url": "https://leetcode-cn.com/problems/customers-who-never-order/solution/cong-bu-ding-gou-de-ke-hu-by-leetcode/",
+	"content": "#### 方法：使用子查询和 `NOT IN` 子句\n\n**算法**\n\n如果我们有一份曾经订购过的客户名单，就很容易知道谁从未订购过。\n\n我们可以使用下面的代码来获得这样的列表。\n\n```sql\nselect customerid from orders;\n```\n\n然后，我们可以使用 `NOT IN` 查询不在此列表中的客户。\n\n```MySQL []\nselect customers.name as 'Customers'\nfrom customers\nwhere customers.id not in\n(\n    select customerid from orders\n);\n```"
+}

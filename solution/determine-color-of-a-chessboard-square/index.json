@@ -1,0 +1,6 @@
+{
+	"titleSlug": "determine-color-of-a-chessboard-square",
+	"slug": "cyi-xing-dai-ma-ji-suan-qi-ou-class-solu-wksl",
+	"url": "https://leetcode-cn.com/problems/determine-color-of-a-chessboard-square/solution/cyi-xing-dai-ma-ji-suan-qi-ou-class-solu-wksl/",
+	"content": "1. 横纵奇偶**相同**，相加为**偶**，是**黑色**\r\n2. 横纵奇偶**不同**，相加为**奇**，是**白色**\r\n\r\n```\r\nclass Solution {\r\npublic:\r\n    bool squareIsWhite(string coordinates) {\r\n        return (coordinates[0]-'a'+coordinates[1]-'1')%2;\r\n    }\r\n};\r\n```\r\n"
+}

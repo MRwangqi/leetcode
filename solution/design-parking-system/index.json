@@ -1,0 +1,6 @@
+{
+	"titleSlug": "design-parking-system",
+	"slug": "javascriptban-jie-ti-si-lu-by-ityou-o-6985",
+	"url": "https://leetcode-cn.com/problems/design-parking-system/solution/javascriptban-jie-ti-si-lu-by-ityou-o-6985/",
+	"content": "\n[详细刷题视频合集](https://xiaochen1024.com/series/6196129fc1553b002e57bef5/6196208ec1553b002e57bef6)      \n      [刷题笔记](https://xiaochen1024.com/courseware/60b4f11ab1aa91002eb53b18)\n\n```\nvar ParkingSystem = function(big, medium, small) {\n     this.small = small\n     this.medium = medium\n     this.big = big\n};\n\n/** \n * @param {number} carType\n * @return {boolean}\n */\nParkingSystem.prototype.addCar = function(carType) {\n    switch(carType){\n        case 1:\n             this.big--\n             return this.big >=0\n         break;\n        case 2:\n             this.medium--\n             return this.medium >=0\n         break;\n        case 3:\n             this.small--\n             return this.small >=0\n         break; \n    }\n};\n\n```\n"
+}

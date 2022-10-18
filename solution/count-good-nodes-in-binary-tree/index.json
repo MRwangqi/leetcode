@@ -1,0 +1,6 @@
+{
+	"titleSlug": "count-good-nodes-in-binary-tree",
+	"slug": "1448-tong-ji-er-cha-shu-zhong-hao-jie-di-4s9b",
+	"url": "https://leetcode-cn.com/problems/count-good-nodes-in-binary-tree/solution/1448-tong-ji-er-cha-shu-zhong-hao-jie-di-4s9b/",
+	"content": "### 代码\n\n```python3\n# Definition for a binary tree node.\n# class TreeNode:\n#     def __init__(self, val=0, left=None, right=None):\n#         self.val = val\n#         self.left = left\n#         self.right = right\nclass Solution:\n    def goodNodes(self, root: TreeNode) -> int:\n        ans = 1\n        \n        def dfs(u: TreeNode, Max: int) -> None:\n            nonlocal ans\n            if u.val >= Max:\n                ans += 1\n            if u.left:\n                dfs(u.left, max(Max, u.val))\n            if u.right:\n                dfs(u.right, max(Max, u.val))\n        \n        if root.left:\n            dfs(root.left, root.val)\n        if root.right:\n            dfs(root.right, root.val)\n        return ans\n```"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "bianry-number-to-string-lcci",
+	"slug": "by-yang-yang-313-mby1",
+	"url": "https://leetcode-cn.com/problems/bianry-number-to-string-lcci/solution/by-yang-yang-313-mby1/",
+	"content": "### 解题思路\n简单题还是好做\n\n### 代码\n\n```python3\nclass Solution:\n    def printBin(self, num: float) -> str:\n        a = 0.5\n        k = 1\n        s = 0.0\n        t = '0.'\n        while s != num:\n            if num - s >= a:\n                s = s + a\n                t += '1'\n            else:\n                t += '0'\n            k = k + 1\n            a = 0.5 ** k\n            if k > 30:\n                return \"ERROR\"\n        return t\n        \n```"
+}

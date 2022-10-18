@@ -1,0 +1,6 @@
+{
+	"titleSlug": "sell-diminishing-valued-colored-balls",
+	"slug": "by-pandaoknight-is14",
+	"url": "https://leetcode-cn.com/problems/sell-diminishing-valued-colored-balls/solution/by-pandaoknight-is14/",
+	"content": "### 解法一：容易想到贪心原理，然后是用经典的二分找到分界点\n二分的写法是要写出sum函数来。\n最后是要想清楚max的算法。\n\n### 代码\n```golang\nconst Mod = int(1e9+7)\nfunc maxProfit(ins []int, orders int) int {\n    //sort.Ints(in) //1)这个题又是经典的不用sort\n    var sum = func(lower int) int { //2)不包含lower\n        var all int\n        for _, in := range ins {\n            if in > lower {\n                all += in - lower\n            }\n        }\n        return all\n    }\n    f := sort.Search(1e9, func(i int) bool {\n        return sum(i) <= orders\n    })\n    // var remain int //3)直接利用orders来做剩余\n    var max int\n    for _, in := range ins {\n        if in > f {\n            orders -= in - f\n            max = (max + (in + f + 1)*(in - f)/2) % Mod\n            // fmt.Println(\"f:\", f, \"in:\", in, \"max:\", max)\n        }\n    }\n    max = (max + orders * f) % Mod\n    return max\n}\n```"
+}

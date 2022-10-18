@@ -1,0 +1,6 @@
+{
+	"titleSlug": "rearrange-products-table",
+	"slug": "by-esqiimulme-pjiy",
+	"url": "https://leetcode-cn.com/problems/rearrange-products-table/solution/by-esqiimulme-pjiy/",
+	"content": "# 1、列转行\r\n```\r\nSELECT product_id, 'store1' store, store1 price FROM products WHERE store1 IS NOT NULL\r\nUNION\r\nSELECT product_id, 'store2' store, store2 price FROM products WHERE store2 IS NOT NULL\r\nUNION\r\nSELECT product_id, 'store3' store, store3 price FROM products WHERE store3 IS NOT NULL;\r\n```\r\n# 2、行转列\r\n![原图.png](https://pic.leetcode-cn.com/1658455815-YlCygp-%E5%8E%9F%E5%9B%BE.png)\r\n```\r\nSELECT \r\n  product_id,\r\n  SUM(IF(store = 'store1', price, NULL)) 'store1',\r\n  SUM(IF(store = 'store2', price, NULL)) 'store2',\r\n  SUM(IF(store = 'store3', price, NULL)) 'store3' \r\nFROM\r\n  Products1 \r\nGROUP BY product_id ;\r\n```\r\n![转换后.png](https://pic.leetcode-cn.com/1658455824-fvVcVb-%E8%BD%AC%E6%8D%A2%E5%90%8E.png)\r\n\r\n"
+}

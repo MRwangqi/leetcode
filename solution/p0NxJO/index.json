@@ -1,0 +1,6 @@
+{
+	"titleSlug": "p0NxJO",
+	"slug": "by-croi-marbh-ntx6",
+	"url": "https://leetcode-cn.com/problems/p0NxJO/solution/by-croi-marbh-ntx6/",
+	"content": "简单理解就是在加上某个值为负数时，将前面出现过的负数最小值删除 \r\n \r\n```\r\nfunction magicTower(nums) {\r\n  const sum = nums.reduce((sum, cur) => sum + cur, 1);\r\n  if (sum < 0) {\r\n    return -1;\r\n  }\r\n  return nums.reduce(\r\n    (pre, cur) => {\r\n      const { sum, count} = pre;\r\n// 将负数存储\r\n        if(cur < 0) {\r\n            pre.negativeData.push(cur)\r\n        }\r\n        // 计算和\r\n      pre.sum = sum + cur;\r\n      if (pre.sum <= 0) {\r\n          //获取最小值\r\n        const resultMin = Math.min(...pre.negativeData);\r\n    // 查到最小值的下标\r\n        const findexIndex = pre.negativeData.findIndex(x=>x === resultMin);\r\n        // 将最小值列表中删除该值\r\n       pre.negativeData.splice(findexIndex,1);\r\n       // 去除了最小值则回复对应的生命值 \r\n        pre.sum = pre.sum - resultMin;\r\n          // 转化次数加一\r\n        pre.count = count + 1;\r\n      }\r\n      return pre;\r\n    },\r\n    { sum: 1, count: 0 ,negativeData:[]},\r\n  ).count;\r\n}\r\n\r\n```\r\n"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "counting-words-with-a-given-prefix",
+	"slug": "by-liu-yong-qi-7v8j",
+	"url": "https://leetcode-cn.com/problems/counting-words-with-a-given-prefix/solution/by-liu-yong-qi-7v8j/",
+	"content": "### 解题思路\n![image.png](https://pic.leetcode-cn.com/1659829120-rkxqUM-image.png)\n\n\n### 代码\n\n```cpp\nclass Solution {\npublic:\n    int prefixCount(vector<string>& words, string pref) {\n        int re = 0;\n        for(auto& e: words) {\n            if(e.compare(0,pref.size(),pref) == 0)\n                re ++;\n        }\n        return re;\n    }\n};\n```"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "power-of-three",
+	"slug": "by-bei-meng-xia-zhi-3119",
+	"url": "https://leetcode-cn.com/problems/power-of-three/solution/by-bei-meng-xia-zhi-3119/",
+	"content": "### 解题思路\n迭代\n\n### 代码\n\n```javascript\n/**\n * @param {number} n\n * @return {boolean}\n */\nvar isPowerOfThree = function(n) {\n    if (n === 0) {\n        return false;\n    }\n    while (n % 3 === 0) {\n        n /= 3;\n    }\n    return n === 1;\n};\n```"
+}

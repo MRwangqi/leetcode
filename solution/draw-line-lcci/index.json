@@ -1,0 +1,6 @@
+{
+	"titleSlug": "draw-line-lcci",
+	"slug": "java-by-ye-ming-yu-ying-huo-sg42",
+	"url": "https://leetcode-cn.com/problems/draw-line-lcci/solution/java-by-ye-ming-yu-ying-huo-sg42/",
+	"content": "第一步：我们将整个矩阵展平为一个长字符串，计算出哪些位置需要修改为1，然后构造出字符串。\r\n第二步：以32位为单位截取字符串转化为整型存入数组。\r\n```\r\nclass Solution {\r\n    public int[] drawLine(int length, int w, int x1, int x2, int y) {\r\n        StringBuilder sb = new StringBuilder();\r\n        // 计算字符串的哪些位置需要置为1。\r\n        int start = y * w + x1, end = y * w + x2;\r\n        for(int i = 0;i < 32 * length; ++i){\r\n            if(sb.length() >= start && sb.length() <= end){\r\n                sb.append('1');\r\n            }\r\n            else{\r\n                sb.append('0');\r\n            }\r\n        }\r\n\r\n        int[] result = new int[length];\r\n        // 以32位为单位截取字符串转化为整型。\r\n        for(int i = 0;i < length; ++i){\r\n            // 注意此处int类型无法处理32位的1。可以使用Integer.parseUnsignedInt()或者Long.parseLong()方法。\r\n            result[i] = Integer.parseUnsignedInt(sb.substring(i * 32, i * 32 + 32), 2);\r\n        }\r\n        return result;\r\n    }\r\n}\r\n```\r\n"
+}

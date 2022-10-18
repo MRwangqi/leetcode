@@ -1,0 +1,6 @@
+{
+	"titleSlug": "equal-row-and-column-pairs",
+	"slug": "by-ting-ting-28-zysg",
+	"url": "https://leetcode-cn.com/problems/equal-row-and-column-pairs/solution/by-ting-ting-28-zysg/",
+	"content": "### 思路\r\n先用`zip`行列反转，再计算相等行列的个数。\r\n用`sum`求和`True`和`False`，`True`是`1`，`False`是`0`\r\n时间复杂度：$O(n^2)$\r\n### 代码\r\n```python3 []\r\nclass Solution:\r\n    def equalPairs(self, grid: List[List[int]]) -> int:\r\n        return sum(i == j for i in grid for j in map(list, zip(*grid)))\r\n```\r\n```python3 []\r\nclass Solution:\r\n    def equalPairs(self, grid: List[List[int]]) -> int:\r\n        grid2 = list(map(list, zip(*grid)))\r\n        res = 0\r\n        for i in range(len(grid)):\r\n            for j in range(len(grid)):\r\n                if grid[i] == grid2[j]:\r\n                    res += 1\r\n        return res\r\n```"
+}

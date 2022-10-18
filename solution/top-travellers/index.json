@@ -1,0 +1,6 @@
+{
+	"titleSlug": "top-travellers",
+	"slug": "by-k1k1k1-5rd6",
+	"url": "https://leetcode-cn.com/problems/top-travellers/solution/by-k1k1k1-5rd6/",
+	"content": "```\r\n# Write your MySQL query statement below\r\n# 1.先查出每个有行程的用户的距离 用到group by 和sum\r\n# 2.由于没有行程的用户也需要查找所以需用到left join(主表数据不受影响),\r\n#   再通过IFNULL()函数对行程为null的用户赋值为0,最后对其order by排序就行了\r\nselect\r\nname,ifnull(travelled_distance,0) as travelled_distance\r\nfrom Users\r\nleft join(\r\nselect\r\nuser_id,sum(distance) as travelled_distance \r\nfrom \r\nRides \r\ngroup by user_id\r\n)t1\r\non t1.user_id= Users.id\r\norder by travelled_distance desc, name asc\r\n\r\n```\r\n![image.png](https://pic.leetcode-cn.com/1664343991-nlXVDD-image.png)\r\n\r\n"
+}

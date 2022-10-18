@@ -1,0 +1,6 @@
+{
+	"titleSlug": "PTXy4P",
+	"slug": "java-by-p1n-ru31-91ds",
+	"url": "https://leetcode-cn.com/problems/PTXy4P/solution/java-by-p1n-ru31-91ds/",
+	"content": "```\r\nclass Solution\r\n{\r\n    public int getMinimumTime(int time[],int fruit[][],int limit)\r\n\t{\r\n\t\tint sum=0;\r\n\t\t\r\n\t\tfor(int i[]:fruit)\r\n\t\t\tsum+=((i[1]%limit==0)? i[1]/limit:i[1]/limit+1)*time[i[0]];\r\n\t\t\r\n\t\treturn sum;\r\n\t}\r\n}\r\n```\r\n"
+}

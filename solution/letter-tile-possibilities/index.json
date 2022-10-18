@@ -1,0 +1,6 @@
+{
+	"titleSlug": "letter-tile-possibilities",
+	"slug": "by-xubino-xagp",
+	"url": "https://leetcode-cn.com/problems/letter-tile-possibilities/solution/by-xubino-xagp/",
+	"content": "### 运行结果\n![image.png](https://pic.leetcode-cn.com/1663810900-UzKAAV-image.png)\n\n### 解题思路\n1. 排列问题，使用标记数组used来标记当前字母是否已使用\n2. 排列问题，通过排序+剪枝2来剪去重复分支\n3. 每进入新的一层或者同层中不同的字母，则更新数目\n4. dfs后进行回溯，即进行dfs之前的逆向操作\n\n### 代码\n\n```c\nint Cmp(const void *a, const void *b)\n{\n    return *(char*)a - *(char*)b;\n}\n\nvoid Dfs(char *tiles, int n, bool *used, int *ret)\n{\n    // 注意：没有显式的递归终止条件\n    for (int i = 0; i < n; ++i) {\n        if (used[i]) {          // 剪枝1\n            continue;\n        }\n        if (i > 0 && tiles[i] == tiles[i - 1] && !used[i - 1]) {    // 剪枝2：同一层中相同的只保留第一个\n            continue;\n        }\n        ++(*ret);\n        used[i] = true;\n        Dfs(tiles, n, used, ret);\n        // 回溯\n        used[i] = false;\n    }\n}\n\nint numTilePossibilities(char * tiles){\n    int n = (int)strlen(tiles);\n    bool used[n];\n    memset(used, 0, sizeof(used));\n    int ret = 0;\n    char str[8] = {0};\n    qsort(tiles, n, sizeof(char), Cmp);     // 排序是剪枝2的前提\n    Dfs(tiles, n, used, &ret);\n\n    return ret;\n}\n```"
+}

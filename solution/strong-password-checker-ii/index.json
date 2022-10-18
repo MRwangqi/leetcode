@@ -1,0 +1,6 @@
+{
+	"titleSlug": "strong-password-checker-ii",
+	"slug": "by-100000000000001-emgj",
+	"url": "https://leetcode-cn.com/problems/strong-password-checker-ii/solution/by-100000000000001-emgj/",
+	"content": "---\n### 求解思路\n对题目中给出的6种不同条件取反即为不满足的条件\n1. `len(password) < 8`\n2. `all(not c.islower() for c in password)`\n3. `all(not c.isupper() for c in password)`\n3. `all(not c.isdigit()  for c in password)`\n4. `all(c not in set(\"!@#$%^&*()-+\") for c in password)`\n5. `any(password[i] == password[i+1] for i in range(len(password)-1))`\n\n### 代码\n\n```python3\nclass Solution:\n    def strongPasswordCheckerII(self, password: str) -> bool:\n        if (len(password) < 8 or \n            all(not c.islower() for c in password) or \n            all(not c.isupper() for c in password) or \n            all(not c.isdigit()  for c in password) or \n            all(c not in set(\"!@#$%^&*()-+\") for c in password) or \n            any(password[i] == password[i+1] for i in range(len(password)-1))):\n            return False\n        return True\n```\n\n\n### 复杂度分析\n![image.png](https://pic.leetcode-cn.com/1663862335-LPbNqo-image.png)\n\n\n---\n\n---\n### 刷题经验分享\n[刷题经验贴](https://leetcode-cn.com/circle/discuss/PZO1if/) ——  **系统化快速学习刷题与总结**"
+}

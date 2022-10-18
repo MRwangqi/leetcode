@@ -1,0 +1,6 @@
+{
+	"titleSlug": "pseudo-palindromic-paths-in-a-binary-tree",
+	"slug": "java-1457-er-cha-shu-zhong-de-wei-hui-we-adlf",
+	"url": "https://leetcode-cn.com/problems/pseudo-palindromic-paths-in-a-binary-tree/solution/java-1457-er-cha-shu-zhong-de-wei-hui-we-adlf/",
+	"content": "### 解题思路\n\n这是一个树形的奇偶性前缀和\n\n类似问题还有\n\n[中等] 1177. 构建回文串检测【位运算】【哈希表】【字符串】【前缀和】[[奇偶性前缀和](https://leetcode.cn/problems/can-make-palindrome-from-substring/solution/-by-wa-pian-d-llq7/)] [[1177. 构建回文串检测](https://leetcode.cn/problems/can-make-palindrome-from-substring/)]\n\n1915.最美子字符串的数目\n\n### 代码\n\n```java\nclass Solution {\n\tint ans;\n\n\tpublic int pseudoPalindromicPaths(TreeNode root) {\n\t\tif (root.left == null && root.right == null) {\n\t\t\treturn 1;\n\t\t}\n\t\tans = 0;\n\t\tthis.f(root, 0);\n\t\treturn ans;\n\t}\n\n\tprivate void f(TreeNode root, int sum) {\n\t\tsum ^= 1 << root.val;\n\t\tif (root.left == null && root.right == null) {\n\t\t\tif (Integer.bitCount(sum) < 2) {\n\t\t\t\tans++;\n\t\t\t}\n\t\t\treturn;\n\t\t}\n\t\tif (root.left != null)\n\t\t\tthis.f(root.left, sum);\n\t\tif (root.right != null)\n\t\t\tthis.f(root.right, sum);\n\t}\n\n}\n```"
+}

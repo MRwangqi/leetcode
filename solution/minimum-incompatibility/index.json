@@ -1,0 +1,6 @@
+{
+	"titleSlug": "minimum-incompatibility",
+	"slug": "python-zhuang-ya-dfs-by-qin-qi-shu-hua-2-lwff",
+	"url": "https://leetcode-cn.com/problems/minimum-incompatibility/solution/python-zhuang-ya-dfs-by-qin-qi-shu-hua-2-lwff/",
+	"content": "数据范围10-20是可以接受O(2**n)的复杂度，一般优先考虑状压。\n由于每个子集大小相同，可以通过数组长度和k求出每个子集的元素数量。\n且由于子集元素之间不能相同，依靠状压dfs内部构建哈希表，记录每个元素出现的最后一次位置，在每个组合中，通过哈希表更新状态，根据组合更新不兼容性，继续向下深搜即可求解。\n```\nclass Solution:\n    def minimumIncompatibility(self, nums: List[int], k: int) -> int:\n        l = len(nums)\n        k = l // k #k转换为每个子集的元素数量\n        @lru_cache(None)\n        def dfs(state):\n            if state == 2 ** l - 1:#已遍历完，返回0\n                return 0\n            d = {}#哈希表，用于记录每个元素的最后下标\n            for i in range(l):\n                if state >> i & 1 == 0:#如果未被选，加入哈希表\n                    d[nums[i]] = i\n            if len(d) < k:#如果非重复数量小于子集元素数量，则无法组合出子集\n                return float(\"inf\")\n            res = float(\"inf\")\n            for it in itertools.combinations(d.keys(), k):#遍历所有组合\n                nstate = state#新的状态位\n                for j in it:\n                    nstate |= 1 << d[j]#根据哈希表更新\n                res = min(res, max(it) - min(it) + dfs(nstate))#继续深搜\n            return res\n        res = dfs(0)\n        return res if res < float(\"inf\") else -1\n```\n"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "t9-lcci",
+	"slug": "by-masx200-iquo",
+	"url": "https://leetcode-cn.com/problems/t9-lcci/solution/by-masx200-iquo/",
+	"content": "### 解题思路\n哈希表暴力\n\n### 代码\n\n```typescript\nfunction getValidT9Words(num: string, words: string[]): string[] {\nreturn words.filter(w=>Array.prototype.every.call(w,(c,i)=>num[i]===String(key[c.charCodeAt(0)-\"a\".charCodeAt(0)])))\n};\nconst key=[2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 9, 9, 9, 9]\n```"
+}

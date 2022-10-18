@@ -1,0 +1,6 @@
+{
+	"titleSlug": "minimum-number-of-steps-to-make-two-strings-anagram-ii",
+	"slug": "shu-zu-mo-ni-by-hu-li-hu-wai-ezu6",
+	"url": "https://leetcode-cn.com/problems/minimum-number-of-steps-to-make-two-strings-anagram-ii/solution/shu-zu-mo-ni-by-hu-li-hu-wai-ezu6/",
+	"content": "## 方法：模拟\n\n\n**思路及算法**\n考虑模拟：\n1.用数组 cnts 保存两个字符串的字母差值\n2.统计差值之和，用绝对值即可，不用考虑谁多谁少的问题\n\n\n**代码**\n\n```java\nclass Solution {\n  public int minSteps(String s, String t) {\n    int[] cnts = new int[26];\n    for (char c : s.toCharArray()) {\n      cnts[c - 'a']++;\n    }\n    for (char c : t.toCharArray()) {\n      cnts[c - 'a']--;\n    }\n    int res = 0;\n    for (int i : cnts) res += Math.abs(i);\n    return res;\n  }\n}\n```\n\n\n**复杂度分析**\n- 时间复杂度：O(n), n 为max(s.length, t.length)\n- 空间复杂度：O(C), C 为26\n\n**结语**\n如果对您有帮助，欢迎**点赞、收藏、[关注 沪里户外](/u/hu-li-hu-wai/)**，让更多的小伙伴看到，祝大家**offer多多，AC多多**！"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "partition-array-such-that-maximum-difference-is-k",
+	"slug": "pai-xu-tan-xin-by-endlesscheng-k5i4",
+	"url": "https://leetcode-cn.com/problems/partition-array-such-that-maximum-difference-is-k/solution/pai-xu-tan-xin-by-endlesscheng-k5i4/",
+	"content": "由于选的是子序列，且只需要考虑每个子序列中的最小值和最大值，与子序列中元素的顺序无关，因此我们可以对数组排序。\r\n\r\n排序后对数组分组，每组内的元素最大减最小不能超过 $k$。这可以通过遍历一遍数组来判断，并得到组数。\r\n\r\n```go\r\nfunc partitionArray(nums []int, k int) int {\r\n\tsort.Ints(nums)\r\n\tans, min := 1, nums[0]\r\n\tfor _, num := range nums {\r\n\t\tif num-min > k {\r\n\t\t\tans++\r\n\t\t\tmin = num\r\n\t\t}\r\n\t}\r\n\treturn ans\r\n}\r\n```"
+}

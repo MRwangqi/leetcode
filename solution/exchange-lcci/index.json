@@ -1,0 +1,6 @@
+{
+	"titleSlug": "exchange-lcci",
+	"slug": "by-wo-yao-chu-qu-luan-shuo-khh7",
+	"url": "https://leetcode-cn.com/problems/exchange-lcci/solution/by-wo-yao-chu-qu-luan-shuo-khh7/",
+	"content": "### 1、思路\r\n\r\n* 用`10101010（即0xaa）`作为掩码提取奇数位，再用`01010101（即0x55）`作为掩码提取偶数位；\r\n\r\n* 提取奇数位后向右移到偶数位的位置，提取偶数位后向左移到奇数位的位置，进行或运算即可。\r\n\r\n### 2、代码\r\n```cpp\r\nclass Solution {\r\npublic:\r\n    int exchangeBits(int num) {\r\n        return ((num & 0xaaaaaaaa) >> 1) | ((num & 0x55555555) << 1);\r\n    }\r\n};\r\n```"
+}

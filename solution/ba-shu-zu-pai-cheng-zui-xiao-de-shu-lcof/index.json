@@ -1,0 +1,6 @@
+{
+	"titleSlug": "ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof",
+	"slug": "by-jsjohnsonjs-s5po",
+	"url": "https://leetcode-cn.com/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof/solution/by-jsjohnsonjs-s5po/",
+	"content": "### 解题思路\n此题求拼接起来的最小数字，本质上是一个排序问题。设数组 numsnums 中任意两数字的字符串为 xx 和 yy ，则规定 排序判断规则 为：\n\n若拼接字符串 x + y > y + xx+y>y+x ，则 xx “大于” yy ；\n反之，若 x + y < y + xx+y<y+x ，则 xx “小于” yy ；\n\n。\n\n### 代码\n\n```java\nclass Solution {\n    public String minNumber(int[] nums) {\n        String[] strs = new String[nums.length];\n        for (int i = 0; i < nums.length; i++) {\n            strs[i] = String.valueOf(nums[i]);\n        }\n        Arrays.sort(strs, (x, y) -> {\n            return (x + y).compareTo(y + x);\n        });\n        StringBuilder res = new StringBuilder();\n        for (String s : strs) {\n            res.append(s);\n        }\n        return res.toString();\n    }\n}\n```"
+}

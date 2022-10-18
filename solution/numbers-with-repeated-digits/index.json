@@ -1,0 +1,6 @@
+{
+	"titleSlug": "numbers-with-repeated-digits",
+	"slug": "by-thdlrt-m7x2",
+	"url": "https://leetcode-cn.com/problems/numbers-with-repeated-digits/solution/by-thdlrt-m7x2/",
+	"content": "### 解题思路\n新增参数isre，记录是否有重复数字出现\n\n### 代码\n\n```cpp\nclass Solution {\npublic:\n    int arr[10][1024][2][2][2];\n    int numDupDigitsAtMostN(int n) {\n        return dp(0,0,true,false,false,to_string(n));\n    }\n    int dp(int i,int mark,bool islimit,bool isnum,bool isre, string n)\n    {\n        if(i==n.size())\n            return isnum&&isre;//不为空且重复\n        if(arr[i][mark][islimit][isnum][isre]!=0)\n        return arr[i][mark][islimit][isnum][isre];\n        int sum=0;\n        if(!isnum)\n        sum=dp(i+1，false,false,false,n);\n        int up=0;\n        if(islimit)\n        up=n[i]-'0';\n        else\n        up=9;\n        for(int j=1-int(isnum);j<=up;j++)\n        {\n            if(((mark>>j)&1)==1)//记录是否重复\n            sum+=dp(i+1,mark,islimit&&j==up,true,true,n);\n            else\n            sum+=dp(i+1,mark|(1<<j),islimit&&j==up,true,isre,n);\n        }\n        arr[i][mark][islimit][isnum][isre]=sum;\n        return sum;\n    }\n};\n```"
+}

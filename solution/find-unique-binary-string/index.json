@@ -1,0 +1,6 @@
+{
+	"titleSlug": "find-unique-binary-string",
+	"slug": "by-hai-na-bai-chuan-11-7b6v",
+	"url": "https://leetcode-cn.com/problems/find-unique-binary-string/solution/by-hai-na-bai-chuan-11-7b6v/",
+	"content": "### 解题思路\n此处撰写解题思路\n\n### 代码\n\n```golang\nfunc findDifferentBinaryString(nums []string) string {\n    n:=len(nums)\n    k:=int(math.Pow(2,float64(n)))\n    m:=map[string]int{}\n    for _,v:=range nums{\n        m[v]++\n    }\n    for i:=0;i<k;i++{\n        str:=convertToBin(i,n)\n        _,ok:=m[str]\n        if !ok{\n            return str\n        }\n    }\n    return \"\"\n}\n\nfunc convertToBin(num int,n int) string{\n    nums:=[]byte{}\n    for i:=0;i<n;i++{\n        cur:=num>>i&1\n        if cur==1{\n            nums = append(nums,'1')\n        }else{\n            nums = append(nums,'0')\n        }\n    }\n    return string(nums)\n}\n```"
+}

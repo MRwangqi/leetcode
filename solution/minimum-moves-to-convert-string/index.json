@@ -1,0 +1,6 @@
+{
+	"titleSlug": "minimum-moves-to-convert-string",
+	"slug": "by-100000000000001-i674",
+	"url": "https://leetcode-cn.com/problems/minimum-moves-to-convert-string/solution/by-100000000000001-i674/",
+	"content": "\n---\n### 求解思路\n1. 遇到 `X` 统一修改接下来的三个字符串  `i += 3`  `cnt += 1`\n2. 遇到 `O` 移动到下一个字符串 `i += 1`\n\n### 代码\n\n```python3\nclass Solution:\n    def minimumMoves(self, s: str) -> int:\n        i = cnt = 0\n        while i < len(s):\n            if s[i] == 'X':\n                i += 3\n                cnt += 1\n            else:\n                i += 1\n        return cnt\n```\n\n\n### 复杂度分析\n![image.png](https://pic.leetcode-cn.com/1664465720-RHaMPp-image.png)\n\n\n---\n\n---\n### 刷题经验分享\n[刷题经验贴](https://leetcode-cn.com/circle/discuss/PZO1if/) ——  **系统化快速学习刷题与总结**"
+}

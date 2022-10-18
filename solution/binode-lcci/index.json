@@ -1,0 +1,6 @@
+{
+	"titleSlug": "binode-lcci",
+	"slug": "by-ghuixin-7xt8",
+	"url": "https://leetcode-cn.com/problems/binode-lcci/solution/by-ghuixin-7xt8/",
+	"content": "### 解题思路\n利用中序遍历实现BiNode\n\n### 代码\n\n```cpp\n/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    TreeNode* temp; \n    void inorder(TreeNode* root)\n    {\n        if(root == nullptr) return ;\n        inorder(root->left);\n        temp->right = root; \n        root->left = nullptr; //左子树赋空\n        temp = root; // 向后移动\n        inorder(root->right);\n    }\n    TreeNode* convertBiNode(TreeNode* root) {\n        // 在遍历中，实现二叉搜索树转换为单向链表\n        TreeNode* ans = new TreeNode(-1); // new一个带有头结点的链表，\n        temp = ans;\n        inorder(root);\n        return ans->right;\n    }\n};\n```"
+}

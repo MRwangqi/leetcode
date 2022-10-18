@@ -1,0 +1,6 @@
+{
+	"titleSlug": "escape-the-ghosts",
+	"slug": "xiao-xue-sheng-lai-shua-ti-liao-c-ge-bu-3amk5",
+	"url": "https://leetcode-cn.com/problems/escape-the-ghosts/solution/xiao-xue-sheng-lai-shua-ti-liao-c-ge-bu-3amk5/",
+	"content": "# 写前思考\n\n第一眼，看到这题目时，我是这样的：\n![4e39a976acbfa4d60bc1750ebf77e3c44d5765f5.jpg@.webp](https://pic.leetcode-cn.com/1629628450-MkjygE-4e39a976acbfa4d60bc1750ebf77e3c44d5765f5.jpg@.webp)\n\n然后看了看题解，发现这题可以用割补法，我十分高兴：\n![e23c258b9d0e94cc17405e0cce16cba0444871d2.jpg@.webp](https://pic.leetcode-cn.com/1629628647-jpZrGZ-e23c258b9d0e94cc17405e0cce16cba0444871d2.jpg@.webp)\n\n\n# 解题思路\n我们用逃生者的角度来看，要想逃生，就必须在阻碍者前走到终点。\n因为行走的速度一样，所以就要比距离。\n- 首先，我们要算出逃生者到终点的距离。\n- 其次，在挨个算出阻碍者到终点的距离。\n- 如果，阻碍者到终点的距离小于(或等于)逃生者到终点的距离。\n- 那么，逃生者将会被阻碍者抓住。\n- 于是，逃生失败。\n- 如果以上都未成立，那么，逃生成功！！！\n# AC代码\n```cpp\nclass Solution {\npublic:\n    bool escapeGhosts(vector<vector<int>>& ghosts, vector<int>& target) {\n        long long jl=abs(target[0])+abs(target[1]);//算出逃生者到终点的距离\n        for(vector<int> &i:ghosts){\n            if(abs(i[0]-target[0])+abs(i[1]-target[1])/*算出阻碍者到终点的距离*/<=jl) return false;//逃生者将会被阻碍者抓住\n        }\n        return true;//逃生成功！\n    }\n};\n```\n![屏幕截图 2021-08-22 181234.png](https://pic.leetcode-cn.com/1629629212-JgZXRV-%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202021-08-22%20181234.png)\n"
+}

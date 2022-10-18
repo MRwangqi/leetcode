@@ -1,0 +1,6 @@
+{
+	"titleSlug": "range-product-queries-of-powers",
+	"slug": "by-ting-ting-28-spnl",
+	"url": "https://leetcode-cn.com/problems/range-product-queries-of-powers/solution/by-ting-ting-28-spnl/",
+	"content": "用异或构造数组，然后暴力求解。\r\n因为 $2^a*2^b=2^a$$^+$$^b$，所以直接求和即可。\r\n\r\n---\r\n\r\n两行代码：\r\n```python3 []\r\nclass Solution:\r\n    def productQueries(self, n: int, queries: List[List[int]]) -> List[int]:\r\n        s = [i for i in range(30) if n&(a:=1<<i) == a]\r\n        return [pow(2, sum(s[i:j+1]), 10**9+7) for i, j in queries]\r\n```"
+}

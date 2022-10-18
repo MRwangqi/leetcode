@@ -1,0 +1,6 @@
+{
+	"titleSlug": "article-views-i",
+	"slug": "wen-zhang-liu-lan-i-by-leetcode-solution",
+	"url": "https://leetcode-cn.com/problems/article-views-i/solution/wen-zhang-liu-lan-i-by-leetcode-solution/",
+	"content": "#### 方法一：`DISTINCT` 和 `ORDER BY`\n\n**思路**\n\n1. 题目要求**找出所有浏览过自己文章的作者**，很显然，这句话翻译过来就是 `author_id = viewer_id`。\n2. 第一步已经筛选出所有的数据，但是有重复数据，需要继续处理。因为**此表无主键，因此可能会存在重复行**，所以我们要对结果去重，使用 `DISTINCT` 即可。\n3. 最后使用 `ORDER BY` 将结果按照 `author_id` 升序排列。\n\n**代码**\n\n```Mysql [ ] \nSELECT DISTINCT author_id AS id\nFROM  Views\nWHERE author_id = viewer_id\nORDER BY author_id\n```"
+}

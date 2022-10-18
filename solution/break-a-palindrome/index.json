@@ -1,0 +1,6 @@
+{
+	"titleSlug": "break-a-palindrome",
+	"slug": "java-by-p1n-ru31-huxl",
+	"url": "https://leetcode-cn.com/problems/break-a-palindrome/solution/java-by-p1n-ru31-huxl/",
+	"content": "![1.png](https://pic.leetcode-cn.com/1665368939-BGpoII-1.png)\r\n\r\n```\r\nclass Solution\r\n{\r\n    public String breakPalindrome(String palindrome)\r\n\t{\r\n        if(palindrome.length()==1)\r\n\t\t\treturn \"\";\r\n\t\t\r\n\t\tfor(int i=0;i<palindrome.length()/2;i++)\r\n\t\t\tif(palindrome.charAt(i)!='a')\r\n\t\t\t\treturn palindrome.substring(0,i).concat(\"a\").concat(palindrome.substring(i+1));\r\n\t\treturn palindrome.substring(0,palindrome.length()-1).concat(\"b\");\r\n\t}\r\n}\r\n```\r\n"
+}

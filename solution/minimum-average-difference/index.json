@@ -1,0 +1,6 @@
+{
+	"titleSlug": "minimum-average-difference",
+	"slug": "qian-hou-zhui-fen-jie-by-endlesscheng-a47e",
+	"url": "https://leetcode-cn.com/problems/minimum-average-difference/solution/qian-hou-zhui-fen-jie-by-endlesscheng-a47e/",
+	"content": "```go\r\nfunc minimumAverageDifference(nums []int) (ans int) {\r\n\tpre, suf, n := 0, 0, len(nums)\r\n\tfor _, v := range nums { suf += v } // 后缀和\r\n\tminDiff := math.MaxInt64\r\n\tfor i, v := range nums[:n-1] {\r\n\t\tpre += v // 前缀和\r\n\t\tsuf -= v // 后缀和\r\n\t\td := abs(pre/(i+1) - suf/(n-1-i))\r\n\t\tif d < minDiff {\r\n\t\t\tminDiff, ans = d, i\r\n\t\t}\r\n\t}\r\n\tif (pre+nums[n-1])/n < minDiff { ans = n - 1 }\r\n\treturn ans\r\n}\r\n\r\nfunc abs(x int) int { if x < 0 { return -x }; return x }\r\n```"
+}

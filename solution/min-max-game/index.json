@@ -1,0 +1,6 @@
+{
+	"titleSlug": "min-max-game",
+	"slug": "go-mo-ni-by-endlesscheng-fcue",
+	"url": "https://leetcode-cn.com/problems/min-max-game/solution/go-mo-ni-by-endlesscheng-fcue/",
+	"content": "```go\r\nfunc minMaxGame(a []int) int {\r\n\tfor len(a) > 1 {\r\n\t\tb := make([]int, len(a)/2)\r\n\t\tfor i := range b {\r\n\t\t\tif i%2 == 0 {\r\n\t\t\t\tb[i] = min(a[i*2], a[i*2+1])\r\n\t\t\t} else {\r\n\t\t\t\tb[i] = max(a[i*2], a[i*2+1])\r\n\t\t\t}\r\n\t\t}\r\n\t\ta = b\r\n\t}\r\n\treturn a[0]\r\n}\r\n\r\nfunc min(a, b int) int { if a > b { return b }; return a }\r\nfunc max(a, b int) int { if a < b { return b }; return a }\r\n```"
+}

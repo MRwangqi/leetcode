@@ -1,0 +1,6 @@
+{
+	"titleSlug": "pairs-of-songs-with-total-durations-divisible-by-60",
+	"slug": "java-2ms-ji-bai-10000-by-keen0126",
+	"url": "https://leetcode-cn.com/problems/pairs-of-songs-with-total-durations-divisible-by-60/solution/java-2ms-ji-bai-10000-by-keen0126/",
+	"content": "# 思路\n1. 整数对60取模，可能有60种余数。故初始化一个长度为60的数组，统计各余数出现的次数。\n2. 遍历time数组，每个值对60取模，并统计每个余数值（0-59）出现的个数。因为余数部分需要找到合适的cp组合起来能被60整除。\n3. 余数为0的情况，只能同余数为0的情况组合（如60s、120s等等）。0的情况出现k次，则只能在k中任选两次进行两两组合。本题解单独写了个求组合数的方法，也可以用k * (k - 1) / 2表示。\n4. 余数为30的情况同上。\n5. 其余1与59组合，2与58组合，故使用双指针分别从1和59两头向中间遍历。1的情况出现m次，59的情况出现n次，则总共有m*n种组合。 \n\n# 题解\n```\n\tpublic int numPairsDivisibleBy60(int[] time) {\n\t\tint count = 0;\n\t\tint[] seconds = new int[60];\n\t\tfor(int t : time) {\n\t\t\tseconds[t % 60] += 1; \n\t\t}\n\t\tcount += combination(seconds[30], 2);\n\t\tcount += combination(seconds[0], 2);\n\t\tint i = 1, j = 59;\n\t\twhile(i < j) {\n\t\t\tcount += seconds[i++] * seconds[j--];\n\t\t}\n\t\treturn count;\n\t}\n\t\n\t// 求组合数\n\tpublic int combination(int n, int k) {\n\t\tlong result = 1;\n\t\tfor(int i = 1; i <= k; i++) {\n\t\t\tresult = result * (n - i + 1) / i;\n\t\t}\n\t\treturn (int)result;\n\t}\n```\n\n# 时间和空间复杂度\n**时间复杂度**：O(n)\n**空间复杂度**：O(1) 固定空间开销（长度为60的数组）"
+}

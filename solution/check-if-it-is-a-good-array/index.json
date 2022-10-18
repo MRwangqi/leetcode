@@ -1,0 +1,6 @@
+{
+	"titleSlug": "check-if-it-is-a-good-array",
+	"slug": "by-liubaobao_best_coder-dl4u",
+	"url": "https://leetcode-cn.com/problems/check-if-it-is-a-good-array/solution/by-liubaobao_best_coder-dl4u/",
+	"content": "### 解题思路\n裴蜀定理(重要推论) : a,b互质的充分必要条件是存在整数x,y使ax+by=1.\n\n### 代码\n\n```java\nclass Solution {\n    public boolean isGoodArray(int[] nums) {\n        \n        int gcd = nums[0];\n        if(gcd==1) return true;\n        for(int i=1;i<nums.length;i++){\n            gcd = Gcd(gcd,nums[i]);\n            if(gcd == 1) return true;\n        }\n        return false;\n    }\n    public static int Gcd(int a,int b){\n        return a%b==0?b:Gcd(b,a%b);\n    }\n}\n```"
+}

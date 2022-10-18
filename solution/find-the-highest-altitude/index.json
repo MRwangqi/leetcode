@@ -1,0 +1,6 @@
+{
+	"titleSlug": "find-the-highest-altitude",
+	"slug": "dai-ma-jian-ji-yi-chong-huan-bu-cuo-de-j-9vfj",
+	"url": "https://leetcode-cn.com/problems/find-the-highest-altitude/solution/dai-ma-jian-ji-yi-chong-huan-bu-cuo-de-j-9vfj/",
+	"content": "\n[详细刷题视频合集](https://xiaochen1024.com/series/6196129fc1553b002e57bef5/6196208ec1553b002e57bef6)      \n      [刷题笔记](https://xiaochen1024.com/courseware/60b4f11ab1aa91002eb53b18)\n给定初始海拔高度,遍历数组计算出每次的海报高度\n\n```\nvar largestAltitude = function(gain) {\n  return Math.max(...gain.reduce((acc,cur) => {\n    acc.push(acc[acc.length - 1] + cur);\n    return acc\n  },[0]))\n};\n\n```\n"
+}

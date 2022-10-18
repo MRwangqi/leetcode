@@ -1,0 +1,6 @@
+{
+	"titleSlug": "strictly-palindromic-number",
+	"slug": "by-100000000000001-3lu3",
+	"url": "https://leetcode-cn.com/problems/strictly-palindromic-number/solution/by-100000000000001-3lu3/",
+	"content": "\n---\n### 求解思路\n1. 编写进制转换函数 `converter` 将 n 转换为对应的x进制\n2. 将 n 转换为 `2 - n-2 ` 的所有进制数，判断条件\n\n---\n### 代码\n\n```python3\nclass Solution:\n    def converter(self, n: int, x: int):\n        res = \"\"\n        while n:\n            res += str(n%x)\n            n //= x\n        return res[::-1]\n\n    def isStrictlyPalindromic(self, n: int) -> bool:\n        return all(self.converter(n,i) == self.converter(n,i)[::-1] for i in range(2,n-1))\n```\n\n---\n### 复杂度分析\n![image.png](https://pic.leetcode-cn.com/1665925987-hpGIlQ-image.png)\n\n\n---\n### 刷题经验分享\n[刷题经验贴](https://leetcode-cn.com/circle/discuss/PZO1if/) ——  **系统化快速学习刷题与总结**"
+}

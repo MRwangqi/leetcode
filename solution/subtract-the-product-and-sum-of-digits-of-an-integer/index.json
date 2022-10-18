@@ -1,0 +1,6 @@
+{
+	"titleSlug": "subtract-the-product-and-sum-of-digits-of-an-integer",
+	"slug": "zheng-shu-de-ge-wei-ji-he-zhi-chai-by-leetcode-sol",
+	"url": "https://leetcode-cn.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/solution/zheng-shu-de-ge-wei-ji-he-zhi-chai-by-leetcode-sol/",
+	"content": "**方法一：模拟**\n\n我们每次通过取模运算得到 `n` 的最后一位，依次进行乘法和加法运算，最后将得到的积 `mul` 以及和 `add` 相减即可得到答案。\n\n```C++ [sol1]\nclass Solution {\npublic:\n    int subtractProductAndSum(int n) {\n        int add = 0, mul = 1;\n        while (n > 0) {\n            int digit = n % 10;\n            n /= 10;\n            add += digit;\n            mul *= digit;\n        }\n        return mul - add;\n    }\n};\n```\n\n```Python [sol1]\nclass Solution:\n    def subtractProductAndSum(self, n: int) -> int:\n        add, mul = 0, 1\n        while n > 0:\n            digit = n % 10\n            n //= 10\n            add += digit\n            mul *= digit\n        return mul - add\n```\n\n**复杂度分析**\n\n- 时间复杂度：$O(\\log N)$。整数 $N$ 的位数为 $\\lceil\\log_{10}(N + 1)\\rceil$，根据换底公式，它和时间复杂度中常用的以 $2$ 为底的 $\\log$ 只相差一个常数，因此可以表示为 $O(\\log N)$。\n\n- 空间复杂度：$O(1)$。"
+}

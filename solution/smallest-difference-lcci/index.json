@@ -1,0 +1,6 @@
+{
+	"titleSlug": "smallest-difference-lcci",
+	"slug": "he-bing-liang-ge-shu-zu-qiang-xing-yi-xi-d1yd",
+	"url": "https://leetcode-cn.com/problems/smallest-difference-lcci/solution/he-bing-liang-ge-shu-zu-qiang-xing-yi-xi-d1yd/",
+	"content": "### 解题思路\n合并两个数组后排序遍历,强行一行版本\n\n通过 216 ms\t69.1 MB\tTypeScript\t2022/10/06 21:36\n### 代码\n\n```typescript []\nfunction smallestDifference(a: number[], b: number[]): number {\n  return [\n    ...a.sort((x, y) => x - y).map((v) => [v, 1]),\n    ...b.sort((x, y) => x - y).map((v) => [v, 0]),\n  ]\n    .sort((a, b) => a[0] - b[0])\n    .reduce((p,v, i, a) =>Math.min(p,   i === 0 || v[1] === a[i - 1][1]\n        ? 2147483647\n        : Math.abs(v[0] - a[i - 1][0]))\n  ,2147483647);\n}\n\n```\n```javascript []\nvar smallestDifference=function(r,t){return[...r.sort(((r,t)=>r-t)).map((r=>[r,1])),...t.sort(((r,t)=>r-t)).map((r=>[r,0]))].sort(((r,t)=>r[0]-t[0])).reduce(((r,t,a,o)=>Math.min(r,0===a||t[1]===o[a-1][1]?2147483647:Math.abs(t[0]-o[a-1][0]))),2147483647)}\n```"
+}

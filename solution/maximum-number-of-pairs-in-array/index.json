@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximum-number-of-pairs-in-array",
+	"slug": "by-endlesscheng-8f6t",
+	"url": "https://leetcode-cn.com/problems/maximum-number-of-pairs-in-array/solution/by-endlesscheng-8f6t/",
+	"content": "本题 [视频讲解](https://www.bilibili.com/video/BV1GV4y1J7kc) 已出炉，欢迎点赞三连~\r\n\r\n---\r\n\r\n统计每个元素的出现次数，两两一对，得到对数。用 $\\textit{nums}$ 长度减去对数的两倍就得到剩余数字的个数。\r\n\r\n```py [sol1-Python3]\r\nclass Solution:\r\n    def numberOfPairs(self, nums: List[int]) -> List[int]:\r\n        pairs = sum(c // 2 for c in Counter(nums).values())\r\n        return [pairs, len(nums) - pairs * 2]\r\n```\r\n\r\n一次遍历的写法：\r\n\r\n```go [sol1-Go]\r\nfunc numberOfPairs(nums []int) []int {\r\n\tpairs := 0\r\n\tvis := map[int]bool{}\r\n\tfor _, v := range nums {\r\n\t\tif vis[v] {\r\n\t\t\tpairs++\r\n\t\t}\r\n\t\tvis[v] = !vis[v]\r\n\t}\r\n\treturn []int{pairs, len(nums) - pairs*2}\r\n}\r\n```"
+}

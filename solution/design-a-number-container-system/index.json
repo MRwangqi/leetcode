@@ -1,0 +1,6 @@
+{
+	"titleSlug": "design-a-number-container-system",
+	"slug": "-by-twain-tam-ywpf",
+	"url": "https://leetcode-cn.com/problems/design-a-number-container-system/solution/-by-twain-tam-ywpf/",
+	"content": "**解题思路**\r\n1. 由于`index`∈[1,10e9],故不使用一维向量存储而选择哈希表存储;\r\n2. 在插入任一`number`时,将其插入位置`index`插入对应的优先队列中;\r\n3. 当需要查找时,通过`number`找到其对应的`index`优先队列中,逐个进行查找;需要注意的是,由于插入时未做删除操作,故对于`index`优先队列的队头元素需要在对应哈希表进行核实;若队头元素对应位置不是目标元素,则将其`pop`;若为目标元素,则返回该`index`;反之,返回`-1`.\r\n```\r\nclass NumberContainers {\r\npublic:\r\n    unordered_map<int,int> container;\r\n    unordered_map<int,priority_queue<int,vector<int>,greater<int>>> idx;\r\n    void change(int index, int number) {\r\n        container[index] = number;\r\n        idx[number].push(index);\r\n    }\r\n    \r\n    int find(int number) {\r\n        while(!idx[number].empty()&&container[idx[number].top()]!=number){\r\n            idx[number].pop();\r\n        }\r\n        if(idx[number].size()) return idx[number].top();\r\n        else return -1; \r\n    }\r\n};\r\n```\r\n"
+}

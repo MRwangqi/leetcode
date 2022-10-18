@@ -1,0 +1,6 @@
+{
+	"titleSlug": "swapping-nodes-in-a-linked-list",
+	"slug": "1721jiao-huan-lian-biao-zhong-de-jie-dia-onkp",
+	"url": "https://leetcode-cn.com/problems/swapping-nodes-in-a-linked-list/solution/1721jiao-huan-lian-biao-zhong-de-jie-dia-onkp/",
+	"content": "```python3\n# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\n# Python3 链表模拟\nclass Solution:\n    def swapNodes(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:\n        ref = list()\n        while head:\n            ref.append(head)\n            head = head.next\n        ref[k-1].val,ref[-k].val = ref[-k].val,ref[k-1].val\n        return ref[0]\n\n# Python3 双指针模拟\n# Definition for singly-linked list.\n# class ListNode:\n#     def __init__(self, val=0, next=None):\n#         self.val = val\n#         self.next = next\nclass Solution:\n    def swapNodes(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:\n        slow = fast = head\n        for _ in range(k-1):\n            fast = fast.next\n        pre = fast\n        while fast.next:\n            slow = slow.next\n            fast = fast.next\n        pre.val,slow.val = slow.val,pre.val\n        return head\n```\n"
+}

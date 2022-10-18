@@ -1,0 +1,6 @@
+{
+	"titleSlug": "sort-the-people",
+	"slug": "python-yi-xing-by-endlesscheng-xnvy",
+	"url": "https://leetcode-cn.com/problems/sort-the-people/solution/python-yi-xing-by-endlesscheng-xnvy/",
+	"content": "[视频讲解](https://www.bilibili.com/video/BV1ve411K7P5) 已出炉，欢迎点赞三连，在评论区分享你对这场周赛的看法~\r\n\r\n```py\r\nclass Solution:\r\n    def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:\r\n        return [name for _, name in sorted(zip(heights, names), reverse=True)]\r\n```"
+}

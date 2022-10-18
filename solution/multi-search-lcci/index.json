@@ -1,0 +1,6 @@
+{
+	"titleSlug": "multi-search-lcci",
+	"slug": "by-feyl-pz7f",
+	"url": "https://leetcode-cn.com/problems/multi-search-lcci/solution/by-feyl-pz7f/",
+	"content": "无情api选手（菜狗）~\r\n\r\n```java\r\nclass Solution {\r\n    public int[][] multiSearch(String big, String[] smalls) {\r\n        int n = smalls.length;\r\n        int[][] res = new int[n][];\r\n        for (int i = 0; i < n; i++) {\r\n            res[i] = lst2Arr(search(big, smalls[i]));\r\n        }\r\n        return res;\r\n    }\r\n\r\n    List<Integer> search (String big, String s) {\r\n        List<Integer> res = new ArrayList<>();\r\n        if (s.length() == 0) return res;\r\n        int idx = big.indexOf(s);\r\n        while (idx != -1) {\r\n            res.add(idx);\r\n            idx = big.indexOf(s, idx + 1);\r\n        }\r\n        return res;\r\n    }\r\n\r\n    int[] lst2Arr(List<Integer> lst) {\r\n        int[] res = new int[lst.size()];\r\n        for (int i = 0; i < res.length; i++) {\r\n            res[i] = lst.get(i);\r\n        }\r\n        return res;\r\n    }\r\n}\r\n```\r\n![image.png](https://pic.leetcode-cn.com/1651048593-sDfjoR-image.png)\r\n"
+}

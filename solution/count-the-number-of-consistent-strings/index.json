@@ -1,0 +1,6 @@
+{
+	"titleSlug": "count-the-number-of-consistent-strings",
+	"slug": "class-solution-public-int-countconsisten-8344",
+	"url": "https://leetcode-cn.com/problems/count-the-number-of-consistent-strings/solution/class-solution-public-int-countconsisten-8344/",
+	"content": "```\r\nclass Solution {\r\npublic:\r\n    int countConsistentStrings(string allowed, vector<string>& words) {\r\n    int count = words.size();\r\n    for(int i = 0; i < words.size(); ++ i)\r\n    {\r\n        for(int j = 0;j < words[i].size(); ++ j)\r\n        {\r\n            if(allowed.find(words[i][j]) == -1)\r\n            {\r\n                count--;\r\n                break;\r\n            }\r\n        }\r\n    }\r\n    return count;\r\n    }\r\n};\r\n```\r\n"
+}

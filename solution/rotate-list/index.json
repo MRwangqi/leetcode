@@ -1,0 +1,6 @@
+{
+	"titleSlug": "rotate-list",
+	"slug": "by-er-dian-wu-pian-shi-xem2",
+	"url": "https://leetcode-cn.com/problems/rotate-list/solution/by-er-dian-wu-pian-shi-xem2/",
+	"content": "## 解题思路\n链表转化为循环链表后再在需要的地方断开\n需要注意有以下几种情况可提前返回结果为原链表\n- k==0\n- 链表为空或只有一个结点\n- k%链表长度==0\n\n## 代码\n\n```c\nstruct ListNode* rotateRight(struct ListNode* head, int k){\n    if(k==0||head==NULL||head->next==NULL)return head;\n    struct ListNode * pre;\n    int i=1;//链表长度\n    for(pre=head;pre->next!=NULL;pre=pre->next)//求i为链表长度，结束时pre指向链尾\n    {\n        i++;\n    }\n    k%=i;//节点长度最大为500，而k最大有2*10^9，所以需要给k对长度求余避免遍历复数次的情况\n    if(k==0)return head;\n    pre->next=head;//链表尾接链表头\n    for(k=i-k;k!=1;k--)//循环使head指向结果链表链尾（结果链表头节点的前一个结点）\n    {\n        head=head->next;\n    }\n        pre=head->next;//pre指向结果链表头节点\n        head->next=NULL;//链尾断开\n    return pre;\n}\n```\n\n## 成绩\n![leet61.png](https://pic.leetcode-cn.com/1665755129-tVyjBK-leet61.png)\n\n"
+}

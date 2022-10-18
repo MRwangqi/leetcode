@@ -1,0 +1,6 @@
+{
+	"titleSlug": "string-to-url-lcci",
+	"slug": "python-by-omakisxmqo-dus6",
+	"url": "https://leetcode-cn.com/problems/string-to-url-lcci/solution/python-by-omakisxmqo-dus6/",
+	"content": "### 解题思路\n此处撰写解题思路\n\n### 代码\n\n```python\nclass Solution(object):\n    def replaceSpaces(self, S, length):\n        \"\"\"\n        :type S: str\n        :type length: int\n        :rtype: str\n        \"\"\"\n        Re = S[:length].replace(\" \",'%20')\n        return Re \n```"
+}

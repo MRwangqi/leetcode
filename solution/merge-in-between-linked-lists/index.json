@@ -1,0 +1,6 @@
+{
+	"titleSlug": "merge-in-between-linked-lists",
+	"slug": "dai-ma-jian-ji-yi-chong-huan-bu-cuo-de-j-g77f",
+	"url": "https://leetcode-cn.com/problems/merge-in-between-linked-lists/solution/dai-ma-jian-ji-yi-chong-huan-bu-cuo-de-j-g77f/",
+	"content": "\n[详细刷题视频合集](https://xiaochen1024.com/series/6196129fc1553b002e57bef5/6196208ec1553b002e57bef6)      \n      [刷题笔记](https://xiaochen1024.com/courseware/60b4f11ab1aa91002eb53b18)\n\n找到aPrev, bNext，再连接\n```\nvar mergeInBetween = function(list1, a, b, list2) {\n    let aPrev = null\n    let curr = list1\n    let idx = 0\n    while (idx < a) {\n        idx++\n        aPrev = curr\n        curr = curr.next\n    }\n\n    let bNext = curr.next\n    while (idx < b) {\n        idx++\n        curr = curr.next\n        bNext = curr.next\n    }\n\n    aPrev.next = list2\n    let curr2 = list2\n    while (curr2) {\n        if (!curr2.next) {\n            curr2.next = bNext\n            break\n        }\n        curr2 = curr2.next\n    }\n\n    return list1\n};\n```\n"
+}

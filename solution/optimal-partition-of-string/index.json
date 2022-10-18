@@ -1,0 +1,6 @@
+{
+	"titleSlug": "optimal-partition-of-string",
+	"slug": "wei-yun-suan-o1-kong-jian-by-endlesschen-m0q5",
+	"url": "https://leetcode-cn.com/problems/optimal-partition-of-string/solution/wei-yun-suan-o1-kong-jian-by-endlesschen-m0q5/",
+	"content": "本题 [视频讲解](https://www.bilibili.com/video/BV1it4y1L7kL) 已出炉，欢迎点赞三连，在评论区分享你对这场周赛的看法~\r\n \r\n---\r\n\r\n贪心：从左往右遍历，没出现过就分到同一组。\r\n\r\n```go\r\nfunc partitionString(s string) int {\r\n\tans, vis := 1, 0\r\n\tfor _, c := range s {\r\n\t\tif vis>>(c&31)&1 > 0 {\r\n\t\t\tvis = 0\r\n\t\t\tans++\r\n\t\t}\r\n\t\tvis |= 1 << (c & 31)\r\n\t}\r\n\treturn ans\r\n}\r\n```\r\n"
+}

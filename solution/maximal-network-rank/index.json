@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximal-network-rank",
+	"slug": "javamei-ju-ji-shu-by-hust_wei-ha09",
+	"url": "https://leetcode-cn.com/problems/maximal-network-rank/solution/javamei-ju-ji-shu-by-hust_wei-ha09/",
+	"content": "一个很天真的想法，统计与各个城市连接的道路数，最后的结果就是最大的那两个值和，如果这两个城市之间有连接的话，需要-1。\r\n```java\r\nclass Solution {\r\n    public int maximalNetworkRank(int n, int[][] roads) {\r\n        int ans = 0;\r\n        int[] cnt = new int[n];     // 统计与各个城市连接的道路数\r\n        int[][] connect = new int[n][n];    // 统计两个城市之间是否存在道路\r\n        for (int[] road: roads) {\r\n            cnt[road[0]]++;\r\n            cnt[road[1]]++;\r\n            connect[road[0]][road[1]] = 1;\r\n            connect[road[1]][road[0]] = 1;\r\n        }\r\n        for (int i = 0; i < n; i++) {\r\n            for (int j = i + 1; j < n; j++) {\r\n                ans = Math.max(ans, cnt[i] + cnt[j] - connect[i][j]);\r\n            }\r\n        }\r\n        return ans;\r\n    }\r\n}\r\n```\r\n"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "check-if-numbers-are-ascending-in-a-sentence",
+	"slug": "jian-dan-de-jie-an-by-okisama-vtke",
+	"url": "https://leetcode-cn.com/problems/check-if-numbers-are-ascending-in-a-sentence/solution/jian-dan-de-jie-an-by-okisama-vtke/",
+	"content": "![image.png](https://pic.leetcode-cn.com/1664901017-FWHIhu-image.png)\r\n思路：`match`、`for`循环\r\n```\r\nfunction areNumbersAscending(s: string): boolean {\r\n    let a = s.match(/\\d+/g).map(Number)\r\n    for (let i = 0; i < a.length - 1; i++) if (a[i + 1] <= a[i]) return false\r\n    return true\r\n};\r\n```\r\n"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "closest-dessert-cost",
+	"slug": "1774-zui-jie-jin-mu-biao-jie-ge-de-tian-lp974",
+	"url": "https://leetcode-cn.com/problems/closest-dessert-cost/solution/1774-zui-jie-jin-mu-biao-jie-ge-de-tian-lp974/",
+	"content": "### 解题思路\n\n暴力枚举\n\n### 代码\n\n```java\nclass Solution {\n\tpublic int closestCost(int[] baseCosts, int[] toppingCosts, int target) {\n\t\tint n = baseCosts.length;\n\t\tint m = toppingCosts.length;\n\t\tint range = 1 << m;\n\t\tint[] dp = new int[range];\n\t\tfor (int i = 0; i < range; i++) {\n\t\t\tint cur = 0;\n\t\t\tfor (int j = 0; j < m; j++) {\n\t\t\t\tif ((i & (1 << j)) != 0) {\n\t\t\t\t\tcur += toppingCosts[j];\n\t\t\t\t}\n\t\t\t}\n\t\t\tdp[i] = cur;\n\t\t}\n\t\tint diff = Integer.MAX_VALUE;\n\t\tint ans = 0;\n\t\tfor (int k = 0; k < n; k++) {\n\t\t\tfor (int i = 0; i < range; i++) {\n\t\t\t\tfor (int j = 0; j < range; j++) {\n\t\t\t\t\tint t = baseCosts[k] + dp[i] + dp[j];\n\t\t\t\t\tint curDiff = Math.abs(t - target);\n\t\t\t\t\tif (curDiff < diff || (curDiff == diff && t < ans)) {\n\t\t\t\t\t\tdiff = curDiff;\n\t\t\t\t\t\tans = t;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\treturn ans;\n\t}\n}\n```"
+}

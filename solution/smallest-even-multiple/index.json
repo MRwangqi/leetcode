@@ -1,0 +1,6 @@
+{
+	"titleSlug": "smallest-even-multiple",
+	"slug": "yi-xing-gong-shi-by-endlesscheng-ixss",
+	"url": "https://leetcode-cn.com/problems/smallest-even-multiple/solution/yi-xing-gong-shi-by-endlesscheng-ixss/",
+	"content": "[视频讲解](https://www.bilibili.com/video/BV1AP411p7pK) 已出炉，欢迎点赞三连，在评论区分享你对这场周赛的看法~\r\n\r\n---\r\n\r\n根据题意，当 $n$ 为奇数时，答案为 $2n$，当 $n$ 为偶数时，答案为 $n$。\r\n\r\n因此答案为\r\n\r\n$$\r\n(n\\bmod 2 + 1) \\cdot n\r\n$$\r\n\r\n```py [sol1-Python3]\r\nclass Solution:\r\n    def smallestEvenMultiple(self, n: int) -> int:\r\n        return (n % 2 + 1) * n\r\n```\r\n\r\n```go [sol1-Go]\r\nfunc smallestEvenMultiple(n int) int {\r\n\treturn (n%2 + 1) * n\r\n}\r\n```\r\n\r\n注：Python 也可以这样写\r\n\r\n```py\r\nclass Solution:\r\n    def smallestEvenMultiple(self, n: int) -> int:\r\n        return lcm(n, 2)\r\n```\r\n\r\n#### 复杂度分析\r\n\r\n- 时间复杂度：$O(1)$。\r\n- 空间复杂度：$O(1)$。\r\n"
+}

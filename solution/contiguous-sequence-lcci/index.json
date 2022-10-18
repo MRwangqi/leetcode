@@ -1,0 +1,6 @@
+{
+	"titleSlug": "contiguous-sequence-lcci",
+	"slug": "dong-by-pq10086-ky22",
+	"url": "https://leetcode-cn.com/problems/contiguous-sequence-lcci/solution/dong-by-pq10086-ky22/",
+	"content": "### 解题思路\n用一个变量记录连续数组的和,如果这个和小于0的时候(负数相加越加越小)取最大的数字\n这个变量记录和的过程中判断输出连续数组的最大和\n\n### 代码\n\n```java\nclass Solution {\n    public int maxSubArray(int[] nums) {\n        int max = Integer.MIN_VALUE;\n        for (int i = 0, s = 0; i < nums.length; i++) {\n            if (s < 0) {\n                s = nums[i];\n            } else {\n                s += nums[i];\n            }\n            max = Math.max(s, max);\n        }\n        return max;\n    }\n}\n```"
+}

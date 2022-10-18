@@ -1,0 +1,6 @@
+{
+	"titleSlug": "check-if-number-has-equal-digit-count-and-digit-value",
+	"slug": "javascript-by-gu-shi-li-de-xiao-huang-hu-5qlc",
+	"url": "https://leetcode-cn.com/problems/check-if-number-has-equal-digit-count-and-digit-value/solution/javascript-by-gu-shi-li-de-xiao-huang-hu-5qlc/",
+	"content": "![image.png](https://pic.leetcode-cn.com/1665581264-eSnRyh-image.png)\r\n\r\n```js\r\n/**\r\n * @param {string} num\r\n * @return {boolean}\r\n */\r\nvar digitCount = function(num) {\r\n    for (let i = 0; i < num.length; i++) {\r\n        const len = [...num.matchAll(`${i}`)].length;\r\n        if (len !== +num[i]) {\r\n            return false;\r\n        }\r\n    }\r\n\r\n    return true;\r\n};\r\n```"
+}

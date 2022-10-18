@@ -1,0 +1,6 @@
+{
+	"titleSlug": "design-browser-history",
+	"slug": "-by-wa-pian-d-470p",
+	"url": "https://leetcode-cn.com/problems/design-browser-history/solution/-by-wa-pian-d-470p/",
+	"content": "### 解题思路\n\n就我一个人觉得题目说的不清楚啊？\n浏览会被后退覆盖掉。\n\na -> b back 1 到a\nvisit c a -> c 跟b毛关系没有了。\n这个题目里`把浏览历史前进的记录全部删除`\n\n更形象一点。这就是在打字符，back，forwar就是前后移动光标，最多不能超过首尾。一旦visit就是从当前光标开始继续打字符，之前无论back多少都被删除了。\n\n### 代码\n\n```java\nclass BrowserHistory {\n\n\tString[] history;\n\tint cur, range;\n\n\tpublic BrowserHistory(String homepage) {\n\t\thistory = new String[5000];// 最多调用 5000 次 visit， back 和 forward 函数。\n\t\tcur = -1;\n\t\tthis.visit(homepage);\n\t}\n\n\tpublic void visit(String url) {\n\t\thistory[++cur] = url;\n\t\trange = cur;\n\t}\n\n\tpublic String back(int steps) {\n\t\tcur = Math.max(0, cur - steps);\n\t\treturn history[cur];\n\t}\n\n\tpublic String forward(int steps) {\n\t\tcur = Math.min(range, cur + steps);\n\t\treturn history[cur];\n\t}\n\n}\n\n\n```"
+}

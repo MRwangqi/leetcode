@@ -1,0 +1,6 @@
+{
+	"titleSlug": "filter-restaurants-by-vegan-friendly-price-and-distance",
+	"slug": "by-er-yue-xie-nhlg",
+	"url": "https://leetcode-cn.com/problems/filter-restaurants-by-vegan-friendly-price-and-distance/solution/by-er-yue-xie-nhlg/",
+	"content": "### 解题思路\n先按rating为第一关键字、id为第二关键字对全体餐厅进行排序\n然后遍历一遍所有的餐厅，选取其中没被筛掉的餐厅  //先排后筛可以不开排序用的数组，贪一点内存\n### 代码\n\n```cpp\nclass Solution {\npublic:\n    vector<int> filterRestaurants(vector<vector<int>>& restaurants, int veganFriendly, int maxPrice, int maxDistance) {\n        vector<int> ans;\n        sort(restaurants.begin(),restaurants.end(),[](vector<int> &a,vector<int> &b){\n            return (a[1]==b[1])? a[0]>b[0]:a[1]>b[1];\n        });\n        for(const auto&r : restaurants)\n            if(!(veganFriendly&&!r[2]) && r[3]<=maxPrice && r[4]<=maxDistance )\n                ans.push_back(r[0]);\n        return ans;\n    }\n};\n```"
+}

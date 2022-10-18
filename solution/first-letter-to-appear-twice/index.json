@@ -1,0 +1,6 @@
+{
+	"titleSlug": "first-letter-to-appear-twice",
+	"slug": "by-angy-x-o0zn",
+	"url": "https://leetcode-cn.com/problems/first-letter-to-appear-twice/solution/by-angy-x-o0zn/",
+	"content": "```\r\nclass Solution \r\n{\r\npublic:\r\n    char repeatedCharacter(string s) \r\n    {\r\n        int size, i =0;\r\n        int characters[26];\r\n        size = s.size();\r\n        for(int i = 0; i < 26; i ++)\r\n        {\r\n            characters[i] = 0;\r\n        }\r\n        for(i = 0; i < size; i ++)\r\n        {\r\n            if(characters[s[i] - 'a'] == 0)\r\n            {\r\n                characters[s[i] - 'a'] ++;\r\n                continue;\r\n            }\r\n            else if(characters[s[i] - 'a'] == 1)\r\n            {\r\n                break;   \r\n            }\r\n        }   \r\n        return s[i]; \r\n    }\r\n};\r\n```\r\n\r\n![image.png](https://pic.leetcode-cn.com/1665057132-BqJnca-image.png)\r\n"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "arithmetic-subarrays",
+	"slug": "1630-deng-chai-zi-shu-zu-by-fandou-hutut-o8zu",
+	"url": "https://leetcode-cn.com/problems/arithmetic-subarrays/solution/1630-deng-chai-zi-shu-zu-by-fandou-hutut-o8zu/",
+	"content": "### 代码\n\n```python3\nclass Solution:\n    def checkArithmeticSubarrays(self, nums: List[int], l: List[int], r: List[int]) -> List[bool]:\n        n, m = len(nums), len(l)\n        ans = []\n\n        def check(g: List[int]) -> bool:\n            g.sort()\n            for i in range(1, len(g)):\n                if g[i] - g[i-1] != g[1] - g[0]:\n                    return False\n            return True\n        for i in range(m):\n            ans.append(check(nums[l[i]: r[i] + 1]))\n        return ans\n```"
+}

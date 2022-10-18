@@ -1,0 +1,6 @@
+{
+	"titleSlug": "ZbAuEH",
+	"slug": "by-masx200-as3m",
+	"url": "https://leetcode-cn.com/problems/ZbAuEH/solution/by-masx200-as3m/",
+	"content": "### 解题思路\n动态规划\n参考了一些大佬的代码\nhttps://leetcode.cn/problems/ZbAuEH/solution/by-shan-ku-4-pjjv/\n对于时间t=0时要做特殊处理\n### 代码\n\n```typescript\nfunction getMaximumNumber(moles: number[][]): number {\n    moles.sort((a, b) => a[0] - b[0]);\n    let first = 0;\n\n    let res = 0;\n    while (moles.length) {\n        const [t, x, y] = moles[0];\n\n        if (t === 0) {\n            if (y === 1 && x == 1) first++;\n            moles.shift();\n        } else break;\n    }\n\n    moles = [[0, 1, 1], ...moles];\n    const len = moles.length;\n    const dp = Array(len).fill(0).map(() => [0, 0]);\n    for (let i = 1; i < len; i++) {\n        const [t, x, y] = moles[i];\n        dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1]);\n        for (let cnt = 0, j = i - 1; cnt < 10 && j >= 0; j--, cnt++) {\n            if (\n                Math.abs(x - moles[j][1]) + Math.abs(y - moles[j][2]) <=\n                    t - moles[j][0]\n            ) {\n                dp[i][1] = Math.max(dp[i][1], dp[j][1] + 1);\n            }\n        }\n        res = Math.max(res, dp[i][0], dp[i][1]);\n    }\n    return res + first;\n}\n\n```"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "distant-barcodes",
+	"slug": "-by-wa-pian-d-zjsb",
+	"url": "https://leetcode-cn.com/problems/distant-barcodes/solution/-by-wa-pian-d-zjsb/",
+	"content": "### 解题思路\n\n一个不太好的HashMap + PriorityQueue思路\n\n思路：能用剩余最多就用，不能就用剩余次多。\n\n### 代码\n\n```java\nclass Solution {\n\tpublic int[] rearrangeBarcodes(int[] barcodes) {\n\t\tint len = barcodes.length;\n\t\tMap<Integer, Integer> map = new HashMap<>();\n\t\tfor (int i : barcodes) {\n\t\t\tmap.put(i, map.getOrDefault(i, 0) + 1);\n\t\t}\n\t\tPriorityQueue<int[]> queue = new PriorityQueue<>((a, b) -> b[0] - a[0]);\n\t\tfor (Map.Entry<Integer, Integer> entry : map.entrySet()) {\n\t\t\tqueue.add(new int[] { entry.getValue(), entry.getKey() });\n\t\t}\n\t\tint[] ans = new int[len];\n\t\tint[] cur = queue.poll();\n\t\tans[0] = cur[1];\n\t\tif (--cur[0] > 0) {\n\t\t\tqueue.add(cur);\n\t\t}\n\t\tfor (int i = 1; i < len; i++) {\n\t\t\tcur = queue.poll();\n\t\t\tif (cur[1] == ans[i - 1]) {\n\t\t\t\tint[] next = queue.poll();\n\t\t\t\tans[i] = next[1];\n\t\t\t\tif (--next[0] > 0) {\n\t\t\t\t\tqueue.add(next);\n\t\t\t\t}\n\t\t\t\tqueue.add(cur);\n\t\t\t} else {\n\t\t\t\tans[i] = cur[1];\n\t\t\t\tif (--cur[0] > 0) {\n\t\t\t\t\tqueue.add(cur);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\treturn ans;\n\t}\n\n}\n```"
+}

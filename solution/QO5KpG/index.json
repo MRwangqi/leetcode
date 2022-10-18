@@ -1,0 +1,6 @@
+{
+	"titleSlug": "QO5KpG",
+	"slug": "by-tsreaper-d64z",
+	"url": "https://leetcode-cn.com/problems/QO5KpG/solution/by-tsreaper-d64z/",
+	"content": "## 解法：模拟\r\n其实和二叉搜索树一点关系都没有。\r\n\r\n每个点的颜色只取决于最后一次包含该点的操作。用 set 维护所有颜色待确定的点，倒序处理询问，每次利用 lower_bound 方法从 set 中取出所有在询问范围内的点染色后删掉。因为每个点只会被删掉一次，所以总体复杂度 $\\mathcal{O}((n + q)\\log n)$，其中 $n$ 是节点数量，$q$ 是询问数量。\r\n\r\n## 参考代码（c++）\r\n```c++\r\n/**\r\n * Definition for a binary tree node.\r\n * struct TreeNode {\r\n *     int val;\r\n *     TreeNode *left;\r\n *     TreeNode *right;\r\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\r\n * };\r\n */\r\nclass Solution {\r\n    set<int> st;\r\n\r\n    void dfs(TreeNode *node) {\r\n        if (node == nullptr) return;\r\n        st.insert(node->val);\r\n        dfs(node->left);\r\n        dfs(node->right);\r\n    }\r\n\r\npublic:\r\n    int getNumber(TreeNode* root, vector<vector<int>>& ops) {\r\n        dfs(root);\r\n        int ans = 0;\r\n        for (int i = (int) ops.size() - 1; i >= 0; i--) {\r\n            while (true) {\r\n                auto it = st.lower_bound(ops[i][1]);\r\n                if (it == st.end() || (*it) > ops[i][2]) break;\r\n                st.erase(it);\r\n                if (ops[i][0]) ans++;\r\n            }\r\n        }\r\n        return ans;\r\n    }\r\n};\r\n\r\n```"
+}

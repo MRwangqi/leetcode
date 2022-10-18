@@ -1,0 +1,6 @@
+{
+	"titleSlug": "flower-planting-with-no-adjacent",
+	"slug": "cyan-se-biao-ji-by-liu-xiang-3-pivx",
+	"url": "https://leetcode-cn.com/problems/flower-planting-with-no-adjacent/solution/cyan-se-biao-ji-by-liu-xiang-3-pivx/",
+	"content": "思路：\r\n1. 题目说明所有花园最多右3条路径进入或离开, 说明每个顶点最多右3个相邻顶点;\r\n2. 建立邻接表, 记录相邻边都占了哪些颜色, 选择一个没用过的颜色进行标记即可;\r\n```\r\nclass Solution {\r\npublic:\r\n    vector<int> gardenNoAdj(int n, vector<vector<int>>& paths) {\r\n        vector<vector<int>> graph(n);\r\n        for (auto &path : paths) { /* 建立邻接表 */\r\n            graph[path[0] - 1].push_back(path[1] - 1);\r\n            graph[path[1] - 1].push_back(path[0] - 1);\r\n        }\r\n\r\n        vector<int> ans(n);\r\n        for (int i = 0; i < n; i++) {\r\n            int color[5] = {0};\r\n            for (auto &v : graph[i]) { /* 记录相邻边都占了哪些颜色 */\r\n                color[ans[v]] = 1;\r\n            }\r\n            for (int c = 1; c <= 4; c++) { \r\n                if (color[c] == 0) { /* 选择没有选过的颜色 */\r\n                    ans[i] = c;\r\n                    break;\r\n                }\r\n            }\r\n        }\r\n        return ans;\r\n    }\r\n};\r\n```\r\n"
+}

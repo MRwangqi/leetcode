@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximum-value-at-a-given-index-in-a-bounded-array",
+	"slug": "by-pandaoknight-4ttl",
+	"url": "https://leetcode-cn.com/problems/maximum-value-at-a-given-index-in-a-bounded-array/solution/by-pandaoknight-4ttl/",
+	"content": "### 解法一：\n核心算子：\n`return sort.Search(maxSum+1, func(i int) bool {return sum(i) > maxSum}) - 1`\n注意：如果你不想写n==1的特解，那么这里要用`maxSum+1`\n\n面积计算，我挣扎了很久，写出了一个还算能看的4行工整的代码：\n```\narea += (max*2-1-l)*l/2\narea += (max*2+1-r)*r/2\narea += index-minInt(index, l)\narea += n-index-minInt(n-index, r)\n```\n\n### 代码\n\n```golang\nfunc maxValue(n int, index int, maxSum int) int {\n    var sum = func(max int) int {\n        var area int\n        l, r := minInt(index, max-1), minInt(n-index, max)\n        area += (max*2-1-l)*l/2\n        area += (max*2+1-r)*r/2\n        area += index-minInt(index, l)\n        area += n-index-minInt(n-index, r)\n        return area\n    }\n    return sort.Search(maxSum+1, func(i int) bool {return sum(i) > maxSum}) - 1\n}\n\nfunc minInt(a, b int) int {\n    if a < b {\n        return a\n    }\n    return b\n}\n```"
+}

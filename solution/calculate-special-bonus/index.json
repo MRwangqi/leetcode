@@ -1,0 +1,6 @@
+{
+	"titleSlug": "calculate-special-bonus",
+	"slug": "by-youthful-6aussnpr-r3i8",
+	"url": "https://leetcode-cn.com/problems/calculate-special-bonus/solution/by-youthful-6aussnpr-r3i8/",
+	"content": "# 常规解法（足矣）：LIKE +%取余 \n补充   <>和!=是一个意思\n```sql\nSELECT employee_id,\n(CASE WHEN MOD(employee_id,2)!=0 AND LEFT(name,1)!='M' THEN salary\n     WHEN MOD(employee_id,2)=0 OR LEFT(name,1)='M' THEN 0\nEND) bonus\nFROM Employees\nORDER BY employee_id\n```\n# IF判断 + MOD取余\n# IF第一个参数写条件，第二个参数写条件成立返回的内容，第三个参数写条件不成立返回的内容 \n# Mod(a,b) 在sql中的意思是 a / b 的余数 # 基础用法：如果id需要是偶数或者奇数时就可以使用mod。 \n# mod(id,2)=1 是指id是奇数。 \n# mod(id,2)=0 是指id是偶数。\n\n```sql\nSELECT \n    employee_id,\nIF(MOD(employee_id,2)!=0 AND LEFT(name,1)!='M',salary,0) bonus\nFROM Employees\nORDER BY employee_id\n```\n\n# CASE配合WHEN,THEN判断，LEFT和’=‘判断，MOD取余\n# CASE配合WHEN,THEN使用，WHEN后接条件，THEN后接符合条件返回的内容 ，有多个条件时使用 \n# 需要用ELSE返回以上条件都不成立时返回的内容，最后以END`结尾\n\n```sql\nSELECT \n    employee_id,\n    CASE \n        WHEN MOD(employee_id,2)!=0 AND LEFT(name,1)!='M' THEN salary\n        WHEN MOD(employee_id,2)=0 OR LEFT(name,1)='M' THEN 0\n        ELSE 0 -- 这里ELSE可以省略\n    END AS bonus\nFROM Employees\nORDER BY employee_id\n```\n"
+}

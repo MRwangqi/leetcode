@@ -1,0 +1,6 @@
+{
+	"titleSlug": "peaks-and-valleys-lcci",
+	"slug": "by-ni-hao-us-nm59",
+	"url": "https://leetcode-cn.com/problems/peaks-and-valleys-lcci/solution/by-ni-hao-us-nm59/",
+	"content": "### 解题思路\n根据题目奇偶谷峰的问题，只有连续三个递增 or 连续三个递减需要进行交换\n\n### 代码\n\n```php\nclass Solution {\n\n    /**\n     * @param Integer[] $nums\n     * @return NULL\n     */\n    function wiggleSort(&$nums) {\n        $len = count($nums);\n        for($i = 1; $i < $len; $i++){\n            if($i % 2 == 0){\n                if($nums[$i] > $nums[$i-1]){\n                    $this->swap($nums,$i,$i-1);\n                }\n            }else{\n                if($nums[$i] < $nums[$i-1]){\n                    $this->swap($nums,$i,$i-1);\n                }\n            }\n        }\n    }\n    function swap(&$nums, $i, $j){\n        $nums[$i] = $nums[$j] - $nums[$i];\n        $nums[$j] = $nums[$j] - $nums[$i];\n        $nums[$i] = $nums[$i] + $nums[$j];\n    }\n}\n```"
+}

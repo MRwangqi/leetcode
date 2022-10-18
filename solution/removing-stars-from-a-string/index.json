@@ -1,0 +1,6 @@
+{
+	"titleSlug": "removing-stars-from-a-string",
+	"slug": "shui-neng-gen-ju-xia-mian-di-gui-gai-che-t4p6",
+	"url": "https://leetcode-cn.com/problems/removing-stars-from-a-string/solution/shui-neng-gen-ju-xia-mian-di-gui-gai-che-t4p6/",
+	"content": "```javascript\n// 下面dfs代码已经通过了 没有超时\n/**\n * @param {string} s\n * @return {string}\n\"abb*cdfg*****x*\"\n\"leet**cod*e\"\n\"erase*****\"\n */\nvar removeStars = function(s) {\n  let res = []\n  let dfs = (ix) => {\n    if (ix >= s.length) {\n      return;\n    }\n    if (s[ix] !== '*') {\n      res.push(s[ix])\n    } else {\n      res.pop()\n    }\n    dfs(ix + 1)\n  }\n  dfs(0);\n  return res.join('');\n};\n```\n"
+}

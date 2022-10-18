@@ -1,0 +1,6 @@
+{
+	"titleSlug": "recyclable-and-low-fat-products",
+	"slug": "by-clever-austinzya-0rnp",
+	"url": "https://leetcode-cn.com/problems/recyclable-and-low-fat-products/solution/by-clever-austinzya-0rnp/",
+	"content": "### 解题思路\n谢谢力扣出这种简单题给我们增加信心\n\n### 代码\n\n```mysql\n# Write your MySQL query statement below\nselect t.product_id from Products t where t.low_fats = 'Y' and t.recyclable = 'Y';\n```"
+}

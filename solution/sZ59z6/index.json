@@ -1,0 +1,6 @@
+{
+	"titleSlug": "sZ59z6",
+	"slug": "by-masx200-vlma",
+	"url": "https://leetcode-cn.com/problems/sZ59z6/solution/by-masx200-vlma/",
+	"content": "### 解题思路\n哈希表+广度优先搜索\n\n### 代码\n\n```typescript\n/**\n * Definition for a binary tree node.\n * class TreeNode {\n *     val: number\n *     left: TreeNode | null\n *     right: TreeNode | null\n *     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {\n *         this.val = (val===undefined ? 0 : val)\n *         this.left = (left===undefined ? null : left)\n *         this.right = (right===undefined ? null : right)\n *     }\n * }\n */\n\nfunction numColor(root: TreeNode | null): number {\n    if(!root)return 0\nconst set=new Set<number>()\n\n\nconst q=[root]\n\nfor(const node of q){\n\n\n    set.add(node.val)\n\n;\n[node.left,node.right].filter(Boolean).forEach(n=>q.push(n))\n\n\n}\nreturn set.size\n};\n```"
+}

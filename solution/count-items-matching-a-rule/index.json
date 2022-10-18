@@ -1,0 +1,6 @@
+{
+	"titleSlug": "count-items-matching-a-rule",
+	"slug": "by-angy-x-e9t1",
+	"url": "https://leetcode-cn.com/problems/count-items-matching-a-rule/solution/by-angy-x-e9t1/",
+	"content": "```\r\nclass Solution\r\n{\r\npublic:\r\n    int countMatches(vector<vector<string>>& items, string ruleKey, string ruleValue) \r\n    {\r\n        int size;\r\n        int num = 0;\r\n        size = items.size();\r\n        if(ruleKey == \"type\")\r\n        {\r\n            for(int i = 0; i < size; i ++)\r\n            {\r\n                if(items[i][0] == ruleValue)\r\n                {\r\n                    num ++;\r\n                }\r\n            }\r\n        }\r\n        else if(ruleKey == \"color\")\r\n        {\r\n            for(int i = 0; i < size; i ++)\r\n            {\r\n                if(items[i][1] == ruleValue)\r\n                {\r\n                    num ++;\r\n                }\r\n            }\r\n        }\r\n        else\r\n        {\r\n             for(int i = 0; i < size; i ++)\r\n            {\r\n                if(items[i][2] == ruleValue)\r\n                {\r\n                    num ++;\r\n                }\r\n            }\r\n        }\r\n        return num;\r\n    }\r\n};\r\n```\r\n\r\n![image.png](https://pic.leetcode-cn.com/1665057729-FFnzAe-image.png)\r\n"
+}

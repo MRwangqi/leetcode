@@ -1,0 +1,6 @@
+{
+	"titleSlug": "minimum-consecutive-cards-to-pick-up",
+	"slug": "by-nehzil-0xks",
+	"url": "https://leetcode-cn.com/problems/minimum-consecutive-cards-to-pick-up/solution/by-nehzil-0xks/",
+	"content": "**思路分析：**\n其实本题的意思就是在数组中找到两个数字相同且他们之间的距离最小值是多少，因为本题既要找到两个相等的数又要记录其出现的位置，因此这是一种映射关系就会想到用 map 容器的一对键值存储 数组元素的值和位置 ，即可解决本题。\n\n**具体实现步骤：**\n- 定义 map 容器用于存储  《值，位置》；\n- map 存数值 cards[i] 出现的最近一次下标,如果已存就更新答案，然后更新 map 存的下标；\n- 返回结果 `result == INT_MAX ? -1 : result;`。\n\n**具体代码如下：**\n```C++ []\nclass Solution {\npublic:\n    int minimumCardPickup(vector<int>& cards) {\n        /* map存数值cards[i]出现的最近一次下标 */\n        unordered_map<int,int> map;\n        int result = INT_MAX;\n        for(int i = 0; i < cards.size(); i++){\n            if(map.count(cards[i]))\n                result = min(result,i - map[cards[i]] + 1);\n            map[cards[i]] = i;\n        }\n\t\treturn result == INT_MAX ? -1 : result;\n    }\n};\n```\n\n**复杂度分析：**\n- 时间复杂度：$O(n)$，$n$ 是数组 $cards$ 的长度；\n- 空间复杂度：$O(n)$。"
+}

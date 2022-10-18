@@ -1,0 +1,6 @@
+{
+	"titleSlug": "oPs9Bm",
+	"slug": "dp-by-jsjohnsonjs-dwhi",
+	"url": "https://leetcode-cn.com/problems/oPs9Bm/solution/dp-by-jsjohnsonjs-dwhi/",
+	"content": "### 解题思路\nDP，dp，转换为经典的背包问题\n\n### 代码\n\n```golang\nfunc securityCheck(capacities []int, k int) int {\n    MOD := int(1e9 + 7)\n    N := len(capacities)\n    dp := make([]int, k + 1)\n    dp[0] = 1\n    for i := 0; i < N; i++ {\n        c := capacities[i] - 1\n        for j := k; j >= c; j-- {\n            dp[j] += dp[j - c]\n            dp[j] %= MOD\n        }\n    }\n    return dp[k]\n}\n```"
+}

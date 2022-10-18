@@ -1,0 +1,6 @@
+{
+	"titleSlug": "find-total-time-spent-by-each-employee",
+	"slug": "by-feyl-phnv",
+	"url": "https://leetcode-cn.com/problems/find-total-time-spent-by-each-employee/solution/by-feyl-phnv/",
+	"content": "```sql\r\nSELECT\r\n    event_day day, emp_id, SUM(out_time - in_time) total_time\r\nFROM\r\n    Employees\r\nGROUP BY\r\n    event_day, emp_id;\r\n```\r\n\r\n![image.png](https://pic.leetcode-cn.com/1663296796-ZXnKwj-image.png)\r\n"
+}

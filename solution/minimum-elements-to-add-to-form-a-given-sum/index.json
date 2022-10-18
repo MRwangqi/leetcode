@@ -1,0 +1,6 @@
+{
+	"titleSlug": "minimum-elements-to-add-to-form-a-given-sum",
+	"slug": "1785-gou-cheng-te-ding-he-xu-yao-tian-ji-euvc",
+	"url": "https://leetcode-cn.com/problems/minimum-elements-to-add-to-form-a-given-sum/solution/1785-gou-cheng-te-ding-he-xu-yao-tian-ji-euvc/",
+	"content": "### 解题思路\n\n注意long。\n\n### 代码\n\n```java\nclass Solution {\n\tpublic int minElements(int[] nums, int limit, int goal) {\n\t\tlong sum = 0;\n\t\tfor (int i = 0; i < nums.length; i++) {\n\t\t\tsum += nums[i];\n\t\t}\n\t\tlong diff = Math.abs(goal - sum);\n\t\treturn (int) ((diff + limit - 1) / limit);\n\t}\n\n}\n```"
+}

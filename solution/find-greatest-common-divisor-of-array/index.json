@@ -1,0 +1,6 @@
+{
+	"titleSlug": "find-greatest-common-divisor-of-array",
+	"slug": "1979-zhao-chu-shu-zu-de-zui-da-gong-yue-h7o71",
+	"url": "https://leetcode-cn.com/problems/find-greatest-common-divisor-of-array/solution/1979-zhao-chu-shu-zu-de-zui-da-gong-yue-h7o71/",
+	"content": "### 解题思路\n1、排序后，对最小最大值求最大公约数。\n\n### 执行结果\n![捕获.PNG](https://pic.leetcode-cn.com/1665732829-LRJOGM-%E6%8D%95%E8%8E%B7.PNG)\n\n### 代码\n\n```cpp\nclass Solution {\npublic:\n    int findGCD(vector<int>& nums) {\n        // 从小到大排序数组\n\t\tsort(nums.begin(), nums.end());\n\t\t// 对最小最大值求最大公约数\n\t\treturn calGCD(nums[0], nums[nums.size() - 1]);\n    }\n\n    int calGCD(int a, int b) {\n\t\t// 相减法求最大公约数\n\t\twhile ((a - b) != 0)\n\t\t{\n\t\t\tif (a > b) \n\t\t\t{\n\t\t\t\ta = a - b;\n\t\t\t}\n\t\t\telse \n\t\t\t{\n\t\t\t\tb = b - a;\n\t\t\t}\t\n\t\t}\n\t\treturn a;\n\t}\n};\n```"
+}

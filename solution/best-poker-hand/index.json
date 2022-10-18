@@ -1,0 +1,6 @@
+{
+	"titleSlug": "best-poker-hand",
+	"slug": "c-by-talanto_linyi-wyhx",
+	"url": "https://leetcode-cn.com/problems/best-poker-hand/solution/c-by-talanto_linyi-wyhx/",
+	"content": "```\nclass Solution {\npublic:\n    string bestHand(vector<int>& ranks, vector<char>& suits) {\n        bool flagFlush = true;\n        for (int i = 1; i < 5; ++i) {\n            if (suits[i] != suits[0]) {\n                flagFlush = false;\n                break;\n            }\n        }\n        if (flagFlush) return \"Flush\";\n        bool flagThree = false, flagPair = false;\n        vector<int> cnts(14, 0);\n        for (int i = 0; i < ranks.size(); ++i) {\n            if (++cnts[ranks[i]] == 2) flagPair = true;\n            if (cnts[ranks[i]] == 3) {\n                flagThree = true;\n                return \"Three of a Kind\";\n            } \n        }\n        if (flagPair) return \"Pair\";\n        return \"High Card\"; \n    }\n};\n```\n"
+}

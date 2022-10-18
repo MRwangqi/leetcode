@@ -1,0 +1,6 @@
+{
+	"titleSlug": "second-largest-digit-in-a-string",
+	"slug": "1796-zi-fu-chuan-zhong-di-er-da-de-shu-z-rrk6",
+	"url": "https://leetcode-cn.com/problems/second-largest-digit-in-a-string/solution/1796-zi-fu-chuan-zhong-di-er-da-de-shu-z-rrk6/",
+	"content": "### 解题思路\n1、遍历字符串并比较。\n\n### 执行结果\n![捕获.PNG](https://pic.leetcode-cn.com/1665712916-LZxayQ-%E6%8D%95%E8%8E%B7.PNG)\n\n### 代码\n\n```cpp\nclass Solution {\npublic:\n    int secondHighest(string s) {\n\t\t// 第1大数字\n        int val1st = -1;\n\t\t// 第2大数字\n\t\tint val2nd = -1;\n\t\tint len = s.length();\n\t\t// 遍历字符串\n\t\tfor (int i = 0; i < len; i++)\n\t\t{\n\t\t\tchar c = s[i];\n\t\t\t// 是否是数字\n\t\t\tif (c >= '0' && c <= '9')\n\t\t\t{\n\t\t\t\t// 字符转整数\n\t\t\t\tint valCurrent = c - '0';\n\t\t\t\tif (valCurrent > val1st)\n\t\t\t\t{\n\t\t\t\t\t// 更新第1、第2大数字\n\t\t\t\t\tval2nd = val1st;\n\t\t\t\t\tval1st = valCurrent;\n\t\t\t\t}\n\t\t\t\telse if (valCurrent < val1st && valCurrent > val2nd)\n\t\t\t\t{\n\t\t\t\t\t// // 更新第2大数字\n\t\t\t\t\tval2nd = valCurrent;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\treturn val2nd;\n    }\n};\n```"
+}

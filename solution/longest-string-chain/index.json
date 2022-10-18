@@ -1,0 +1,6 @@
+{
+	"titleSlug": "longest-string-chain",
+	"slug": "by-ming-sheng-2-qbaz",
+	"url": "https://leetcode-cn.com/problems/longest-string-chain/solution/by-ming-sheng-2-qbaz/",
+	"content": "### 解题思路\n此处撰写解题思路\n\n### 代码\n\n```javascript\n/**\n * @param {string[]} words\n * @return {number}\n */\nvar longestStrChain = function(words) {\n    words.sort((a,b) => a.length - b.length)\n\n    const map = new Map()\n    let max = 0\n    for(const word of words){\n        let cnt = 1\n        for(let i = 0; i < word.length; i++){\n            const x = word.substring(0,i) + word.substring(i + 1)\n            if(map.has(x)){\n                cnt = Math.max(map.get(x) + 1,cnt)\n            }\n        }\n        map.set(word,cnt)\n        max = Math.max(max,cnt)\n    }\n    return max\n};\n```"
+}

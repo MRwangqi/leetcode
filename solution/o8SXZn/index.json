@@ -1,0 +1,6 @@
+{
+	"titleSlug": "o8SXZn",
+	"slug": "by-lin-b7-t2du",
+	"url": "https://leetcode-cn.com/problems/o8SXZn/solution/by-lin-b7-t2du/",
+	"content": "假设只蓄水i次，计算水桶需要升级的次数；\r\n然后，遍历获得最小值即可。\r\n\r\n\r\n```\r\nclass Solution {\r\npublic:\r\n    int storeWater(vector<int>& bucket, vector<int>& vat) {\r\n        //蓄水次数范围\r\n        int min_pool=1;\r\n        int max_pool=*max_element(vat.begin(),vat.end());\r\n        //判断不需要蓄水\r\n        if(max_pool==0)\r\n            return 0;\r\n        //总次数  最多10001\r\n        int res=1e6;\r\n        //i表示蓄水i次\r\n        for(int i=min_pool;i<=max_pool;i++){\r\n            //只蓄水i次，需要升级水桶的次数cnt\r\n            int cnt=0;\r\n            for(int j=0;j<bucket.size();j++){\r\n                int cnt1=0;\r\n                //不能整除，需要多升级一次\r\n                if(vat[j]%i==0)\r\n                    cnt1+=vat[j]/i-bucket[j];\r\n                else\r\n                    cnt1+=vat[j]/i+1-bucket[j];\r\n                if(cnt1>0)\r\n                    cnt+=cnt1;\r\n            }\r\n            if(res>i+cnt){\r\n                res=cnt+i;\r\n            }\r\n        }\r\n        return res;\r\n\r\n    }\r\n};\r\n```\r\n"
+}

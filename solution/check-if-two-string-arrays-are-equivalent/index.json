@@ -1,0 +1,6 @@
+{
+	"titleSlug": "check-if-two-string-arrays-are-equivalent",
+	"slug": "dai-ma-jian-ji-yi-chong-huan-bu-cuo-de-j-3uzr",
+	"url": "https://leetcode-cn.com/problems/check-if-two-string-arrays-are-equivalent/solution/dai-ma-jian-ji-yi-chong-huan-bu-cuo-de-j-3uzr/",
+	"content": "\n[详细刷题视频合集](https://xiaochen1024.com/series/6196129fc1553b002e57bef5/6196208ec1553b002e57bef6)      \n      [刷题笔记](https://xiaochen1024.com/courseware/60b4f11ab1aa91002eb53b18)\n```\nvar arrayStringsAreEqual = function(word1, word2) {\n    let w1 = word1.reduce((pre, cur)=>pre+cur);\n    let w2 = word2.reduce((pre,cur)=>pre+cur);\n    // 用正则匹配\n    let reg = new RegExp('^'+w1+'$', 'g');\n    return reg.test(w2);\n};\n\n```\n"
+}

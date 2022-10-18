@@ -1,0 +1,6 @@
+{
+	"titleSlug": "sparse-array-search-lcci",
+	"slug": "dai-ma-jian-ji-yi-chong-huan-bu-cuo-de-j-adaa",
+	"url": "https://leetcode-cn.com/problems/sparse-array-search-lcci/solution/dai-ma-jian-ji-yi-chong-huan-bu-cuo-de-j-adaa/",
+	"content": "\n[详细刷题视频合集](https://xiaochen1024.com/series/6196129fc1553b002e57bef5/6196208ec1553b002e57bef6)      \n      [刷题笔记](https://xiaochen1024.com/courseware/60b4f11ab1aa91002eb53b18)\n二分搜索 不过添加了一点就是中间数的非空判断 如果为空值 则把中间值往右侧移动(也可以往左侧移动， 本题按照右侧移动的思路编写)\n如果右侧移动全部为空 说明中间值右侧全部为空值 则说明有值的字段存在于0 --> 中间值-1的位置 (左侧移动同理，判断相反) 然后再次判断中间数 依次循环\n\n```\nvar findString = function(words, s) {\n    if (!words.length) return -1\n    let low = 0, hight = words.length - 1\n    while(low <= hight) {\n        let mid = Math.floor((low + hight) / 2)\n        let cacheMid = mid\n        let guess = words[mid]\n        while(guess === '' && mid <= hight) {\n            mid++\n            guess = words[mid]\n        }\n        if (mid > hight) {\n            hight = cacheMid - 1\n            continue\n        }\n        if (guess === s) {\n            return mid\n        } else if (guess > s) {\n            hight = cacheMid - 1\n        } else {\n            low = mid + 1\n        }\n    }\n    return -1\n};\n\n```\n"
+}

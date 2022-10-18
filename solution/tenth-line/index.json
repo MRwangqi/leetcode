@@ -1,0 +1,6 @@
+{
+	"titleSlug": "tenth-line",
+	"slug": "tail-head-by-milkha-x8w9",
+	"url": "https://leetcode-cn.com/problems/tenth-line/solution/tail-head-by-milkha-x8w9/",
+	"content": "```shell\r\ntail -n +10 file.txt | head -1\r\n```\r\n注意：`tail -n +10`  与 `tail -n 10` 不一样，`-n +10` 表示从第 10 行开始显示，**若文件不足 10 行则什么也不会输出**；`-n 10` 表示显示最后的 10 行。"
+}

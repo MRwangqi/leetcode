@@ -1,0 +1,6 @@
+{
+	"titleSlug": "decrease-elements-to-make-array-zigzag",
+	"slug": "fen-qing-kuang-tao-lun-python3-by-smoon1989",
+	"url": "https://leetcode-cn.com/problems/decrease-elements-to-make-array-zigzag/solution/fen-qing-kuang-tao-lun-python3-by-smoon1989/",
+	"content": "**思路：**\r\n\r\n根据题意，我们遍历数组，分两种情况讨论，要么将奇数位置的元素减少到刚好比相邻的偶数位置元素小，要么将偶数位置的元素减少到刚好比相邻的奇数位置元素小。返回两种情况操作较少的作为答案。\r\n\r\n**图解：**\r\n\r\n![图解](https://pic.leetcode-cn.com/8342247fa98f3b1ced587dfb352d3ecc80c52b708c1310e61b7c33bf7361eed2.png)\r\n\r\n以输入样例 `[9, 6, 1, 6, 2]` 为例，检查奇数位置，可以将第一个元素 `9` 减小到 `5`，如果检查偶数位置，则需要将两个 `6` 减小到 `0`。\r\n\r\n\r\n**代码：**\r\n```python\r\nclass Solution:\r\n    def movesToMakeZigzag(self, nums: List[int]) -> int:\r\n        n = len(nums)\r\n        ans1, ans2 = 0, 0\r\n        for i in range(n):\r\n            # 奇数位置\r\n            if i % 2 == 0:\r\n                d1 = nums[i] - nums[i - 1] + 1 if i > 0 and nums[i] >= nums[i - 1] else 0\r\n                d2 = nums[i] - nums[i + 1] + 1 if i < n - 1 and nums[i] >= nums[i + 1] else 0\r\n                ans1 += max(d1, d2)\r\n            # 偶数位置\r\n            else:\r\n                d1 = nums[i] - nums[i - 1] + 1 if nums[i] >= nums[i - 1] else 0\r\n                d2 = nums[i] - nums[i + 1] + 1 if i < n - 1 and nums[i] >= nums[i + 1] else 0\r\n                ans2 += max(d1, d2)\r\n        return min(ans1, ans2)\r\n```\r\n"
+}

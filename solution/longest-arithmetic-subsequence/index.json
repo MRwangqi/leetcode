@@ -1,0 +1,6 @@
+{
+	"titleSlug": "longest-arithmetic-subsequence",
+	"slug": "by-thdlrt-uw9c",
+	"url": "https://leetcode-cn.com/problems/longest-arithmetic-subsequence/solution/by-thdlrt-uw9c/",
+	"content": "### 解题思路\n为什么二重循环使用升序，而不能像斐波那契一题使用降序呢，因为本体nums无大小顺序，并且存在重复元素，而通过在每次\n循环结束时才插入map，使得循环过程中j，k，都不会预先存在于map中，这样可以有效避免k与i，j重复（多个相同元素也是等差数列），也可以通过二分搜索避免此问题。\n\n### 代码\n\n```cpp\nclass Solution {\npublic:\n    int longestArithSeqLength(vector<int>& nums) {\n        int n = nums.size();\n        unordered_map<int , int> mp;\n        vector<vector<int>> dp(n , vector<int>(n , 0));\n        int ans = 0;\n        for(int j = 0 ; j < n ; j++){  \n            for(int k = j + 1 ; k < n ; k++){//这里\n                int target = 2 * nums[j] - nums[k]; \n                if(mp.count(target)) dp[j][k] = dp[mp[target]][j] + 1; \n                ans = max(ans , dp[j][k]);\n            }\n            mp[nums[j]] = j;\n        }\n\n        return ans + 2;\n    }\n};\n\n```"
+}

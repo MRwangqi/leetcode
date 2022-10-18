@@ -1,0 +1,6 @@
+{
+	"titleSlug": "recursive-mulitply-lcci",
+	"slug": "python-by-si-gu-wo-huan-zai-mba9",
+	"url": "https://leetcode-cn.com/problems/recursive-mulitply-lcci/solution/python-by-si-gu-wo-huan-zai-mba9/",
+	"content": "递归\n\n### 代码\n\n```python3\nclass Solution:\n    def multiply(self, A: int, B: int) -> int:\n        if B == 0:\n            return 0\n        return A + self.multiply(A, B - 1)\n```"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "user-activity-for-the-past-30-days-i",
+	"slug": "by-zui-li-kan-hua-vnxm",
+	"url": "https://leetcode-cn.com/problems/user-activity-for-the-past-30-days-i/solution/by-zui-li-kan-hua-vnxm/",
+	"content": "### 解题思路\n统计非重复user_id\n\n### 代码\n\n```mysql\n# Write your MySQL query statement below\nselect activity_date as day,count(distinct user_id) as active_users\nfrom\n    Activity\nwhere\n    activity_date between '2019-06-28' and '2019-07-27'\ngroup by\n    activity_date;\n```"
+}

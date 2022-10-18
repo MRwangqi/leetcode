@@ -1,0 +1,6 @@
+{
+	"titleSlug": "smallest-number-in-infinite-set",
+	"slug": "ha-xi-biao-mo-ni-by-endlesscheng-qcie",
+	"url": "https://leetcode-cn.com/problems/smallest-number-in-infinite-set/solution/ha-xi-biao-mo-ni-by-endlesscheng-qcie/",
+	"content": "```go\r\ntype SmallestInfiniteSet map[int]bool\r\n\r\nfunc Constructor() SmallestInfiniteSet { return SmallestInfiniteSet{} }\r\n\r\nfunc (s SmallestInfiniteSet) PopSmallest() int {\r\n\tfor i := 1; ; i++ {\r\n\t\tif !s[i] {\r\n\t\t\ts[i] = true\r\n\t\t\treturn i\r\n\t\t}\r\n\t}\r\n}\r\n\r\nfunc (s SmallestInfiniteSet) AddBack(n int) {\r\n\tdelete(s, n)\r\n}\r\n```"
+}

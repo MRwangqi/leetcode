@@ -1,0 +1,6 @@
+{
+	"titleSlug": "department-highest-salary",
+	"slug": "bu-men-gong-zi-zui-gao-de-yuan-gong-by-leetcode",
+	"url": "https://leetcode-cn.com/problems/department-highest-salary/solution/bu-men-gong-zi-zui-gao-de-yuan-gong-by-leetcode/",
+	"content": "#### 方法：使用 `JOIN` 和 `IN` 语句\n\n**算法**\n\n因为 **Employee** 表包含 *Salary* 和 *DepartmentId* 字段，我们可以以此在部门内查询最高工资。\n\n```sql\nSELECT\n    DepartmentId, MAX(Salary)\nFROM\n    Employee\nGROUP BY DepartmentId;\n```\n>注意：有可能有多个员工同时拥有最高工资，所以最好在这个查询中不包含雇员名字的信息。\n\n```\n| DepartmentId | MAX(Salary) |\n|--------------|-------------|\n| 1            | 90000       |\n| 2            | 80000       |\n```\n\n然后，我们可以把表 **Employee** 和 **Department** 连接，再在这张临时表里用 `IN` 语句查询部门名字和工资的关系。\n\n**MySQL**\n\n```sql\nSELECT\n    Department.name AS 'Department',\n    Employee.name AS 'Employee',\n    Salary\nFROM\n    Employee\n        JOIN\n    Department ON Employee.DepartmentId = Department.Id\nWHERE\n    (Employee.DepartmentId , Salary) IN\n    (   SELECT\n            DepartmentId, MAX(Salary)\n        FROM\n            Employee\n        GROUP BY DepartmentId\n\t)\n;\n```\n```\n| Department | Employee | Salary |\n|------------|----------|--------|\n| Sales      | Henry    | 80000  |\n| IT         | Max      | 90000  |\n```"
+}

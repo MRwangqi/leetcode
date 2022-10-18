@@ -1,0 +1,6 @@
+{
+	"titleSlug": "sum-of-absolute-differences-in-a-sorted-array",
+	"slug": "by-lester-salvatore-q1bu",
+	"url": "https://leetcode-cn.com/problems/sum-of-absolute-differences-in-a-sorted-array/solution/by-lester-salvatore-q1bu/",
+	"content": "### 解题思路\n数学方法写出result数组第i个数和第i+1个数(i>0)，然后换元得出result[i+1]关于result[i]的关系式。result[0]=nums[0]+...+nums[n-1]-n*nums[0]\n\n### 代码\n\n```c\n/**\n * Note: The returned array must be malloced, assume caller calls free().\n */\nint *getSumAbsoluteDifferences(int *nums, int numsSize, int *returnSize)\n{\n    int *result = (int *)malloc(sizeof(int) * numsSize);\n    *returnSize = numsSize;\n    for (int i = 0; i < numsSize; i++)\n    {\n        result[i] = 0;\n        result[0] += nums[i];\n    }\n    result[0]=result[0]- numsSize * nums[0];\n    for (int j = 1; j < numsSize; j++)\n        result[j] = (2 * j - numsSize) * (nums[j] - nums[j - 1]) + result[j - 1];\n    return result;\n}\n```"
+}

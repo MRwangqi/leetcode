@@ -1,0 +1,6 @@
+{
+	"titleSlug": "customer-who-visited-but-did-not-make-any-transactions",
+	"slug": "by-clever-austinzya-57r0",
+	"url": "https://leetcode-cn.com/problems/customer-who-visited-but-did-not-make-any-transactions/solution/by-clever-austinzya-57r0/",
+	"content": "### 解题思路\n先查询进店，再查询未消费\n\n### 代码\n\n```mysql\n# Write your MySQL query statement below\nselect a.customer_id, count(1) count_no_trans \n    from Visits a\n    where a.visit_id not in (select b.visit_id from Transactions b)\n    group by a.customer_id\n```"
+}

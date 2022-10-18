@@ -1,0 +1,6 @@
+{
+	"titleSlug": "search-rotate-array-lcci",
+	"slug": "by-jie-ke-xian-sheng-u-lcz4",
+	"url": "https://leetcode-cn.com/problems/search-rotate-array-lcci/solution/by-jie-ke-xian-sheng-u-lcz4/",
+	"content": "### 解题思路\n仔细想想，其实旋转很多次和旋转一次是一样的，不信你自己模拟一下。需要考虑一个边界情况，首尾元素可能相同，相同直接删掉末尾元素直到不同为止\n\n### 代码\n\n```cpp\nclass Solution {\npublic:\n    int search(vector<int>& arr, int target) {\n        int l = 0, r = arr.size() - 1;\n        while (r > 1 && arr[0] == arr[r]) r--;\n        while (l < r) {\n            int mid = l + r + 1 >> 1;\n            if (arr[mid] >= arr[0]) l = mid;\n            else r = mid - 1;\n        }\n        if (target >= arr[0]) l = 0;\n        else l = r + 1, r = arr.size() - 1;\n        while (l < r) {\n            int mid = l + r >> 1;\n            if (arr[mid] >= target) r = mid;\n            else l = mid + 1;\n        }\n\n        return arr[r] == target ? r : -1;\n    }\n};\n```"
+}

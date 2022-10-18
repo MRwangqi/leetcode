@@ -1,0 +1,6 @@
+{
+	"titleSlug": "number-of-times-binary-string-is-prefix-aligned",
+	"slug": "by-li-ming-6u-jktd",
+	"url": "https://leetcode-cn.com/problems/number-of-times-binary-string-is-prefix-aligned/solution/by-li-ming-6u-jktd/",
+	"content": "\n\n```cpp\nclass Solution {\npublic:\n    int numTimesAllBlue(vector<int>& flips) {\n        int n=flips.size();\n        int maxx=-1,res=0;\n        for(int i=0;i<n;++i){\n            maxx=max(maxx,flips[i]);\n            if(maxx==i+1){\n                ++res;\n            }\n        }\n        return res;\n    }\n};\n```"
+}

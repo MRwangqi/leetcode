@@ -1,0 +1,6 @@
+{
+	"titleSlug": "replace-elements-with-greatest-element-on-right-side",
+	"slug": "jiang-mei-ge-yuan-su-ti-huan-wei-you-ce-zui-da-y-5",
+	"url": "https://leetcode-cn.com/problems/replace-elements-with-greatest-element-on-right-side/solution/jiang-mei-ge-yuan-su-ti-huan-wei-you-ce-zui-da-y-5/",
+	"content": "#### 方法一：逆序遍历\n\n本题等价于对于数组 `arr` 中的每个元素 `arr[i]`，将其替换成 `arr[i + 1], arr[i + 2], ..., arr[n - 1]` 中的最大值。因此我们可以逆序地遍历整个数组，同时维护从数组右端到当前位置所有元素的最大值。\n\n设 `ans[i] = max(arr[i + 1], arr[i + 2], ..., arr[n - 1])`，那么在进行逆序遍历时，我们可以直接通过\n\n```\nans[i] = max(ans[i + 1], arr[i + 1])\n```\n\n来递推地得到答案。\n\n```C++ [sol1-C++]\nclass Solution {\npublic:\n    vector<int> replaceElements(vector<int>& arr) {\n        int n = arr.size();\n        vector<int> ans(n);\n        ans[n - 1] = -1;\n        for (int i = n - 2; i >= 0; --i) {\n            ans[i] = max(ans[i + 1], arr[i + 1]);\n        }\n        return ans;\n    }\n};\n```\n\n```Python [sol1-Python3]\nclass Solution:\n    def replaceElements(self, arr: List[int]) -> List[int]:\n        n = len(arr)\n        ans = [0] * (n - 1) + [-1]\n        for i in range(n - 2, -1, -1):\n            ans[i] = max(ans[i + 1], arr[i + 1])\n        return ans\n```\n\n**复杂度分析**\n\n- 时间复杂度：$O(N)$，其中 $N$ 是数组 `arr` 的长度。\n\n- 空间复杂度：$O(1)$，除了存储答案的数组 `ans` 之外，额外的空间复杂度是 $O(1)$。"
+}

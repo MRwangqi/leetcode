@@ -1,0 +1,6 @@
+{
+	"titleSlug": "sum-of-digits-in-base-k",
+	"slug": "k-jin-zhi-biao-shi-xia-de-ge-wei-shu-zi-4ltwc",
+	"url": "https://leetcode-cn.com/problems/sum-of-digits-in-base-k/solution/k-jin-zhi-biao-shi-xia-de-ge-wei-shu-zi-4ltwc/",
+	"content": "#### 方法一：模拟\n\n**提示 $1$**\n\n模拟进制转换的过程。\n\n**提示 $2$**\n\n事实上，我们并不需要显式求出进制转换后的结果。\n\n**思路与算法**\n\n在将 $10$ 进制的数转换为 $k$ 进制的过程中，我们只需要用 $\\textit{res}$ 维护各位数字之和即可。\n\n**代码**\n\n```C++ [sol1-C++]\nclass Solution {\npublic:\n    int sumBase(int n, int k) {\n        int res = 0;\n        while (n){\n            res += n % k;\n            n /= k;\n        }\n        return res;\n    }\n};\n```\n\n```Python [sol1-Python3]\nclass Solution:\n    def sumBase(self, n: int, k: int) -> int:\n        res = 0\n        while n:\n            res += n % k\n            n //= k\n        return res\n```\n\n**复杂度分析**\n\n- 时间复杂度：$O(\\log n)$，循环的次数与 $n$ 在 $k$ 进制下的位数相同。\n\n- 空间复杂度：$O(1)$。"
+}

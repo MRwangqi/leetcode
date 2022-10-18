@@ -1,0 +1,6 @@
+{
+	"titleSlug": "number-of-valid-clock-times",
+	"slug": "by-ting-ting-28-o4xp",
+	"url": "https://leetcode-cn.com/problems/number-of-valid-clock-times/solution/by-ting-ting-28-o4xp/",
+	"content": "```python3 []\r\nclass Solution:\r\n    def countTime(self, time: str) -> int:\r\n        return sum(all(a == b or a == \"?\" for a, b in zip(time, (\"0\"+str(i))[-2:]+\":\"+(\"0\"+str(j))[-2:])) for i in range(24) for j in range(60))\r\n```"
+}

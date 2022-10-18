@@ -1,0 +1,6 @@
+{
+	"titleSlug": "check-distances-between-same-letters",
+	"slug": "python3-by-he-dou-bi-bi-gcm4",
+	"url": "https://leetcode-cn.com/problems/check-distances-between-same-letters/solution/python3-by-he-dou-bi-bi-gcm4/",
+	"content": "```\nclass Solution:\n    def checkDistances(self, s: str, distance: List[int]) -> bool:\n        dic = defaultdict(int)\n        for i, ch in enumerate(s, 1):\n            if dic[ch] == 0: dic[ch] = i\n            else:\n                if i-dic[ch]-1 != distance[ord(ch)-97]: return False\n        return True\n```\n"
+}

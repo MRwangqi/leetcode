@@ -1,0 +1,6 @@
+{
+	"titleSlug": "minimum-sideway-jumps",
+	"slug": "dp-by-zhouzzz-8tj2",
+	"url": "https://leetcode-cn.com/problems/minimum-sideway-jumps/solution/dp-by-zhouzzz-8tj2/",
+	"content": "### 解题思路\n- $dp[i][j]$表示到达第i处第j跑道的最少跳跃次数\n\n### 代码\n\n```cpp\nclass Solution {\npublic:\n    int minSideJumps(vector<int>& ob) {\n        int n = ob.size();\n        vector<vector<int>> dp(n, vector<int>(3, 0x3f3f3f3f) );\n        dp[0][1] = 0;\n        dp[0][0] = 1;\n        dp[0][2] = 1;\n\n        for(int i=1; i<n; ++i)\n        {\n            if(ob[i] != 1) dp[i][0] = dp[i-1][0];\n            if(ob[i] != 2) dp[i][1] = dp[i-1][1];\n            if(ob[i] != 3) dp[i][2] = dp[i-1][2];\n            if(ob[i] != 1) dp[i][0] = min(dp[i][0], min(dp[i][1], dp[i][2]) + 1);\n            if(ob[i] != 2) dp[i][1] = min(dp[i][1], min(dp[i][0], dp[i][2]) + 1);\n            if(ob[i] != 3) dp[i][2] = min(dp[i][2], min(dp[i][0], dp[i][1]) + 1);\n            \n        }\n        return min(dp[n-1][0], min(dp[n-1][1], dp[n-1][2]));\n    }\n};\n```"
+}

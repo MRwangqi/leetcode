@@ -1,0 +1,6 @@
+{
+	"titleSlug": "minimum-number-of-moves-to-seat-everyone",
+	"slug": "2037-by-leetcode-wei-q331",
+	"url": "https://leetcode-cn.com/problems/minimum-number-of-moves-to-seat-everyone/solution/2037-by-leetcode-wei-q331/",
+	"content": "```\n# python3 思路：座位跟学生列表分别排序然后相同下标作差累加即可。\nclass Solution:\n    def minMovesToSeat(self, seats: List[int], students: List[int]) -> int:\n        nlen = len(seats)\n        seats.sort()\n        students.sort()\n        res = 0\n        for i in range(nlen):\n            res += abs(students[i]-seats[i])\n        return res\n```\n"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree",
+	"slug": "1379zhao-chu-ke-long-er-cha-shu-zhong-de-rtsu",
+	"url": "https://leetcode-cn.com/problems/find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree/solution/1379zhao-chu-ke-long-er-cha-shu-zhong-de-rtsu/",
+	"content": "```python3\n# Definition for a binary tree node.\n# class TreeNode:\n#     def __init__(self, x):\n#         self.val = x\n#         self.left = None\n#         self.right = None\n\n# Python3 字典模拟：先序遍历克隆树存字典\nclass Solution:\n    def getTargetCopy(self, original: TreeNode, cloned: TreeNode, target: TreeNode) -> TreeNode:\n        dic = dict()\n        def preorder(cloned):\n            if not cloned:\n                return\n            dic[cloned.val] = cloned\n            preorder(cloned.left)\n            preorder(cloned.right)\n        preorder(cloned)\n        return dic[target.val]\n        \n        \n```\n"
+}

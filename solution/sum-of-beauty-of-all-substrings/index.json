@@ -1,0 +1,6 @@
+{
+	"titleSlug": "sum-of-beauty-of-all-substrings",
+	"slug": "js-by-cw13087797767-dvwe",
+	"url": "https://leetcode-cn.com/problems/sum-of-beauty-of-all-substrings/solution/js-by-cw13087797767-dvwe/",
+	"content": "### 解题思路\n双重循环，统计字符串出现的个数\n\n\n### 代码\n\n```javascript\n/**\n * @param {string} s\n * @return {number}\n */\nvar beautySum = function (s) {\n    let total = 0\n    for (let i = 0; i < s.length - 1; i++) {\n        const map = new Map()\n        for (let j = i; j < s.length; j++) {\n            map.set(s[j], (map.get(s[j]) || 0) + 1)\n            const arr = Array.from(map.values())\n            total += Math.max(...arr) - Math.min(...arr)\n        }\n    }\n    return total\n};\n```"
+}

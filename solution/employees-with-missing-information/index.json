@@ -1,0 +1,6 @@
+{
+	"titleSlug": "employees-with-missing-information",
+	"slug": "my-by-naruto-gyb-beir",
+	"url": "https://leetcode-cn.com/problems/employees-with-missing-information/solution/my-by-naruto-gyb-beir/",
+	"content": "# 前言\r\nMySQL中没有提供全外连接，但是我们可以利用并集 + 外连接来达到全外连接的效果。下面提供两种实现思路。\r\n# 思路一\r\n我们先将两张表做左外连接，再将两张表做右外连接，然后对左右外连接的结果求并集，并集的结果就是一张全外连接的表\r\n# 代码\r\n```sql\r\nSELECT\r\n\tt.employee_id \r\nFROM\r\n\t(\r\n\tSELECT\r\n\t\te.employee_id,\r\n\t\te.NAME,\r\n\t\ts.salary \r\n\tFROM\r\n\t\temployees e\r\n\t\tLEFT JOIN salaries s ON e.employee_id = s.employee_id \r\n\tUNION\r\n\tSELECT\r\n\t\ts.employee_id,\r\n\t\te.NAME,\r\n\t\ts.salary \r\n\tFROM\r\n\t\temployees e\r\n\t\tRIGHT JOIN salaries s ON e.employee_id = s.employee_id \r\n\t) t \r\nWHERE\r\n\tt.NAME IS NULL \r\n\tOR t.salary IS NULL \r\nORDER BY\r\n\tt.employee_id\r\n```\r\n# 思路二\r\n我们先用union对两张表求并集，得到一张全集表，再用这张全集表和原来的两张表进行左外连接，连接的结果就是一张全外连接的表。\r\n# 代码\r\n```sql\r\nSELECT\r\n\tt.employee_id \r\nFROM\r\n\t( SELECT employee_id FROM employees UNION SELECT employee_id FROM salaries ) t\r\n\tLEFT JOIN employees e ON e.employee_id = t.employee_id\r\n\tLEFT JOIN salaries s ON s.employee_id = t.employee_id \r\nWHERE\r\n\te.NAME IS NULL \r\n\tOR s.salary IS NULL \r\nORDER BY\r\n\tt.employee_id\r\n```\r\n\r\n"
+}

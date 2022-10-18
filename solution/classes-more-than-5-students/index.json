@@ -1,0 +1,6 @@
+{
+	"titleSlug": "classes-more-than-5-students",
+	"slug": "chao-guo-5ming-xue-sheng-de-ke-by-leetcode",
+	"url": "https://leetcode-cn.com/problems/classes-more-than-5-students/solution/chao-guo-5ming-xue-sheng-de-ke-by-leetcode/",
+	"content": "#### 方法一：使用 `GROUP BY` 子句和**子查询**【通过】\n\n**思路**\n\n先统计每门课程的学生数量，再从中选择超过 5 名学生的课程。\n\n**算法**\n\n使用 `GROUP BY` 和 `COUNT` 获得每门课程的学生数量。\n\n```mysql [snippet1-MySQL]\nSELECT\n    class, COUNT(DISTINCT student)\nFROM\n    courses\nGROUP BY class\n;\n```\n\n>注：使用 `DISTINCT` 防止在同一门课中学生被重复计算。\n\n```\n| class    | COUNT(student) |\n|----------|----------------|\n| Biology  | 1              |\n| Computer | 1              |\n| English  | 1              |\n| Math     | 6              |\n```\n\n使用上面查询结果的临时表进行子查询，筛选学生数量超过 5 的课程。\n\n```mysql [solution1-MySQL]\nSELECT\n    class\nFROM\n    (SELECT\n        class, COUNT(DISTINCT student) AS num\n    FROM\n        courses\n    GROUP BY class) AS temp_table\nWHERE\n    num >= 5\n;\n```\n\n>注：`COUNT(student)` 不能直接在 `WHERE` 子句中使用，这里将其重命名为 `num`。\n\n\n#### 方法二：使用 `GROUP BY` 和 `HAVING` 条件【通过】\n\n**算法**\n\n在 `GROUP BY` 子句后使用 [`HAVING`](https://dev.mysql.com/doc/refman/5.7/en/group-by-handling.html) 条件是实现子查询的一种更加简单直接的方法。\n\n**MySQL**\n\n```mysql [solution2-MySQL]\nSELECT\n    class\nFROM\n    courses\nGROUP BY class\nHAVING COUNT(DISTINCT student) >= 5\n;\n```"
+}

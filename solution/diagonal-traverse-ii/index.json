@@ -1,0 +1,6 @@
+{
+	"titleSlug": "diagonal-traverse-ii",
+	"slug": "-by-wa-pian-d-h90t",
+	"url": "https://leetcode-cn.com/problems/diagonal-traverse-ii/solution/-by-wa-pian-d-h90t/",
+	"content": "### 解题思路\n\n暴力10^10 过不去。\n\n用堆，从[0,0]开始像水波一样扩散。第一列优先向下扩散。所有列都需要向右扩散，如果它存在的话。\n\n### 代码\n\n```java\nclass Solution {\n\n\t//\n\tpublic int[] findDiagonalOrder(List<List<Integer>> nums) {\n\t\tint size = 0;\n\t\tfor (int i = 0; i < nums.size(); i++) {\n\t\t\tsize += nums.get(i).size();\n\t\t}\n\t\tint[] ans = new int[size];\n\t\tPriorityQueue<int[]> queue = new PriorityQueue<>((a, b) -> a[0] - b[0]);\n\t\tint index = 0;\n\t\tqueue.add(new int[] { index++, 0, 0 });\n\t\twhile (!queue.isEmpty()) {\n\t\t\tint[] cur = queue.poll();\n\t\t\tans[cur[0]] = nums.get(cur[1]).get(cur[2]);\n\t\t\tif (cur[2] == 0 && cur[1] + 1 < nums.size()) {\n\t\t\t\tqueue.add(new int[] { index++, cur[1] + 1, 0 });\n\t\t\t}\n\t\t\tif (nums.get(cur[1]).size() > cur[2] + 1) {\n\t\t\t\tqueue.add(new int[] { index++, cur[1], cur[2] + 1 });\n\t\t\t}\n\t\t}\n\t\treturn ans;\n\t}\n\n\n}\n```"
+}

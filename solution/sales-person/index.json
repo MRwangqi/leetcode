@@ -1,0 +1,6 @@
+{
+	"titleSlug": "sales-person",
+	"slug": "xiao-shou-yuan-by-leetcode",
+	"url": "https://leetcode-cn.com/problems/sales-person/solution/xiao-shou-yuan-by-leetcode/",
+	"content": "#### 方法：使用 `OUTER JOIN` 和 `NOT IN` [Accepted]\n\n**想法**\n\n如果我们知道向 `RED` 公司销售东西的人，那么我们要知道没有向 `RED` 公司销售东西的人会非常容易。\n\n**算法**\n\n首先，我们用一个临时表保存向 `RED` 公司销售过东西的人，然后利用姓名信息将这个表和 **salesperson** 表建立联系。\n\n```sql []\nSELECT\n    *\nFROM\n    orders o\n        LEFT JOIN\n    company c ON o.com_id = c.com_id\nWHERE\n    c.name = 'RED'\n;\n```\n>注意： \"LEFT OUTER JOIN\" 也可以写作 \"LEFT JOIN\" 。\n\n```\n| order_id | date     | com_id | sales_id | amount | com_id | name | city   |\n|----------|----------|--------|----------|--------|--------|------|--------|\n| 3        | 3/1/2014 | 1      | 1        | 50000  | 1      | RED  | Boston |\n| 4        | 4/1/2014 | 1      | 4        | 25000  | 1      | RED  | Boston |\n```\n\n显然，列 *sales_id* 在 **salesperson** 中，所以我们把它当做子查询并使用 [`NOT IN`](https://dev.mysql.com/doc/refman/5.7/en/any-in-some-subqueries.html) 获得想要的数据。\n\n```sql []\nSELECT\n    s.name\nFROM\n    salesperson s\nWHERE\n    s.sales_id NOT IN (SELECT\n            o.sales_id\n        FROM\n            orders o\n                LEFT JOIN\n            company c ON o.com_id = c.com_id\n        WHERE\n            c.name = 'RED')\n;\n```\n"
+}

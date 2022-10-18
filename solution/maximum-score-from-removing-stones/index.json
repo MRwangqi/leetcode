@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximum-score-from-removing-stones",
+	"slug": "by-jerryluan-w6wh",
+	"url": "https://leetcode-cn.com/problems/maximum-score-from-removing-stones/solution/by-jerryluan-w6wh/",
+	"content": "```\r\nclass Solution:\r\n    def maximumScore(self, a: int, b: int, c: int) -> int:\r\n        h=a+b+c\r\n        x=max(a,b,c)\r\n        if h-x<x:\r\n            return h-x\r\n        else:\r\n            return h>>1\r\n```\r\n"
+}

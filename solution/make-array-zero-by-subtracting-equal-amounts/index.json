@@ -1,0 +1,6 @@
+{
+	"titleSlug": "make-array-zero-by-subtracting-equal-amounts",
+	"slug": "zhuan-huan-cheng-qiu-bu-tong-yuan-su-de-vcnq8",
+	"url": "https://leetcode-cn.com/problems/make-array-zero-by-subtracting-equal-amounts/solution/zhuan-huan-cheng-qiu-bu-tong-yuan-su-de-vcnq8/",
+	"content": "本题 [视频讲解](https://www.bilibili.com/video/BV1Ba411N78j) 已出炉，欢迎点赞三连，在评论区分享你对这场周赛的看法~\r\n\r\n```py [sol1-Python3]\r\nclass Solution:\r\n    def minimumOperations(self, nums: List[int]) -> int:\r\n        return len(set(nums) - {0})\r\n```\r\n\r\n```go [sol1-Go]\r\nfunc minimumOperations(nums []int) int {\r\n\tset := map[int]struct{}{}\r\n\tfor _, x := range nums {\r\n\t\tif x > 0 {\r\n\t\t\tset[x] = struct{}{}\r\n\t\t}\r\n\t}\r\n\treturn len(set)\r\n}\r\n```"
+}

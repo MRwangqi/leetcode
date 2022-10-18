@@ -1,0 +1,6 @@
+{
+	"titleSlug": "2-keys-keyboard",
+	"slug": "c-by-thdlrt-x61i",
+	"url": "https://leetcode-cn.com/problems/2-keys-keyboard/solution/c-by-thdlrt-x61i/",
+	"content": "### 解题思路\n感觉正着不太好想，于是反着做的\n### 代码\n\n```cpp\nclass Solution {\npublic:\n    int minSteps(int n) {\n        vector<vector<int>>dp(n+1,vector<int>(n+1,INT_MAX));\n//现在有i个A，复制的A的数目为jj；\n        if(n==1)\n        return 0;\n        dp[1][1]=1;//复制的操作\n        int j;\n        for(int i=1;i<=n;i++)\n        {\n            if(dp[i][i]==INT_MAX)//重新复制的情况\n            {\n            int mi=INT_MAX;\n            for(auto a:dp[i])\n            mi=min(mi,a);\n            dp[i][i]=mi+1;\n            }\n            for( j=1;j<=i&&i+j<=n;j++)\n            {\n                if(dp[i][j]==INT_MAX)//不可能达到\n                continue;\n                dp[i+j][j]=min(dp[i+j][j],dp[i][j]+1);\n            }\n        }\n        int sum=INT_MAX;\n        for(auto a:dp[n])\n        sum=min(sum,a);\n        return sum;\n    }\n};\n```"
+}

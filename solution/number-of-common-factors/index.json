@@ -1,0 +1,6 @@
+{
+	"titleSlug": "number-of-common-factors",
+	"slug": "mei-ju-yin-zi-by-endlesscheng-v3fb",
+	"url": "https://leetcode-cn.com/problems/number-of-common-factors/solution/mei-ju-yin-zi-by-endlesscheng-v3fb/",
+	"content": "[视频讲解](https://www.bilibili.com/video/BV1kd4y1q7fC) 已出炉，欢迎点赞三连，在评论区分享你对这场周赛的看法~\r\n\r\n---\r\n\r\n枚举因子，挨个判断能否整除 $a$ 和 $b$。\r\n\r\n改进方案是枚举 $a$ 和 $b$ 的最大公因数的因子。\r\n\r\n```py [sol1-Python3]\r\nclass Solution:\r\n    def commonFactors(self, a: int, b: int) -> int:\r\n        g = gcd(a, b)\r\n        ans, i = 0, 1\r\n        while i * i <= g:\r\n            if g % i == 0:\r\n                ans += 1\r\n                if i * i < g:\r\n                    ans += 1\r\n            i += 1\r\n        return ans\r\n```\r\n\r\n```go [sol1-Go]\r\nfunc commonFactors(a, b int) (ans int) {\r\n\tg := gcd(a, b)\r\n\tfor i := 1; i*i <= g; i++ {\r\n\t\tif g%i == 0 {\r\n\t\t\tans++\r\n\t\t\tif i*i < g {\r\n\t\t\t\tans++\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n\treturn\r\n}\r\n\r\nfunc gcd(a, b int) int {\r\n\tfor a != 0 {\r\n\t\ta, b = b%a, a\r\n\t}\r\n\treturn b\r\n}\r\n```\r\n\r\n#### 复杂度分析\r\n\r\n- 时间复杂度：$O(\\sqrt{\\min(a,b)})$。\r\n- 空间复杂度：$O(1)$，仅用到若干变量。\r\n"
+}

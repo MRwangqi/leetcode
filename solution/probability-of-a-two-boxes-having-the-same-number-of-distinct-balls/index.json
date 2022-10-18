@@ -1,0 +1,6 @@
+{
+	"titleSlug": "probability-of-a-two-boxes-having-the-same-number-of-distinct-balls",
+	"slug": "by-yawn_sean-mg1n",
+	"url": "https://leetcode-cn.com/problems/probability-of-a-two-boxes-having-the-same-number-of-distinct-balls/solution/by-yawn_sean-mg1n/",
+	"content": "鉴于题目数据范围极小，如只为了做出题目，我们可以直接使用 DFS 查看每种球的不同分配情况，最终查看所有合法情况（即两人球数均为总球数的一半）。\r\n\r\n对于判断颜色数量是否相同，我们计算两人没有球的颜色数量是否相同；对于拿球的方法可以使用组合数以及乘法原理结合的方法直接求解。\r\n\r\n```python3 []\r\nclass Solution:\r\n    def getProbability(self, balls: List[int]) -> float:\r\n        def getRes(lst):\r\n            res = 1\r\n            for x, y in zip(lst, balls):\r\n                res *= comb(y, x)\r\n            return res\r\n        ans = 0\r\n        tmp = 0\r\n        def dfs(idx, tmp1, tmp2):\r\n            nonlocal ans, tmp\r\n            if idx == len(balls):\r\n                if sum(tmp1) == sum(tmp2):\r\n                    methods = getRes(tmp1)\r\n                    if tmp1.count(0) == tmp2.count(0):\r\n                        ans += methods\r\n                    tmp += methods\r\n                return \r\n            for i in range(balls[idx]+1):\r\n                tmp1.append(i)\r\n                tmp2.append(balls[idx]-i)\r\n                dfs(idx+1, tmp1, tmp2)\r\n                tmp1.pop()\r\n                tmp2.pop()\r\n        dfs(0, [], [])\r\n        return ans / tmp\r\n```"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "the-k-strongest-values-in-an-array",
+	"slug": "-by-wa-pian-d-dh36",
+	"url": "https://leetcode-cn.com/problems/the-k-strongest-values-in-an-array/solution/-by-wa-pian-d-dh36/",
+	"content": "### 解题思路\n\n排序 + 双指针\n\n### 代码\n\n```java\nclass Solution {\n\n\n\tpublic int[] getStrongest(int[] arr, int k) {\n\t\tArrays.sort(arr);\n\t\tint n = arr.length;\n\t\tint m = arr[(n - 1) / 2];\n\t\tint ans[] = new int[k];\n\t\tint p = 0, l = 0, r = n - 1;\n\t\twhile (k > 0) {\n\t\t\tint L = Math.abs(arr[l] - m), R = Math.abs(arr[r] - m);\n\t\t\tif (L > R || (L == R && arr[l] > arr[r])) {\n\t\t\t\tans[p++] = arr[l++];\n\t\t\t} else {\n\t\t\t\tans[p++] = arr[r--];\n\t\t\t}\n\t\t\tk--;\n\t\t}\n\t\treturn ans;\n\t}\n\n}\n```"
+}

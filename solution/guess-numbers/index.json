@@ -1,0 +1,6 @@
+{
+	"titleSlug": "guess-numbers",
+	"slug": "by-lhy-i6-luaq",
+	"url": "https://leetcode-cn.com/problems/guess-numbers/solution/by-lhy-i6-luaq/",
+	"content": "### 解题思路\n暴力AC\n\n### 代码\n\n```cpp\nclass Solution {\npublic:\n    int game(vector<int>& guess, vector<int>& answer) {\n        int as=0;\n        for(int i=0;i<answer.size();i++){\n            if(guess[i]==answer[i]) as++;\n        }return as;\n    }\n};\n```"
+}

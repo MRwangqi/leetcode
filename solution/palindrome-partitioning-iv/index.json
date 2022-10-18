@@ -1,0 +1,6 @@
+{
+	"titleSlug": "palindrome-partitioning-iv",
+	"slug": "by-treasure-6-a79s",
+	"url": "https://leetcode-cn.com/problems/palindrome-partitioning-iv/solution/by-treasure-6-a79s/",
+	"content": "### 解题思路\n![C7F7DB0B-9594-4D8D-A725-716ED6D4B478.png](https://pic.leetcode-cn.com/1664201869-eDpLRP-C7F7DB0B-9594-4D8D-A725-716ED6D4B478.png)\n\n\n### 代码\n\n```java\nclass Solution {\n  \n    boolean [][]dp;\n    public boolean checkPartitioning(String s) {\n\n\n        int n=s.length();\n        dp=new boolean[n][n];\n        for(int i=0;i<s.length();i++){\n            process(s,i,i);\n            process(s,i,i+1);\n        }\n\n        for(int i=0;i<n;i++){\n            for(int j=i+1;j<n-1;j++){\n                if(dp[0][i]&&dp[i+1][j]&&dp[j+1][n-1]){\n                    return true;\n                }\n            }\n        }\n        return false;\n\n    }\n\n    public void process(String s,int left,int right){\n        int n=s.length();\n        while (left>=0&&right<n&&s.charAt(left)==s.charAt(right)){\n            dp[left][right]=true;\n            left--;\n            right++;\n        }\n    }\n}\n```"
+}

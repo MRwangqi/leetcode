@@ -1,0 +1,6 @@
+{
+	"titleSlug": "robot-in-a-grid-lcci",
+	"slug": "ji-de-hui-su-by-serene-mcnulty9uv-tbb4",
+	"url": "https://leetcode-cn.com/problems/robot-in-a-grid-lcci/solution/ji-de-hui-su-by-serene-mcnulty9uv-tbb4/",
+	"content": "### 解题思路\n此处撰写解题思路\n\n### 代码\n\n```typescript\nfunction pathWithObstacles(obstacleGrid: number[][]): number[][] {\n    let result: number[][] = [];\n    let n = obstacleGrid.length;\n    let m = obstacleGrid[0].length;\n    // false代表是否找到终点\n    let flag = false;\n    function dfs(i: number, j: number): void {\n        if (i >= n || j >= m || obstacleGrid[i][j] == 1) return;\n        obstacleGrid[i][j] = 1;\n        if (!flag) result.push([i, j]);\n        if (i == n - 1 && j == m - 1) flag = true;\n        // 向右进军\n        dfs(i, j + 1);\n        // 向下进军\n        dfs(i + 1, j);\n        if (!flag) result.pop();\n    }\n    dfs(0, 0);\n    return result\n}\n```"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "k-concatenation-maximum-sum",
+	"slug": "by-sherry255-4n5d",
+	"url": "https://leetcode-cn.com/problems/k-concatenation-maximum-sum/solution/by-sherry255-4n5d/",
+	"content": "### 解题思路\n```\nmax_tail_sum(A) = max(sum(A[0:]), sum(A[1:]), ... sum(A[len(A):]))\n\nmax_tail_sum(A) = max(max_tail_sum(A[:-1]), 0) + A[-1]\nmax_sum(A) = max(max_tail_sum(A[:0]),, max_tail_sum(A[:1]), max_tail_sum(A[:2]), ... max_tail_sum(A[:len(A)]))\n\nif k == 1: max_sum(A)\nelif k == 2 or sum(A) <= 0: max_sum(A*2)\nelse: max_sum(A*2) + sum(A)*(k-2)\n```\n### 证明: Ax2 和最大的子数组一定包含中间的边界\n#### *反证法*\n假设和最大的子数组不包含A*2中间的边界，\n我们可以把数组A分成三段P, Q, R。\n其中 sum(P) <= 0, sum(R) <= 0, sum(Q) > 0，已知 sum(A) > 0，\n把 Ax2 展开: P Q R P Q R，\n不难看出 sum(Q) + sum(R) + sum(P) + sum(Q)  = sum(Q) + (sum(P) + sum(Q) + sum(R)) = sum(Q) + sum(A) > sum(Q)。\n与Q是Ax2和最大的子数组矛盾，\n故命题得证。\n\n整理代码，合并 k>=2的所有情况:\n```\nif k == 1: max_sum(A)\nelse : max_sum(A*2) + max(sum(A)*(k-2), 0)\n```\n### 代码\n\n```python3\n\nclass Solution:\n    def kConcatenationMaxSum(self, arr: List[int], k: int) -> int:\n        acc, m = 0, 0\n        for _ in range(min(k, 2)):\n            for n in arr:\n                acc= max(0, acc)+n\n                m = max(m, acc)\n        return (m if k==1 else m+ max(sum(arr) *(k - 2) , 0)) % (10**9 + 7)\n```"
+}

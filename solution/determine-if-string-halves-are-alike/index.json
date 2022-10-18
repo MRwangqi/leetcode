@@ -1,0 +1,6 @@
+{
+	"titleSlug": "determine-if-string-halves-are-alike",
+	"slug": "dai-ma-jian-ji-yi-chong-huan-bu-cuo-de-j-v980",
+	"url": "https://leetcode-cn.com/problems/determine-if-string-halves-are-alike/solution/dai-ma-jian-ji-yi-chong-huan-bu-cuo-de-j-v980/",
+	"content": "\n[详细刷题视频合集](https://xiaochen1024.com/series/6196129fc1553b002e57bef5/6196208ec1553b002e57bef6)      \n      [刷题笔记](https://xiaochen1024.com/courseware/60b4f11ab1aa91002eb53b18)\n```\nvar halvesAreAlike = function(s) {\n  const regexp = /[a|e|i|o|u|A|E|I|O|U]/g;\n  const halflen = s.length / 2;\n\n  const left = s.slice(0, halflen).match(regexp);\n  const right = s.slice(halflen).match(regexp);\n\n  if (left && right) {\n    return left.length === right.length;\n  }\n\n  return left === right;\n};\n\n```\n"
+}

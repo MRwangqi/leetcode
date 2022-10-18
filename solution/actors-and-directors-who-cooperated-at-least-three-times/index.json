@@ -1,0 +1,6 @@
+{
+	"titleSlug": "actors-and-directors-who-cooperated-at-least-three-times",
+	"slug": "by-pq10086-8dgu",
+	"url": "https://leetcode-cn.com/problems/actors-and-directors-who-cooperated-at-least-three-times/solution/by-pq10086-8dgu/",
+	"content": "### 解题思路\n你看\n\n### 代码\n\n```mysql\nselect actor_id,director_id\nfrom ActorDirector\ngroup by actor_id,director_id\nhaving count(timestamp) >= 3\n```"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "list-of-depth-lcci",
+	"slug": "javascriptban-jie-ti-si-lu-by-ityou-o-tu5z",
+	"url": "https://leetcode-cn.com/problems/list-of-depth-lcci/solution/javascriptban-jie-ti-si-lu-by-ityou-o-tu5z/",
+	"content": "\n[详细刷题视频合集](https://xiaochen1024.com/series/6196129fc1553b002e57bef5/6196208ec1553b002e57bef6)      \n      [刷题笔记](https://xiaochen1024.com/courseware/60b4f11ab1aa91002eb53b18)\n层序遍历加哨兵节点\n```\nvar listOfDepth = function(tree) {\n    if(!tree) return []\n    let queue = [tree]\n    let tmp = new ListNode()\n    const res = []\n    while(queue.length) {\n        let len = queue.length\n        let head = tmp\n        while(len--) {\n            let node = queue.shift()\n            node.left && queue.push(node.left)\n            node.right && queue.push(node.right)\n            head.next = new ListNode(node.val)\n            head = head.next\n        }\n        res.push(tmp.next)\n    }\n    return res\n};\n```\n"
+}

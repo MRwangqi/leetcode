@@ -1,0 +1,6 @@
+{
+	"titleSlug": "minimum-operations-to-reduce-x-to-zero",
+	"slug": "1658-jiang-x-jian-dao-0-de-zui-xiao-cao-071d8",
+	"url": "https://leetcode-cn.com/problems/minimum-operations-to-reduce-x-to-zero/solution/1658-jiang-x-jian-dao-0-de-zui-xiao-cao-071d8/",
+	"content": "### 解题思路\n前后缀和+二分\n\n### 代码\n\n```python3\nclass Solution:\n    def minOperations(self, nums: List[int], x: int) -> int:\n        sum_front, sum_back = [0], [0]\n        n, ans = len(nums), -1\n\n        def find(y: int) -> int:\n            i, j = 0, n\n            while i < j:\n                mid = i + j >> 1\n                if sum_back[mid] >= y:\n                    j = mid\n                else:\n                    i = mid + 1\n            if sum_back[i] == y:\n                return i\n            return n + 1\n\n        for i in range(n):\n            sum_front.append(sum_front[-1] + nums[i])\n            sum_back.append(sum_back[-1] + nums[n - i - 1])\n        for i in range(n):\n            if sum_front[i] <= x:\n                temp = find(x - sum_front[i])\n                if temp + i <= n:\n                    if ans == -1:\n                        ans = temp + i\n                    ans = min(ans, temp + i)\n            else:\n                break\n        return ans\n```"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "average-waiting-time",
+	"slug": "by-qiu-xie-4ds-687s",
+	"url": "https://leetcode-cn.com/problems/average-waiting-time/solution/by-qiu-xie-4ds-687s/",
+	"content": "```\r\nvar averageWaitingTime = function (customers) {\r\n    let time = 0;//当前时间\r\n    let timenum = 0;//所有顾客等待总时间\r\n    const man = customers.length;//顾客人数\r\n    for (let i = 0; i < man; ++i) {\r\n        if (time <= customers[i][0]) {\r\n            time = customers[i][0];//在顾客到来之前，或者顾客刚好到了，则time等于顾客到的时间(开始做菜)\r\n            timenum += customers[i][1];//customers[i][1]则为当前顾客的等待时间\r\n        } else {//当前时间顾客还没到\r\n            timenum += time - customers[i][0] + customers[i][1];\r\n        }\r\n        time += customers[i][1];\r\n    }\r\n    return timenum / man;\r\n};\r\n```\r\n"
+}

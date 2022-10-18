@@ -1,0 +1,6 @@
+{
+	"titleSlug": "count-nodes-equal-to-average-of-subtree",
+	"slug": "by-xiaowei_algorithm-rr2o",
+	"url": "https://leetcode-cn.com/problems/count-nodes-equal-to-average-of-subtree/solution/by-xiaowei_algorithm-rr2o/",
+	"content": "**解题思路：**\r\n\r\n1. 常规的DFS\r\n2. 我们递归时通过一个全局变量保存总的节点数\r\n3. 通过一个局部变量保存当前节点前的节点数\r\n4. 可以自己在草稿上模拟一下递归过程，会更加清晰明了\r\n\r\n**代码如下：**\r\n\r\n\r\n```java\r\nclass Solution {\r\n    int cnt = 0;\r\n    int res = 0;\r\n    public int averageOfSubtree(TreeNode root) {\r\n        dfs(root);\r\n        return res;\r\n    }\r\n\r\n    private int dfs(TreeNode root) {\r\n        if (root == null) {\r\n            return 0;\r\n        }\r\n        int cur = cnt; //局部变量，记录当前节点前的节点数，每次递归都会有一个cur //前序\r\n        cnt++; //全局变量，记录总的节点数\r\n        int left = dfs(root.left);\r\n        int right = dfs(root.right);\r\n        int sum = root.val + left + right; //后序\r\n        if (sum / (cnt - cur) == root.val) { \r\n            res++;\r\n        }\r\n        return sum;\r\n    }\r\n}\r\n```\r\n"
+}

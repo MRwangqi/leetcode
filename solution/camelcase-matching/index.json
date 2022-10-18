@@ -1,0 +1,6 @@
+{
+	"titleSlug": "camelcase-matching",
+	"slug": "by-tefuirnever-8wuv",
+	"url": "https://leetcode-cn.com/problems/camelcase-matching/solution/by-tefuirnever-8wuv/",
+	"content": "两种情况：\r\n1、如果是索引 `index` 走到了字符串 `pattern` 最后一位，说明所有需要匹配的都完成了，那么此时如果不是小写字母就是false；\r\n2、如果是索引 `index` 没有走到字符串 `pattern` 最后一位，说明还需要进行匹配，那么如果此时匹配了，那么索引 ++，如果不是小写字母，那么此时是false；\r\n\r\n```java\r\nclass Solution {\r\n    public List<Boolean> camelMatch(String[] queries, String pattern) {\r\n        List<Boolean> ans = new ArrayList<>(queries.length);\r\n        for (String query : queries) {\r\n            ans.add(isMatch(query, pattern));\r\n        }\r\n        return ans;\r\n    }\r\n\r\n    public Boolean isMatch(String query, String pattern) {\r\n        int index = 0;\r\n        for (char c : query.toCharArray()) {\r\n            if (index == pattern.length()) {\r\n                if (c < 'a' || c > 'z') {\r\n                    return false;\r\n                }\r\n            } else {\r\n                if (c == pattern.charAt(index)) {\r\n                    index ++ ;\r\n                } else if (c < 'a' || c > 'z') {\r\n                    return false;\r\n                }\r\n            }\r\n        }\r\n        return index == pattern.length();\r\n    }\r\n}\r\n```\r\n"
+}

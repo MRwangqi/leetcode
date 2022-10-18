@@ -1,0 +1,6 @@
+{
+	"titleSlug": "nim-game",
+	"slug": "nim-by-cool-montalcinickd-nrlr",
+	"url": "https://leetcode-cn.com/problems/nim-game/solution/nim-by-cool-montalcinickd-nrlr/",
+	"content": "### 解题思路\n......自己去看labuladong的算法小抄\n\n### 代码\n\n```cpp\nclass Solution {\npublic:\n    bool canWinNim(int n) {\n        return n%4!=0;\n    }\n};\n```"
+}

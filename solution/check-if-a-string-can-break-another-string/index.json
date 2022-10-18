@@ -1,0 +1,6 @@
+{
+	"titleSlug": "check-if-a-string-can-break-another-string",
+	"slug": "1433-jian-cha-yi-ge-zi-fu-chuan-shi-fou-kamxx",
+	"url": "https://leetcode-cn.com/problems/check-if-a-string-can-break-another-string/solution/1433-jian-cha-yi-ge-zi-fu-chuan-shi-fou-kamxx/",
+	"content": "### 解题思路\n\n排序后，其中一个字符串每一个位置都大于等于另一个字符串，true。\n\n### 代码\n\n```java\nclass Solution {\n\n\tpublic boolean checkIfCanBreak(String s1, String s2) {\n\t\tchar[] cs1 = s1.toCharArray();\n\t\tchar[] cs2 = s2.toCharArray();\n\t\tArrays.sort(cs1);\n\t\tArrays.sort(cs2);\n\t\tint p = 0;\n\t\twhile (p < cs1.length && cs1[p] == cs2[p]) {\n\t\t\tp++;\n\t\t}\n\t\tif (p == cs1.length) {\n\t\t\treturn true;\n\t\t}\n\t\tif (cs1[p] > cs2[p]) {\n\t\t\treturn this.f(cs1, cs2, p);\n\t\t} else {\n\t\t\treturn this.f(cs2, cs1, p);\n\t\t}\n\t}\n\n\tprivate boolean f(char[] cs1, char[] cs2, int p) {\n\t\twhile (p < cs1.length) {\n\t\t\tif (cs1[p] < cs2[p]) {\n\t\t\t\treturn false;\n\t\t\t}\n\t\t\tp++;\n\t\t}\n\t\treturn true;\n\t}\n\n}\n```"
+}

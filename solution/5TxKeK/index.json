@@ -1,0 +1,6 @@
+{
+	"titleSlug": "5TxKeK",
+	"slug": "xie-lu-you-hua-by-fzldq-9wt4",
+	"url": "https://leetcode-cn.com/problems/5TxKeK/solution/xie-lu-you-hua-by-fzldq-9wt4/",
+	"content": "slope trick，[介绍](https://codeforces.com/blog/entry/47821)\r\n\r\n简单说就是修改第i个数为Y的成本函数为$f_{i}(Y) = min(f_{i-1}(Y-1) + |num_{i} - Y|)$\r\n\r\n用L、R维护成本函数的转折点，由于每次计算都要往右平移一次$f(Y)$，相当于把所有转折点+1，真的去修改L、R里每个数的复杂度太高了，于是在每次读取转折点时将其+i，而把新转折点push进去的时候又要-i。文字表述真是太难啦还是得看链接学习\r\n\r\n类似的题还有\r\n[2263. Make Array Non-decreasing or Non-increasing](https://leetcode.cn/problems/make-array-non-decreasing-or-non-increasing/)\r\n\r\n```Python\r\nclass Solution:\r\n    def numsGame(self, nums: List[int]) -> List[int]:\r\n        n, minf, mod = len(nums), 0, 10 ** 9 + 7\r\n        res, L, R = [], [float(\"inf\")], [float(\"inf\")]\r\n        for i in range(n):\r\n            a = nums[i]\r\n            minf += max(0, -L[0] + i - a)\r\n            heapq.heappush(R, -heapq.heappushpop(L, -a + i))\r\n            minf += max(0, a - R[0] - i)\r\n            heapq.heappush(L, -heapq.heappushpop(R, a - i))\r\n            res.append(minf % mod)\r\n        return res\r\n\r\n```\r\n"
+}

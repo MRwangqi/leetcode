@@ -1,0 +1,6 @@
+{
+	"titleSlug": "sender-with-largest-word-count",
+	"slug": "by-endlesscheng-pwzz",
+	"url": "https://leetcode-cn.com/problems/sender-with-largest-word-count/solution/by-endlesscheng-pwzz/",
+	"content": "空格个数加一即为单词个数。\r\n\r\n```go\r\nfunc largestWordCount(messages, senders []string) (ans string) {\r\n\tcnt := map[string]int{}\r\n\tfor i, msg := range messages {\r\n\t\tcnt[senders[i]] += strings.Count(msg, \" \") + 1\r\n\t}\r\n\tfor s, c := range cnt {\r\n\t\tif c > cnt[ans] || c == cnt[ans] && s > ans {\r\n\t\t\tans = s\r\n\t\t}\r\n\t}\r\n\treturn\r\n}\r\n```"
+}

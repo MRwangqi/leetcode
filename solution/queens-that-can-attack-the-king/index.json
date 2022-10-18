@@ -1,0 +1,6 @@
+{
+	"titleSlug": "queens-that-can-attack-the-king",
+	"slug": "java-1222-ke-yi-gong-ji-guo-wang-de-huan-4lf3",
+	"url": "https://leetcode-cn.com/problems/queens-that-can-attack-the-king/solution/java-1222-ke-yi-gong-ji-guo-wang-de-huan-4lf3/",
+	"content": "### 解题思路\n\n国王向着8个方向前进，直到这条线上遇到一个皇后，结束这条线。\n\n\n\n### 代码\n\n```java\nimport java.awt.Point;\nclass Solution {\n\n\tList<List<Integer>> ans;\n\n\tpublic List<List<Integer>> queensAttacktheKing(int[][] queens, int[] king) {\n\t\tSet<Point> set = new HashSet<>();\n\t\tfor (int i = 0; i < queens.length; i++) {\n\t\t\tset.add(new Point(queens[i][0], queens[i][1]));\n\t\t}\n\t\tans = new ArrayList<>();\n\t\tint[] direction = new int[] { -1, -1, -1, 0, -1, 1, 0, -1, 0, 1, 1, -1, 1, 0, 1, 1 };\n\t\tfor (int k = 0; k < direction.length; k += 2) {\n\t\t\tint x = direction[k], y = direction[k + 1];\n\t\t\tthis.f(king[0], king[1], x, y, set);\n\t\t}\n\t\treturn ans;\n\t}\n\n\tprivate boolean out(int x) {\n\t\treturn x == -1 || x == 8;\n\t}\n\n\tprivate void f(int k1, int k2, int x, int y, Set<Point> set) {\n\t\tif (this.out(k1) || this.out(k2)) {\n\t\t\treturn;\n\t\t}\n\t\tif (set.contains(new Point(k1, k2))) {\n\t\t\tans.add(Arrays.asList(new Integer[] { k1, k2 }));\n\t\t} else {\n\t\t\tthis.f(k1 + x, k2 + y, x, y, set);\n\t\t}\n\t}\n\n\n}\n```"
+}

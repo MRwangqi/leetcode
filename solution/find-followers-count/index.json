@@ -1,0 +1,6 @@
+{
+	"titleSlug": "find-followers-count",
+	"slug": "by-feyl-97bg",
+	"url": "https://leetcode-cn.com/problems/find-followers-count/solution/by-feyl-97bg/",
+	"content": "```sql\r\nSELECT \r\n    user_id, COUNT(DISTINCT follower_id) followers_count\r\nFROM\r\n    Followers\r\nGROUP BY\r\n    user_id;\r\n```\r\n\r\n![image.png](https://pic.leetcode-cn.com/1663296442-aBoArt-image.png)\r\n\r\n\r\n```sql\r\nSELECT \r\n    user_id, COUNT(follower_id) followers_count\r\nFROM\r\n    Followers\r\nGROUP BY\r\n    user_id\r\nORDER BY\r\n    user_id;\r\n```\r\n![image.png](https://pic.leetcode-cn.com/1665033635-kwOmcp-image.png)\r\n\r\n\r\n"
+}

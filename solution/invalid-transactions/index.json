@@ -1,0 +1,6 @@
+{
+	"titleSlug": "invalid-transactions",
+	"slug": "java-1169-cha-xun-wu-xiao-jiao-yi-by-wa-co48m",
+	"url": "https://leetcode-cn.com/problems/invalid-transactions/solution/java-1169-cha-xun-wu-xiao-jiao-yi-by-wa-co48m/",
+	"content": "### 解题思路\n\n哈希表 + 模拟\n\n### 代码\n\n```java\nclass Solution {\n\n\n\tpublic List<String> invalidTransactions(String[] transactions) {\n\t\tint len = transactions.length;\n\t\tString[][] infos = new String[len][4];\n\t\tMap<String, List<Integer>> map = new HashMap<>();\n\t\tSet<Integer> set = new HashSet<>();\n\t\tfor (int i = 0; i < len; i++) {\n\t\t\tinfos[i] = transactions[i].split(\",\");\n\t\t\tString name = infos[i][0], time = infos[i][1], amount = infos[i][2], city = infos[i][3];\n\t\t\tif (Integer.valueOf(amount) > 1000) {\n\t\t\t\tset.add(i);\n\t\t\t}\n\t\t\tList<Integer> sameNames = map.getOrDefault(name, new ArrayList<>());\n\t\t\tfor (int sameName : sameNames) {\n\t\t\t\tString[] info = infos[sameName];\n\t\t\t\tif (!info[3].equals(city) && Math.abs(Integer.valueOf(info[1]) - Integer.valueOf(time)) <= 60) {\n\t\t\t\t\tset.add(sameName);\n\t\t\t\t\tset.add(i);\n\t\t\t\t}\n\t\t\t}\n\t\t\tsameNames.add(i);\n\t\t\tmap.put(name, sameNames);\n\t\t}\n\t\tList<String> ans = new ArrayList<>();\n\t\tfor (int index : set) {\n\t\t\tans.add(transactions[index]);\n\t\t}\n\t\treturn ans;\n\t}\n\n\n}\n```"
+}

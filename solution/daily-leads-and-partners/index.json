@@ -1,0 +1,6 @@
+{
+	"titleSlug": "daily-leads-and-partners",
+	"slug": "by-any-fj-uzv6",
+	"url": "https://leetcode-cn.com/problems/daily-leads-and-partners/solution/by-any-fj-uzv6/",
+	"content": "### 解题思路\ngroup by 的意思为分组汇总\n使用了group by 后，要求Select出的结果字段都是可汇总的，否则就会出错\ngroup by 有一个原则,就是 select 后面的所有列中,没有使用聚合函数的列,必须出现在 group by 后面\n\n### 代码\n\n```mysql\n# Write your MySQL query statement below\nselect date_id , make_name ,count(distinct lead_id) unique_leads , count(distinct partner_id) unique_partners\nfrom dailysales\ngroup by date_id,make_name;\n```"
+}

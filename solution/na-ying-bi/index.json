@@ -1,0 +1,6 @@
+{
+	"titleSlug": "na-ying-bi",
+	"slug": "na-ying-bi-by-leetcode-solution",
+	"url": "https://leetcode-cn.com/problems/na-ying-bi/solution/na-ying-bi-by-leetcode-solution/",
+	"content": "## 题意概述\n\n有 n 堆硬币，每次从任意一堆拿走一枚或者两枚。问最少几次能够全部拿完。\n### 题解\n\n题目中虽然给了 n 堆硬币，但是最终每一堆都是要拿完的。而每一堆拿的情况又不影响其他硬币堆，**因此每一堆硬币的拿法实际上是互相独立的**。\n\n于是我们可以只考虑一堆的情况。假设一堆有 x 枚硬币，既然我们的目的是尽早拿完所有硬币堆，那么两枚两枚的拿显然是更快的。\n\n求单堆硬币最小次数：`(x+1)//2`\n\n那么，拿完所有硬币堆只需要循环对所有硬币堆都计算一次，然后求和就可以了。\n\n```python\nclass Solution:\n    def minCount(self, coins: List[int]) -> int:\n        return sum([(x+1)//2 for x in coins])\n```\n\n#### 复杂度分析\n\n* 时间复杂度：$O(n)$。\n\n* 空间复杂度：$O(n)$。"
+}

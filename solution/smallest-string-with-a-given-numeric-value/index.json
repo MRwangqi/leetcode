@@ -1,0 +1,6 @@
+{
+	"titleSlug": "smallest-string-with-a-given-numeric-value",
+	"slug": "xun-huan-by-kcx2366425574-prge",
+	"url": "https://leetcode-cn.com/problems/smallest-string-with-a-given-numeric-value/solution/xun-huan-by-kcx2366425574-prge/",
+	"content": "返回值一定是[a*]?[z*]，若干个a加上某个临界字符再加上若干个z，\r\n所以只需计算:\r\n1、末尾有多少个z\r\n2、中间特定的字母是啥\r\n3、首位还是多少个a\r\n看着是循环，其实只走了三次循环流程\r\n```\r\nclass Solution:\r\n    # 执行用时：36 ms, 在所有 Python3 提交中击败了97.26%的用户\r\n    # 内存消耗：15.4 MB, 在所有 Python3 提交中击败了90.41%的用户\r\n    def getSmallestString(self, n: int, k: int) -> str:\r\n        result = []\r\n        while n > 0:\r\n            # 步骤一，计算z的数量 \r\n            if k - n + 1 >= 26:\r\n                num = (k-n+1) // 26\r\n                result.append(\"z\"*num)\r\n                n -= num\r\n                k -= 26 * num\r\n            elif k == n:\r\n                #步骤三，计算首位多少个a\r\n                result.append(\"a\" * n)\r\n                n = 0\r\n            else:\r\n                # 步骤2，计算中间特定字母\r\n                result.append(chr(97 + k - n))\r\n                n -= 1\r\n                k = n\r\n        return \"\".join(result[::-1])\r\n```\r\n"
+}

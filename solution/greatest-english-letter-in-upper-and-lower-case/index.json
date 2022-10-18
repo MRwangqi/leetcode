@@ -1,0 +1,6 @@
+{
+	"titleSlug": "greatest-english-letter-in-upper-and-lower-case",
+	"slug": "by-talanto_linyi-ht8l",
+	"url": "https://leetcode-cn.com/problems/greatest-english-letter-in-upper-and-lower-case/solution/by-talanto_linyi-ht8l/",
+	"content": "```\nclass Solution {\npublic:\n    string greatestLetter(string s) {\n        vector<int> cnts(128, 0);\n        for (char c: s) {\n            cnts[c] = 1;\n        }\n        for (int i = 90; i >= 65; --i) {\n            if(cnts[i] && cnts[i + 32]) return string(1, i);\n        }\n        return \"\";\n    }\n};\n```\n"
+}

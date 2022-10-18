@@ -1,0 +1,6 @@
+{
+	"titleSlug": "Ju9Xwi",
+	"slug": "by-pq10086-smyz",
+	"url": "https://leetcode-cn.com/problems/Ju9Xwi/solution/by-pq10086-smyz/",
+	"content": "### 解题思路\n这应该也算是动态规划的解法吧...大概 ^_^\nPS.我是不是有点话痨 ???\n### 代码\n\n```java\nclass Solution {\n    public int leastMinutes(int n) {\n        int count = 1;\n        for (int i = 1; i < n; i *= 2, count++) { // 先扩带宽再下载\n        }\n        return count;\n    }\n}\n```"
+}

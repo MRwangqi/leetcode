@@ -1,0 +1,6 @@
+{
+	"titleSlug": "6CE719",
+	"slug": "mo-ni-by-endlesscheng-mc05",
+	"url": "https://leetcode-cn.com/problems/6CE719/solution/mo-ni-by-endlesscheng-mc05/",
+	"content": "```py [sol1-Python]\r\nclass Solution:\r\n    def temperatureTrend(self, temperatureA: List[int], temperatureB: List[int]) -> int:\r\n        ans = cnt = 0\r\n        for (a1, b1), (a2, b2) in pairwise(zip(temperatureA, temperatureB)):\r\n            if (a1 > a2) - (a1 < a2) == (b1 > b2) - (b1 < b2):\r\n                cnt += 1\r\n                ans = max(ans, cnt)\r\n            else:\r\n                cnt = 0\r\n        return ans\r\n```\r\n\r\n```go [sol1-Go]\r\nfunc temperatureTrend(a, b []int) (ans int) {\r\n\tstart := 0\r\n\tfor i := 1; i < len(a); i++ {\r\n\t\tif a[i] == a[i-1] != (b[i] == b[i-1]) || a[i] < a[i-1] != (b[i] < b[i-1]) {\r\n\t\t\tans = max(ans, i-start-1)\r\n\t\t\tstart = i\r\n\t\t}\r\n\t}\r\n\treturn max(ans, len(a)-start-1)\r\n}\r\n\r\nfunc max(a, b int) int { if b > a { return b }; return a }\r\n```"
+}

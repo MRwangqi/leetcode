@@ -1,0 +1,6 @@
+{
+	"titleSlug": "minimum-time-to-type-word-using-special-typewriter",
+	"slug": "java-100-by-mndream-t6ns",
+	"url": "https://leetcode-cn.com/problems/minimum-time-to-type-word-using-special-typewriter/solution/java-100-by-mndream-t6ns/",
+	"content": "```java\r\nclass Solution {\r\n    public int minTimeToType(String word) {\r\n        int res = word.length();\r\n        if(res == 0) {\r\n            return res;\r\n        }\r\n        char pre = 'a'; // 第一个字符为'a'\r\n        for (int i = 0; i < word.length(); i ++) {\r\n            res += minDisBetweenTwo(word.charAt(i), pre);\r\n            pre = word.charAt(i);\r\n        }\r\n        return res;\r\n    }\r\n\r\n    /**\r\n        计算两个字符间的最小距离\r\n    */\r\n    private int minDisBetweenTwo(char ch1, char ch2) {\r\n        int dis = Math.abs(ch2 - ch1);\r\n        if(dis >= 13) {\r\n            dis = 26 - dis;\r\n        }\r\n        // System.out.println(\"ch1: \" + ch1 + \" ch2:\" + ch2 + \" dis:\" + dis);\r\n        return dis;\r\n    }\r\n}\r\n```\r\n\r\n![image.png](https://pic.leetcode-cn.com/1664295668-XveTRC-image.png)\r\n\r\n"
+}

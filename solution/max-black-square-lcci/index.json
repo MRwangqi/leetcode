@@ -1,0 +1,6 @@
+{
+	"titleSlug": "max-black-square-lcci",
+	"slug": "rust-by-drackramoray-ugxr",
+	"url": "https://leetcode-cn.com/problems/max-black-square-lcci/solution/rust-by-drackramoray-ugxr/",
+	"content": "### 解题思路\n此处撰写解题思路\n\n### 代码\n\n```rust []\nimpl Solution {\n    pub fn find_square(matrix: Vec<Vec<i32>>) -> Vec<i32> {\n        let n = matrix.len();\n        let mut dp = vec![vec![(0,0);n];n];\n        let mut ans = vec![-1, -1, 0];\n        \n        for i in 0..n {\n            for j in 0..n {\n                if matrix[i][j] == 0 {\n                    let h = if j == 0 { 0 } else { dp[i][j-1].0 };\n                    let v = if i == 0 { 0 } else { dp[i-1][j].1 };\n                    dp[i][j] = (h+1, v+1); // 记录水平｜垂直方向连续0\n\n                    let mut k = dp[i][j].0.min(dp[i][j].1); // 以(i,j)为右下角顶点的最大可能边长\n\n                    for t in (ans[2] as usize+1)..=k {\n                        let w = dp[i+1-t][j].0; // 右上角顶点的最大边长\n                        let h = dp[i][j+1-t].1; // 左下角顶点的最大边长\n\n                        if h >= t && w >= t {\n                            ans = vec![i as i32 + 1 - t as i32, j as i32 + 1 - t as i32, t as i32];\n                        }\n                    }\n                } \n            }\n        }\n\n        if ans[2] == 0 { vec![] } else { ans }\n    }\n}\n```"
+}

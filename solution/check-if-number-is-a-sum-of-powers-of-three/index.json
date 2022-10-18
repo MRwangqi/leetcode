@@ -1,0 +1,6 @@
+{
+	"titleSlug": "check-if-number-is-a-sum-of-powers-of-three",
+	"slug": "1780-pan-duan-yi-ge-shu-zi-shi-fou-ke-yi-map4",
+	"url": "https://leetcode-cn.com/problems/check-if-number-is-a-sum-of-powers-of-three/solution/1780-pan-duan-yi-ge-shu-zi-shi-fou-ke-yi-map4/",
+	"content": "### 代码\n\n```python3\nclass Solution:\n    def checkPowersOfThree(self, n: int) -> bool:\n        N = 10**7 + 10\n        nums = []\n\n        def dfs(u: int, v: int) -> bool:\n            if not u:\n                return True\n            if v == len(nums) or u < nums[v]:\n                return False\n            res = dfs(u - nums[v], v + 1) | dfs(u, v + 1)\n            return res\n\n\n        t = 1\n        while t <= N:\n            nums.append(t)\n            t *= 3\n        return dfs(n, 0)\n```"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "minimum-time-to-collect-all-apples-in-a-tree",
+	"slug": "-by-wa-pian-d-o3py",
+	"url": "https://leetcode-cn.com/problems/minimum-time-to-collect-all-apples-in-a-tree/solution/-by-wa-pian-d-o3py/",
+	"content": "### 解题思路\n\n路上有没有苹果，有苹果就需要一来一回。\n\n一条路上，只要远端有苹果，路上必经之路有没有，其实无所谓。\n\n### 代码\n\n```java\nclass Solution {\n\n\n\tList<Boolean> hasApple;\n\tList<Integer>[] nexts;\n\n\tpublic int minTime(int n, int[][] edges, List<Boolean> hasApple) {\n\t\tthis.hasApple = hasApple;\n\t\tnexts = new ArrayList[n];// 相邻的节点\n\t\tfor (int i = 0; i < n; i++) {\n\t\t\tnexts[i] = new ArrayList<>();\n\t\t}\n\t\tfor (int i = 0; i < edges.length; i++) {\n\t\t\tnexts[edges[i][0]].add(edges[i][1]);\n\t\t\tnexts[edges[i][1]].add(edges[i][0]);\n\t\t}\n\t\tboolean[] been = new boolean[n];// 到过的节点\n\t\tbeen[0] = true;\n\t\t// 收集到0节点所需时间\n\t\tint ans = this.f(0, been);\n\t\treturn ans == -1 ? 0 : ans;\n\t}\n\n\tprivate int f(int index, boolean[] been) {\n\t\tint cur = 0;\n\t\tList<Integer> next = nexts[index];\n\t\tfor (int nxt : next) {\n\t\t\tif (!been[nxt]) {\n\t\t\t\tbeen[nxt] = true;\n\t\t\t\tint has = this.f(nxt, been);\n\t\t\t\tif (has != -1) {\n\t\t\t\t\tcur += has + 2;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tif (this.hasApple.get(index)) {\n\t\t\treturn cur;\n\t\t} else {\n\t\t\treturn cur == 0 ? -1 : cur;\n\t\t}\n\t}\n\n}\n```"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "bank-account-summary-ii",
+	"slug": "by-feyl-gpvy",
+	"url": "https://leetcode-cn.com/problems/bank-account-summary-ii/solution/by-feyl-gpvy/",
+	"content": "方法一：\r\n```sql\r\nSELECT\r\n    *\r\nFROM\r\n    (\r\n        SELECT\r\n            name, SUM(amount) balance\r\n        FROM\r\n            Users u \r\n        JOIN\r\n            Transactions t \r\n        ON\r\n            u.account = T.account\r\n        GROUP BY\r\n             u.account\r\n    ) tmp\r\nWHERE\r\n    tmp.balance > 10000;\r\n```\r\n\r\n![image.png](https://pic.leetcode-cn.com/1659407911-VMGCkS-image.png)\r\n\r\n\r\n方法二：\r\n```sql\r\nSELECT\r\n    name, SUM(amount) balance\r\nFROM\r\n    Users u \r\nJOIN\r\n    Transactions t \r\nON\r\n    u.account = T.account\r\nGROUP BY\r\n    u.account\r\nHaving\r\n    SUM(amount) > 10000;\r\n```\r\n\r\n![image.png](https://pic.leetcode-cn.com/1659408061-VAkCrl-image.png)\r\n"
+}

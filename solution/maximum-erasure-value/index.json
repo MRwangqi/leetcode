@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximum-erasure-value",
+	"slug": "by-joey91-aqiu",
+	"url": "https://leetcode-cn.com/problems/maximum-erasure-value/solution/by-joey91-aqiu/",
+	"content": "![惊为天人.png](https://pic.leetcode-cn.com/1665051684-VXOKaH-%E6%83%8A%E4%B8%BA%E5%A4%A9%E4%BA%BA.png)\r\n\r\n滑动窗口，子数组中元素的重复性用布尔数组存储。\r\n1. r++ 直到出现第一个重复元素 a，计算最大得分\r\n2. l++ 直到元素 a\r\n3. 重复步骤1\r\n\r\n```java []\r\nclass Solution {\r\n    public int maximumUniqueSubarray(int[] nums) {\r\n        int max = nums[0];\r\n        int sum = 0;\r\n        boolean[] exists = new boolean[10001];\r\n        for (int l = 0, r = 0; r < nums.length; r++) {\r\n            if (exists[nums[r]]) {\r\n                max = Math.max(max, sum);\r\n                while (nums[r] != nums[l]) {\r\n                    sum -= nums[l];\r\n                    exists[nums[l++]] = false;\r\n                }\r\n                l++;\r\n            } else {\r\n                sum += nums[r];\r\n                exists[nums[r]] = true;\r\n            }\r\n        }\r\n        max = Math.max(max, sum);\r\n        return max;\r\n    }\r\n}\r\n```\r\n"
+}

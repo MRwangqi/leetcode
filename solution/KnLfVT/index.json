@@ -1,0 +1,6 @@
+{
+	"titleSlug": "KnLfVT",
+	"slug": "jijian-by-endlesscheng-4oqo",
+	"url": "https://leetcode-cn.com/problems/KnLfVT/solution/jijian-by-endlesscheng-4oqo/",
+	"content": "调用自身。\r\n\r\n```py [sol1-Python]\r\nclass Solution:\r\n    def expandBinaryTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:\r\n        if root.left: root.left = TreeNode(-1, left=self.expandBinaryTree(root.left))\r\n        if root.right: root.right = TreeNode(-1, right=self.expandBinaryTree(root.right))\r\n        return root\r\n```\r\n\r\n```go [sol1-Go]\r\nfunc expandBinaryTree(root *TreeNode) *TreeNode {\r\n\tif root.Left != nil {\r\n\t\troot.Left = &TreeNode{-1, expandBinaryTree(root.Left), nil}\r\n\t}\r\n\tif root.Right != nil {\r\n\t\troot.Right = &TreeNode{-1, nil, expandBinaryTree(root.Right)}\r\n\t}\r\n\treturn root\r\n}\r\n```"
+}

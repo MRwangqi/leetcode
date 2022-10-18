@@ -1,0 +1,6 @@
+{
+	"titleSlug": "number-of-ways-to-buy-pens-and-pencils",
+	"slug": "mei-ju-jie-ge-gao-de-na-ge-by-masx200-7wdr",
+	"url": "https://leetcode-cn.com/problems/number-of-ways-to-buy-pens-and-pencils/solution/mei-ju-jie-ge-gao-de-na-ge-by-masx200-7wdr/",
+	"content": "### 解题思路\n枚举价格高的那个商品的数量\n\n### 代码\n\n```typescript\nfunction waysToBuyPensPencils(total: number, cost1: number, cost2: number): number {\n    if(cost1<cost2){\n        [cost1,cost2]=[cost2,cost1]\n    }\n    return Array(Math.floor(total/cost1+1)).fill(0).reduce((a,_,i)=>a+\n    \n    Math.floor(1+(total-cost1*i)/cost2),0);\n\n};\n```"
+}

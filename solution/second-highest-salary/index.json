@@ -1,0 +1,6 @@
+{
+	"titleSlug": "second-highest-salary",
+	"slug": "di-er-gao-de-xin-shui-by-leetcode",
+	"url": "https://leetcode-cn.com/problems/second-highest-salary/solution/di-er-gao-de-xin-shui-by-leetcode/",
+	"content": "#### 方法一：使用子查询和 `LIMIT` 子句\n\n**算法**\n\n将不同的薪资按降序排序，然后使用 [`LIMIT`](https://dev.mysql.com/doc/refman/5.7/en/select.html) 子句获得第二高的薪资。\n\n```mysql [7gHRPQAW-MySQL]\nSELECT DISTINCT\n    Salary AS SecondHighestSalary\nFROM\n    Employee\nORDER BY Salary DESC\nLIMIT 1 OFFSET 1\n```\n\n\n然而，如果没有这样的第二最高工资，这个解决方案将被判断为 “错误答案”，因为本表可能只有一项记录。为了克服这个问题，我们可以将其作为临时表。\n\n```mysql [Z4dXjTB5-MySQL]\nSELECT\n    (SELECT DISTINCT\n            Salary\n        FROM\n            Employee\n        ORDER BY Salary DESC\n        LIMIT 1 OFFSET 1) AS SecondHighestSalary\n;\n```\n\n\n#### 方法二：使用 `IFNULL` 和 `LIMIT` 子句\n\n解决 “NULL” 问题的另一种方法是使用 “IFNULL” 函数，如下所示。\n\n```mysql [UF7BUDgS-MySQL]\nSELECT\n    IFNULL(\n      (SELECT DISTINCT Salary\n       FROM Employee\n       ORDER BY Salary DESC\n        LIMIT 1 OFFSET 1),\n    NULL) AS SecondHighestSalary\n```\n"
+}

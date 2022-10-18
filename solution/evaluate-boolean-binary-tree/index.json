@@ -1,0 +1,6 @@
+{
+	"titleSlug": "evaluate-boolean-binary-tree",
+	"slug": "by-endlesscheng-391l",
+	"url": "https://leetcode-cn.com/problems/evaluate-boolean-binary-tree/solution/by-endlesscheng-391l/",
+	"content": "```go\r\nfunc evaluateTree(root *TreeNode) bool {\r\n\tif root.Left == nil {\r\n\t\treturn root.Val == 1\r\n\t}\r\n\tif root.Val == 2 {\r\n\t\treturn evaluateTree(root.Left) || evaluateTree(root.Right)\r\n\t}\r\n\treturn evaluateTree(root.Left) && evaluateTree(root.Right)\r\n}\r\n``` "
+}

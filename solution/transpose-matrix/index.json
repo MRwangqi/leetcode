@@ -1,0 +1,6 @@
+{
+	"titleSlug": "transpose-matrix",
+	"slug": "dai-ma-jian-ji-yi-chong-huan-bu-cuo-de-j-vac8",
+	"url": "https://leetcode-cn.com/problems/transpose-matrix/solution/dai-ma-jian-ji-yi-chong-huan-bu-cuo-de-j-vac8/",
+	"content": "\n[详细刷题视频合集](https://xiaochen1024.com/series/6196129fc1553b002e57bef5/6196208ec1553b002e57bef6)      \n      [刷题笔记](https://xiaochen1024.com/courseware/60b4f11ab1aa91002eb53b18)\nrow设置为数组宽度，col设置为数组第一项的宽度，双循环遍历\n```\nvar transpose = function(A) {\n    //边缘情况\n    const row = A.length\n    const col = A[0].length\n    let res = Array.from({ length: col }, () => [])\n\n    for (let i = 0; i < row; i++) {\n        for (let j = 0; j < col; j++) {\n            res[j][i] = A[i][j]\n        }\n    }\n\n    return res\n    \n\n    //高端做法\n    // return A[0].map((_, idx) => {\n    //     return A.map(row => row[idx])\n    // })\n};\n```\n"
+}

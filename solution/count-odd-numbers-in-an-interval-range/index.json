@@ -1,0 +1,6 @@
+{
+	"titleSlug": "count-odd-numbers-in-an-interval-range",
+	"slug": "zai-qu-jian-fan-wei-nei-tong-ji-qi-shu-shu-mu-by-l",
+	"url": "https://leetcode-cn.com/problems/count-odd-numbers-in-an-interval-range/solution/zai-qu-jian-fan-wei-nei-tong-ji-qi-shu-shu-mu-by-l/",
+	"content": "#### 方法一：前缀和思想\n\n**思路与算法**\n\n如果我们暴力枚举 ${\\rm [low, high]}$ 中的所有元素会超出时间限制。\n\n我们可以使用前缀和思想来解决这个问题，定义 ${\\rm pre}(x)$ 为区间 $[0, x]$ 中奇数的个数，很显然：\n\n$${\\rm pre}(x) = \\lfloor \\frac{x + 1}{2} \\rfloor$$\n\n故答案为 $\\rm pre(high) - pre(low - 1)$。\n\n**代码**\n\n```cpp [sol1-C++]\nclass Solution {\npublic:\n    int pre(int x) {\n        return (x + 1) >> 1;\n    }\n    \n    int countOdds(int low, int high) {\n        return pre(high) - pre(low - 1);\n    }\n};\n```\n\n```Java [sol1-Java]\nclass Solution {\n    public int countOdds(int low, int high) {\n        return pre(high) - pre(low - 1);\n    }\n\n    public int pre(int x) {\n        return (x + 1) >> 1;\n    }\n}\n```\n\n```Python [sol1-Python3]\nclass Solution:\n    def countOdds(self, low: int, high: int) -> int:\n        pre = lambda x: (x + 1) >> 1\n        return pre(high) - pre(low - 1)\n```\n\n**复杂度分析**\n\n+ 时间复杂度：$O(1)$。\n\n+ 空间复杂度：$O(1)$。"
+}

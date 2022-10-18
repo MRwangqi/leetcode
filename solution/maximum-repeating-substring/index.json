@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximum-repeating-substring",
+	"slug": "dai-ma-jian-ji-yi-chong-huan-bu-cuo-de-j-y8lg",
+	"url": "https://leetcode-cn.com/problems/maximum-repeating-substring/solution/dai-ma-jian-ji-yi-chong-huan-bu-cuo-de-j-y8lg/",
+	"content": "\n[详细刷题视频合集](https://xiaochen1024.com/series/6196129fc1553b002e57bef5/6196208ec1553b002e57bef6)      \n      [刷题笔记](https://xiaochen1024.com/courseware/60b4f11ab1aa91002eb53b18)\n1.最开始如果word不是sequence的子串，就肯定谈不上重复了\n2.计数从1开始，判断重复count次数后是否依然是sequence的子串，是就继续重复，不是就结束返回结果\n\n\n```\nvar maxRepeating = function (sequence, word) {\n    if (sequence.indexOf(word) == -1) return 0;\n    let count = 1;\n    let tempWord = word;\n    while (tempWord.length <= sequence.length) {\n        let current = count + 1;\n        if (sequence.indexOf(word.repeat(current)) != -1) {\n            tempWord = word.repeat(++count)\n        } else {\n            break;\n        }\n    }\n    return count;\n};\n\n```\n"
+}

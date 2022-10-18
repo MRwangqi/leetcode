@@ -1,0 +1,6 @@
+{
+	"titleSlug": "sort-the-matrix-diagonally",
+	"slug": "by-masx200-nzsq",
+	"url": "https://leetcode-cn.com/problems/sort-the-matrix-diagonally/solution/by-masx200-nzsq/",
+	"content": "### 解题思路\n哈希表+排序,对角线上索引i-j是相同的数,记录迭代指针\n\n### 代码\n\n```typescript\nfunction diagonalSort(mat: number[][]): number[][] {\n    const map = new Map<number, number[]>();\n    const index=new Map<number, number>();\n    mat.forEach((a, i) =>\n        a.forEach((v, j) => {\n            const nums = map.get(i - j) ?? [];\n            nums.push(v);\n            map.set(i - j, nums);\n            index.set(i-j,0)\n        })\n    );\n    const ans = Array.from(mat, (v) => Array.from(v));\n\n    map.forEach((nums) => nums.sort((a, b) =>a - b));\n\n    mat.forEach((a, i) =>\n        a.forEach((_, j) => {\n            const nums = map.get(i - j) ?? [];\n            const k=index.get(i-j)??0\n            ans[i][j] = nums[k];\n            index.set(i-j,k+1)\n        })\n    );\n    return ans;\n}\n\n```"
+}

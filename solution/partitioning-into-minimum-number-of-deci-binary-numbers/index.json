@@ -1,0 +1,6 @@
+{
+	"titleSlug": "partitioning-into-minimum-number-of-deci-binary-numbers",
+	"slug": "dai-ma-jian-ji-yi-chong-huan-bu-cuo-de-j-x12m",
+	"url": "https://leetcode-cn.com/problems/partitioning-into-minimum-number-of-deci-binary-numbers/solution/dai-ma-jian-ji-yi-chong-huan-bu-cuo-de-j-x12m/",
+	"content": "\n[详细刷题视频合集](https://xiaochen1024.com/series/6196129fc1553b002e57bef5/6196208ec1553b002e57bef6)      \n      [刷题笔记](https://xiaochen1024.com/courseware/60b4f11ab1aa91002eb53b18)\n```\nvar minPartitions = function(n) {\n    let ans = 0\n    for(let num of n)  ans = Math.max(num,ans)\n    return ans\n};\n\n```\n"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "binary-tree-coloring-game",
+	"slug": "by-mumuxinfei-b8l5",
+	"url": "https://leetcode-cn.com/problems/binary-tree-coloring-game/solution/by-mumuxinfei-b8l5/",
+	"content": "\n\n# 背景\n    \n非常有趣的一道题，本来以为是到博弈题，后来发觉想多了。\n\n# 思路\n    \n由于树的结构，断开一条边，或者去掉一个点，会把树拆分为多个不相连的子图。 每个点都是关键点。\n根据这个特性，其实可以猜出来，第二个选手的最优策略，就是选取X节点的 左右子节点，父节点上，做文章。\n\n先DFS，找到X节点，同时计算出，左右节点的子树大小（子树的节点个数），然后父节点就是（total - 左右节点数 - 1)。\n\n那能够胜利的条件为\n1. 左节点个数 > 总数 - 左节点个数\n2. 右节点个数 > 总数 - 右节点个数\n3. 父节点个数 > 总数 - 父节点个数\n\n结合智力题+树的遍历统计，给个好评价。\n\n# 代码\n\n```java []\nclass Solution {\n\n    int leftCnt = 0, rightCnt = 0, total = 0;\n\n    int dfs(TreeNode root, int x) {\n        if (root == null) return 0;\n\n        int lv = dfs(root.left, x);\n        int rv = dfs(root.right, x);\n\n        if (root.val == x) {\n            leftCnt = lv;\n            rightCnt = rv;\n        }\n        return lv + rv + 1;\n    }\n\n    // 阻断，只有三个节点，就是x节点的父节点，左儿子，右儿子, 最大化\n    public boolean btreeGameWinningMove(TreeNode root, int n, int x) {\n\n        total = dfs(root, x);\n\n        int pCnt = total - leftCnt  - rightCnt - 1;\n        \n        if (pCnt > total - pCnt) return true;\n        if (leftCnt > total - leftCnt) return true;\n        if (rightCnt > total - rightCnt) return true;\n        return false;\n\n    }\n\n}\n```\n"
+}

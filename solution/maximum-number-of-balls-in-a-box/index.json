@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximum-number-of-balls-in-a-box",
+	"slug": "jian-dan-de-jie-fa-by-okisama-upx8",
+	"url": "https://leetcode-cn.com/problems/maximum-number-of-balls-in-a-box/solution/jian-dan-de-jie-fa-by-okisama-upx8/",
+	"content": "![image.png](https://pic.leetcode-cn.com/1664128197-DYwwXB-image.png)\r\n思路：用`map`把每个盒子`(key)`和它里面的小球数量`(value)`存起来\r\n```\r\nfunction countBalls(lowLimit: number, highLimit: number): number {\r\n    let map = new Map()\r\n    for (let i = lowLimit; i <= highLimit; i++) {\r\n        let b = eval(i.toString().split('').join('+'))\r\n        map.set(b, (map.get(b) ?? 0) + 1)\r\n    }\r\n    return Math.max(...map.values())\r\n};\r\n```\r\n"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "merge-strings-alternately",
+	"slug": "javascriptban-jie-ti-si-lu-by-ityou-o-ev0n",
+	"url": "https://leetcode-cn.com/problems/merge-strings-alternately/solution/javascriptban-jie-ti-si-lu-by-ityou-o-ev0n/",
+	"content": "\n[详细刷题视频合集](https://xiaochen1024.com/series/6196129fc1553b002e57bef5/6196208ec1553b002e57bef6)      \n      [刷题笔记](https://xiaochen1024.com/courseware/60b4f11ab1aa91002eb53b18)\n 设置 res字符串 放置符合条件的 字符串\n找到最长的word1 || word2\n遍历 最长的\n如果word1[index]真, 就拼在res里,\n如果word2[index]真, 就拼在res里\nreturn res 结束\n\n```\nconst mergeAlternately = (word1, word2) => {\n\tlet res = '';\n\tconst bigger = word1.length >= word2.length ? word1 : word2;\n\n\tfor (let index = 0; index < bigger.length; index++) {\n\t\tif (word1[index]) {\n\t\t\tres += word1[index];\n\t\t}\n\t\tif (word2[index]) {\n\t\t\tres += word2[index];\n\t\t}\n\t}\n\n\treturn res;\n};\n\n```\n"
+}

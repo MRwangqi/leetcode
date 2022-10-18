@@ -1,0 +1,6 @@
+{
+	"titleSlug": "Uh984O",
+	"slug": "dong-tai-gui-hua-by-davidfffan-2",
+	"url": "https://leetcode-cn.com/problems/Uh984O/solution/dong-tai-gui-hua-by-davidfffan-2/",
+	"content": "# 思路\r\n### 动态规划\r\n\r\n$dp[i][j]$表示总长度为$i$，用了前$j$种字母可能出现的字符串的数量，可以得到如下转移方程。\r\n$$\r\ndp[i][j]=\\sum_{x=0}^kdp[i-x][j-1]·C_i^x\r\n$$\r\n其中，$x$表示第$j$种字母出现的次数，其值可以为$0,1,..k$，对于每一个$x$，都有$C_i^x$种位置可以选择。\r\n例如，$x=2$，表示第$j$种字符出现了$2$次，他可能出现在前$i$个位置中的任意两个，是一个组合问题，其结果是$C_i^2$。\r\n### C++代码\r\n\r\n```cpp\r\nclass Solution {\r\npublic:\r\n    int keyboard(int k, int n) {\r\n        vector<vector<long long>> dp(n + 1, vector<long long>(27, 0L));\r\n        for(int i = 0;i <= 26;i++)\r\n            dp[0][i] = 1;\r\n        for(int i = 1;i<=n;i++) {\r\n            for(int j = 1;j <= 26;j++) {\r\n                for(int x = 0;x <= k;x++) {\r\n                    if(i-x >= 0)\r\n                    dp[i][j] += dp[i-x][j-1]*C(i,x);\r\n                }\r\n                dp[i][j] %=  1000000007;\r\n            }\r\n        }\r\n        return dp[n][26];\r\n    }\r\n    long long C(int m, int n) {\r\n        int k = 1;\r\n        long long ans=1;\r\n        while(k <= n) {\r\n            ans=((m-k+1)*ans)/k;\r\n            k++;\r\n        }\r\n        return ans;\r\n    }\r\n};\r\n```"
+}

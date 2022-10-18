@@ -1,0 +1,6 @@
+{
+	"titleSlug": "alert-using-same-key-card-three-or-more-times-in-a-one-hour-period",
+	"slug": "ha-xi-biao-pai-xu-by-masx200-3mdd",
+	"url": "https://leetcode-cn.com/problems/alert-using-same-key-card-three-or-more-times-in-a-one-hour-period/solution/ha-xi-biao-pai-xu-by-masx200-3mdd/",
+	"content": "### 解题思路\n哈希表+排序\n\n### 代码\n\n```typescript\nfunction alertNames(keyName: string[], keyTime: string[]): string[] {\n  const map = new Map<string, number[]>();\n\n  for (let [i, n] of keyName.entries()) {\n    const t = keyTime[i]\n      .split(\":\")\n      .map(Number)\n      .reduce((p, c, i) => p + (i === 0 ? 60 * c : c), 0);\n\n    const arr = map.get(n) ?? [];\n    arr.push(t);\n    map.set(n, arr);\n  }\n\n  return [...map]\n    .filter(\n      ([k, v]) =>\n        v.length >= 3 &&\n        v\n          .sort((a, b) => a - b)\n          .some((n, i, a) => i + 2 < a.length && 60 >= a[i + 2] - n)\n    )\n    .map((a) => a[0])\n    .sort();\n}\n\n```"
+}

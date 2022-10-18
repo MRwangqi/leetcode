@@ -1,0 +1,6 @@
+{
+	"titleSlug": "card-flipping-game",
+	"slug": "fan-zhuan-qia-pian-you-xi-by-leetcode",
+	"url": "https://leetcode-cn.com/problems/card-flipping-game/solution/fan-zhuan-qia-pian-you-xi-by-leetcode/",
+	"content": "#### 方法 1：Hash Set\n\n**想法**\n\n如果一张卡片正反两面有相同值 `x`，那么一定不能使用 `x` 这个数字。否则，就有两个不同的取值，如果选择数字 `x`，那么可以让 `x` 朝向下方。\n\n**算法**\n\n记住所有在一张卡上出现两次的值 `same`，然后每个不在 `same` 中的值 `x` 都是一个可能的答案。如果没有可能答案，结果就是 0。\n\n```Java []\nclass Solution {\n    public int flipgame(int[] fronts, int[] backs) {\n        Set<Integer> same = new HashSet();\n        for (int i = 0; i < fronts.length; ++i)\n            if (fronts[i] == backs[i])\n                same.add(fronts[i]);\n\n        int ans = 9999;\n        for (int x: fronts)\n            if (!same.contains(x))\n                ans = Math.min(ans, x);\n\n        for (int x: backs)\n            if (!same.contains(x))\n                ans = Math.min(ans, x);\n\n        return ans % 9999;\n    }\n}\n```\n\n```Python []\nclass Solution(object):\n    def flipgame(self, fronts, backs):\n        same = {x for i, x in enumerate(fronts) if x == backs[i]}\n        ans = 9999\n        for x in itertools.chain(fronts, backs):\n            if x not in same:\n                ans = min(ans, x)\n\n        return ans % 9999\n```\n\n**复杂度分析**\n\n* 时间复杂度：$O(N)$，其中 $N$ 是 `fronts`（`backs`）的长度，我们需要遍历这个数组。\n* 空间复杂度：$O(N)$。"
+}

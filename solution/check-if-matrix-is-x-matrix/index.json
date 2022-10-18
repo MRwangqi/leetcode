@@ -1,0 +1,6 @@
+{
+	"titleSlug": "check-if-matrix-is-x-matrix",
+	"slug": "jian-ji-xie-fa-by-endlesscheng-ivjs",
+	"url": "https://leetcode-cn.com/problems/check-if-matrix-is-x-matrix/solution/jian-ji-xie-fa-by-endlesscheng-ivjs/",
+	"content": "主对角线上的下标需满足：$i=j$。\r\n\r\n反对角线上的下标需满足：$i+j=n-1$。\r\n\r\n```go [sol1-Go]\r\nfunc checkXMatrix(grid [][]int) bool {\r\n\tfor i, row := range grid {\r\n\t\tfor j, v := range row {\r\n\t\t\tif v == 0 == (i == j || i+j == len(grid)-1) {\r\n\t\t\t\treturn false\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n\treturn true\r\n}\r\n```\r\n\r\n```py [sol2-Python3]\r\nclass Solution:\r\n    def checkXMatrix(self, grid: List[List[int]]) -> bool:\r\n        return all((v != 0) == (i == j or i + j == len(grid) - 1) for i, row in enumerate(grid) for j, v in enumerate(row))\r\n```"
+}

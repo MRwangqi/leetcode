@@ -1,0 +1,6 @@
+{
+	"titleSlug": "600YaG",
+	"slug": "python-yi-xing-by-endlesscheng-6s44",
+	"url": "https://leetcode-cn.com/problems/600YaG/solution/python-yi-xing-by-endlesscheng-6s44/",
+	"content": "`Counter` 本质上表示的是一个多重集，直接用 `|` 就可以计算并集了。\r\n\r\n```py [sol1-Python3]\r\nclass Solution:\r\n    def minNumBooths(self, demand: List[str]) -> int:\r\n        return sum(reduce(or_, map(Counter, demand)).values())\r\n```\r\n\r\n```go [sol1-Go]\r\nfunc minNumBooths(demand []string) (ans int) {\r\n\tmaxCnt := [26]int{}\r\n\tfor _, s := range demand {\r\n\t\tcnt := [26]int{}\r\n\t\tfor _, b := range s {\r\n\t\t\tcnt[b-'a']++\r\n\t\t}\r\n\t\tfor i, c := range cnt {\r\n\t\t\tmaxCnt[i] = max(maxCnt[i], c)\r\n\t\t}\r\n\t}\r\n\tfor _, c := range maxCnt {\r\n\t\tans += c\r\n\t}\r\n\treturn\r\n}\r\n\r\nfunc max(a, b int) int { if b > a { return b }; return a }\r\n```\r\n"
+}

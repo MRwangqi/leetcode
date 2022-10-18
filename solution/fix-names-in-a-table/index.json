@@ -1,0 +1,6 @@
+{
+	"titleSlug": "fix-names-in-a-table",
+	"slug": "by-wuningfei-hey1",
+	"url": "https://leetcode-cn.com/problems/fix-names-in-a-table/solution/by-wuningfei-hey1/",
+	"content": "# 1667. 修复表中的名字\r\n# 考察点：字符串截取、拼接以及大小写转换操作\r\n# 1、截取函数：SUBSTRING(str,begin,end)\r\n# 2、拼接函数：CONCAT(str1,str2)\r\n# 3、大小写转换：UPPER(str)/LOWER(str)\r\n```\r\nSELECT user_id, CONCAT(UPPER(SUBSTRING(name, 1, 1)), LOWER(SUBSTRING(name, 2, (SELECT LENGTH(name))))) name\r\nFROM Users\r\nORDER BY user_id\r\n```\r\n"
+}

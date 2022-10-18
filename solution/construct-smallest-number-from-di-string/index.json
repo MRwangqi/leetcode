@@ -1,0 +1,6 @@
+{
+	"titleSlug": "construct-smallest-number-from-di-string",
+	"slug": "dfsban-ben-forxun-huan-she-ji-shi-guan-j-ee17",
+	"url": "https://leetcode-cn.com/problems/construct-smallest-number-from-di-string/solution/dfsban-ben-forxun-huan-she-ji-shi-guan-j-ee17/",
+	"content": "```javascript\n/**\n * @param {string} pattern\n * @return {string}\n */\nvar smallestNumber = function(pattern) {\n  let len = pattern.length\n  let used = []\n  let ans = '';  \n  let dfs = (ix, pre, arr) => {\n    if (ans) return // 优化项 因为for循环设计保证了字典序最小 故ans有值就返回\n    if (ix >= len) {\n      ans = arr.join('');\n      return\n    }\n    for (let i = (pattern[ix] === 'I' ? pre + 1 : 1); i < (pattern[ix] === 'I' ? 10: pre); i++) {\n      if (!used[i]) {\n        used[i] = true\n        arr.push(i)\n        dfs(ix + 1, i, arr);\n        arr.pop();\n        used[i] = false\n      }\n    }\n  }\n  for (let i = 1; i <= 9; i++) {\n    used[i] = true\n    dfs(0, i, [i])\n    used[i] = false\n  }\n  return ans;\n};\n```\n"
+}

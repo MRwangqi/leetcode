@@ -1,0 +1,6 @@
+{
+	"titleSlug": "number-of-pairs-of-interchangeable-rectangles",
+	"slug": "cbu-xu-hua-jian-cheng-fen-shu-huo-shi-yo-h0vt",
+	"url": "https://leetcode-cn.com/problems/number-of-pairs-of-interchangeable-rectangles/solution/cbu-xu-hua-jian-cheng-fen-shu-huo-shi-yo-h0vt/",
+	"content": "# 解题思路\r\n可能46个测试数据没有卡精度范围，投机取巧的通过了，不过胜在比较方便。\r\n这里用Hashmap记录长宽比，转成double。我们都知道C++除法在遇到任何一个非int操作数时会转成小数除法\r\n所以有`double(rectangles[i][0])/rectangles[i][1]`，这一句已经足矣通过所有的46个测试。不过注意不能写成`double(rectangles[i][0]/rectangles[i][1])` 这样遇到整数除完缺省为0时还是0.\r\n然后只需把map每一项减一 (除去自身)再等差求和即可。\r\n# 除法介绍和位数保留\r\n1. `整数除法用 “/”的话得到的是一个整数（得到小数的话自动去掉小数位只保留整数位）`\r\n保留固定位数方法：\r\n1. `将被除数或者除数改为浮点型变量`\r\n2. `如果是两个 int 整型做除法，就在运算结果表达式前乘以 1.0 。（一定要乘到表达式前面，乘到后面可能人家表达式早算完了）`\r\n3. `设置特定位数：保留小数位数，则用cout<<setprecision(2);其中2表示保留2位小数`\r\n`seprecision函数的使用要搭配**<iomanip>**头文件`\r\n# 代码\r\n```\r\nclass Solution {\r\npublic:\r\n    long long interchangeableRectangles(vector<vector<int>>& rectangles) {\r\n        int len=rectangles.size();\r\n        long long num=0;\r\n        map<double,long long>mp;\r\n        for(int i=0;i<len;i++)\r\n        {\r\n            mp[double(rectangles[i][0])/rectangles[i][1]]++;\r\n        }\r\n        for(const auto &it:mp)\r\n        {\r\n            long long a=it.second-1;\r\n            num+=(1+a)*a/2;\r\n        }\r\n        return num;\r\n    }\r\n};\r\n```\r\n"
+}

@@ -1,0 +1,6 @@
+{
+	"titleSlug": "minimum-changes-to-make-alternating-binary-string",
+	"slug": "by-liu-yong-qi-hand",
+	"url": "https://leetcode-cn.com/problems/minimum-changes-to-make-alternating-binary-string/solution/by-liu-yong-qi-hand/",
+	"content": "### 解题思路\n![image.png](https://pic.leetcode-cn.com/1665322885-mdbTMg-image.png)\n\n\n### 代码\n\n```cpp\nclass Solution {\npublic:\n    int minOperations(string s) {\n        int a[2][2] = {{0}};\n        for(int i=0; i<s.length(); ++i) {\n            a[i&1][s[i]&1]++;\n        }\n        return min(a[0][1]+a[1][0], a[0][0]+a[1][1]);\n    }\n};\n```"
+}

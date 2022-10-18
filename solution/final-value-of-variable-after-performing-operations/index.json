@@ -1,0 +1,6 @@
+{
+	"titleSlug": "final-value-of-variable-after-performing-operations",
+	"slug": "javascriptban-jie-ti-si-lu-by-ityou-o-wfqa",
+	"url": "https://leetcode-cn.com/problems/final-value-of-variable-after-performing-operations/solution/javascriptban-jie-ti-si-lu-by-ityou-o-wfqa/",
+	"content": "\n[详细刷题视频合集](https://xiaochen1024.com/series/6196129fc1553b002e57bef5/6196208ec1553b002e57bef6)      \n      [刷题笔记](https://xiaochen1024.com/courseware/60b4f11ab1aa91002eb53b18)\n```\nvar finalValueAfterOperations = function(operations) {\n    let X=0\n    for(let i=0;i<operations.length;i++){\n        operations[i].indexOf('+')>-1?(X+=1):(X+=-1)\n    }\n    return X\n};\n```\n"
+}

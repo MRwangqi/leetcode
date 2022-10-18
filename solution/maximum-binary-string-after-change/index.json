@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximum-binary-string-after-change",
+	"slug": "tan-xin-by-dreameagle-r2jp",
+	"url": "https://leetcode-cn.com/problems/maximum-binary-string-after-change/solution/tan-xin-by-dreameagle-r2jp/",
+	"content": "从左往右，两位合在一起考虑，四种模式\r\n1. \"11\"                                   -> 无法操作\r\n2. \"10\" -> 可以变成 \"01\"                   -> 只会变小，不应操作\r\n3. \"00\" -> 可以变成 \"10\" 或进一步变 \"01\"    -> 应选择 \"10\"\r\n4. \"01\" -> 若\"1\"的右侧有0，可以先通过 `10 -> 01` 操作把 `0` 冒泡移动到左侧凑成 `00`，再转为 `10`\r\n\r\n```go\r\nfunc maximumBinaryString(binary string) string {\r\n    n := len(binary)\r\n    b := []byte(binary)\r\n\r\n    for i, j := 0, n - 1; i < j; i++ {\r\n        if b[i] == '1' {\r\n            // pattern: 11 或 10\r\n            continue\r\n        } else if b[i+1] == '0' {\r\n            // pattern: 00 -> 10\r\n            b[i] = '1'\r\n        } else {\r\n            // pattern: 01, 寻找右侧是否有多余的0可以冒泡到左侧组成 00\r\n            for i < j && b[j] != '0' {\r\n                j--\r\n            }\r\n            if i < j {\r\n                b[j] = '1'\r\n                b[i] = '1'\r\n                b[i+1] = '0'\r\n            }\r\n        }\r\n    }\r\n\r\n    return string(b)\r\n}\r\n```"
+}

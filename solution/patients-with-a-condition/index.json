@@ -1,0 +1,6 @@
+{
+	"titleSlug": "patients-with-a-condition",
+	"slug": "by-any-fj-lnow",
+	"url": "https://leetcode-cn.com/problems/patients-with-a-condition/solution/by-any-fj-lnow/",
+	"content": "```\r\n# Write your MySQL query statement below\r\nselect * from patients \r\nwhere conditions like \"DIAB1%\" \r\nor conditions like \"% DIAB1%\";\r\n```\r\n因为查询的信息名称与原表相同，所以我是在select后直接写的 * ，`\"DIAB1%\"`是查询该类在排头的情况；`\"% DIAB1%\"`是查询该类处在后面的情况，因为类与类之间存在空格，这样也避免了\"AADIAB1~\"处于类中间的情况。\r\n"
+}

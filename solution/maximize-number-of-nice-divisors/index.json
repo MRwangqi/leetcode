@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximize-number-of-nice-divisors",
+	"slug": "kuai-su-mi-qu-mo-by-hu-jian-yue-3gud",
+	"url": "https://leetcode-cn.com/problems/maximize-number-of-nice-divisors/solution/kuai-su-mi-qu-mo-by-hu-jian-yue-3gud/",
+	"content": "### 解题思路\n情况1：通过枚举可知，当因子小于5时，最大值即为因子本身\n情况2：当因子factor >= 5时，有3(factor-3)-factor = 2factor - 9 记为①式\n由于①式单调递增，且最小为1, 因此①式横大于零\n因此只要拆分出足够多的3，拆分后的乘积即可保证最大\n(同时需注意，拆分前要求因子不小于5)\n\n由于拆分后，可能存在3的幂次过大，溢出问题，需使用快速幂取模求解（这里直接调用库函数）\n### 代码\n\n```python3\nclass Solution:\n    def maxNiceDivisors(self, primeFactors: int) -> int:\n        if primeFactors < 5:\n            return primeFactors\n        three = primeFactors // 3\n        primeFactors = primeFactors - three * 3\n        if primeFactors == 1:\n            primeFactors += 3\n            three = three - 1\n        mod = pow(3, three, 10**9+7)\n        return (mod * max(1,primeFactors)) % (10**9+7)\n```"
+}

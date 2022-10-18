@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts",
+	"slug": "jian-dan-ti-ba-by-zhen-tian-xia-31fw",
+	"url": "https://leetcode-cn.com/problems/maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts/solution/jian-dan-ti-ba-by-zhen-tian-xia-31fw/",
+	"content": "### 解题思路\n此处撰写解题思路\n\n### 代码\n\n```cpp\nclass Solution {\npublic:\n    int mod=1e9+7;\n    int maxArea(int h, int w, vector<int>& horizontalCuts, vector<int>& verticalCuts) {\n        sort(horizontalCuts.begin(),horizontalCuts.end());\n        sort(verticalCuts.begin(),verticalCuts.end());\n        int maxw=0;\n        if(verticalCuts.size()==0) maxw=w;\n        else maxw=max(verticalCuts[0],w-verticalCuts[verticalCuts.size()-1]);\n        for(int i=0;i<verticalCuts.size()-1;i++){\n            maxw=max(maxw,verticalCuts[i+1]-verticalCuts[i]);\n        }\n\n        int maxh=0;\n        if(horizontalCuts.size()==0) maxh=h;\n        else maxh=max(horizontalCuts[0],h-horizontalCuts[horizontalCuts.size()-1]);\n        for(int i=0;i<horizontalCuts.size()-1;i++){\n            maxh=max(maxh,horizontalCuts[i+1]-horizontalCuts[i]);\n        }\n        return (long long)((long long)maxh%mod*maxw%mod)%mod;\n    }\n};\n```"
+}

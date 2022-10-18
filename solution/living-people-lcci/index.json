@@ -1,0 +1,6 @@
+{
+	"titleSlug": "living-people-lcci",
+	"slug": "by-feyl-9jx7",
+	"url": "https://leetcode-cn.com/problems/living-people-lcci/solution/by-feyl-9jx7/",
+	"content": "方法：差分\r\n\r\n```java\r\nclass Solution {\r\n    public int maxAliveYear(int[] birth, int[] death) {\r\n        int start = 1900, end = 2000;\r\n        int[] num = new int[end - start + 2];\r\n        for (int i = 0; i < birth.length; i++) {\r\n            num[birth[i] - 1900]++;\r\n            num[death[i] - 1900 + 1]--;\r\n        }\r\n        int max = 0, sum = 0, res = 0;\r\n        for (int i = 0; i < end - start + 1; i++) {\r\n            sum += num[i];\r\n            if (sum > max) {\r\n                max = sum;\r\n                res = i;\r\n            }\r\n        }\r\n        return start + res;\r\n    }\r\n}\r\n```\r\n\r\n![image.png](https://pic.leetcode-cn.com/1657293416-VAvcjB-image.png)\r\n"
+}

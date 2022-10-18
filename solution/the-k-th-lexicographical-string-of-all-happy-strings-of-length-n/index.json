@@ -1,0 +1,6 @@
+{
+	"titleSlug": "the-k-th-lexicographical-string-of-all-happy-strings-of-length-n",
+	"slug": "-by-wa-pian-d-u8up",
+	"url": "https://leetcode-cn.com/problems/the-k-th-lexicographical-string-of-all-happy-strings-of-length-n/solution/-by-wa-pian-d-u8up/",
+	"content": "### 解题思路\n\n为什么不是从0开始？\n\n递归枚举排序了\n\n瞅瞅别人的。\n\n### 代码\n\n```java\nclass Solution {\n\n\n\tList<String> list;\n\tchar[] cs = new char[] { 'a', 'b', 'c' };\n\n\tpublic String getHappyString(int n, int k) {\n\t\tlist = new ArrayList<>();\n\t\tchar[] str = new char[n];\n\t\tthis.f(0, str, n);\n\t\tif (list.size() < k) {\n\t\t\treturn \"\";\n\t\t}\n\t\tCollections.sort(list);\n\t\treturn list.get(k - 1);\n\t}\n\n\tprivate void f(int index, char[] str, int n) {\n\t\tif (index == n) {\n\t\t\tlist.add(new String(str));\n\t\t\treturn;\n\t\t}\n\t\tfor (int i = 0; i < 3; i++) {\n\t\t\tif (index == 0 || cs[i] != str[index - 1]) {\n\t\t\t\tstr[index] = cs[i];\n\t\t\t\tthis.f(index + 1, str, n);\n\t\t\t}\n\t\t}\n\n\t}\n\n\n}\n```"
+}

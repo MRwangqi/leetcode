@@ -1,0 +1,6 @@
+{
+	"titleSlug": "minimum-hours-of-training-to-win-a-competition",
+	"slug": "by-100000000000001-mcbi",
+	"url": "https://leetcode-cn.com/problems/minimum-hours-of-training-to-win-a-competition/solution/by-100000000000001-mcbi/",
+	"content": "---\n### 求解思路\n关键点: 经验和精力上都 严格 超过对手才能击败他们\n1. 对于 `energy` 由于题目要求  精力 严格 超过对手, 求解算法为 精力 减少  energy[i]， 可知只需要最少达到 `sum(energy) + 1`\n2. 对于 `experience` 由于题目要求 经验 严格 超过对手, 求解算法为 经验 增加 experience[i]， 可知只需要比每一个对手经验大1 可以通过训练\n\n---\n### 代码\n\n```python3\nclass Solution:\n    def minNumberOfHours(self, initialEnergy: int, initialExperience: int, energy: List[int], experience: List[int]) -> int:\n        cnt = 0\n        total = sum(energy)\n        if initialEnergy <= total:\n            cnt += (total - initialEnergy + 1)\n\n        for cur_exp in experience:\n            if initialExperience <= cur_exp:\n                cnt += (cur_exp - initialExperience + 1)\n                initialExperience = cur_exp + 1\n            initialExperience += cur_exp\n        return cnt\n```\n\n---\n### 复杂度分析\n![image.png](https://pic.leetcode-cn.com/1665751788-wVsqUx-image.png)\n\n\n---\n### 刷题经验分享\n[刷题经验贴](https://leetcode-cn.com/circle/discuss/PZO1if/) ——  **系统化快速学习刷题与总结**"
+}

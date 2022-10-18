@@ -1,0 +1,6 @@
+{
+	"titleSlug": "meChtZ",
+	"slug": "python-dui-bfs-by-qin-qi-shu-hua-2-q3cy",
+	"url": "https://leetcode-cn.com/problems/meChtZ/solution/python-dui-bfs-by-qin-qi-shu-hua-2-q3cy/",
+	"content": "从终点开始一直到起点0.\n在每一个地点上， 有三种可能到达当前方式的方式，第一种是从起点直接走到，耗时为inc * 当前站点。\n第二种是从某一点搭某个公交到此站点的右侧再向后走回来。其中(x + y) % jump[i] = 0，x为当前站点，y为向后走的站点，i为其中一辆公交车。\n第三种是从某一点搭某个公交车到此站点的左侧再向前走过来。其中(x - y) % jump[i] = 0，x为当前站点，y为向后走的站点，i为其中一辆公交车。\n\n```\nclass Solution:\n    def busRapidTransit(self, target: int, inc: int, dec: int, jump: List[int], cost: List[int]) -> int:\n        deq = [[0, target]]#最小堆\n        while deq:\n            i, t = heapq.heappop(deq)\n            if t == 0:\n                return i % (10 ** 9 + 7)\n            heapq.heappush(deq, [i + t * inc, 0])#直接走到起点\n            for j, n in enumerate(jump):\n                mod = t % n\n                heapq.heappush(deq, [i + mod * inc + cost[j], t // n])#向前走\n                heapq.heappush(deq, [i + (n - mod) * dec + cost[j], t // n + 1])向后走\n```\n"
+}

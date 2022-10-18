@@ -1,0 +1,6 @@
+{
+	"titleSlug": "big-countries",
+	"slug": "by-clever-austinzya-vrdx",
+	"url": "https://leetcode-cn.com/problems/big-countries/solution/by-clever-austinzya-vrdx/",
+	"content": "### 解题思路\r\n使用 WHERE 子句和 OR  使用 WHERE 子句和 UNION\r\n\r\n### 代码\r\n\r\n```mysql\r\n# Write your MySQL query statement below\r\n# 方法一：使用 WHERE 子句和 OR\r\n# select t.name, t.population, t.area from world t\r\n#     where t.area >= 3000000 or t.population >= 25000000\r\n\r\n# 方法二：使用 WHERE 子句和 UNION\r\n# 使用 or 会使索引会失效，在数据量较大的时候查找效率较低，通常建议使用 union 代替 or\r\nselect t.name, t.population, t.area from world t\r\n    where t.area >= 3000000\r\n    union\r\nselect t.name, t.population, t.area from world t\r\n    where t.population >= 25000000\r\n\r\n```"
+}

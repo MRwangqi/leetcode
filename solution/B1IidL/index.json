@@ -1,0 +1,6 @@
+{
+	"titleSlug": "B1IidL",
+	"slug": "javascriptban-jie-ti-si-lu-by-ityou-o-c3bo",
+	"url": "https://leetcode-cn.com/problems/B1IidL/solution/javascriptban-jie-ti-si-lu-by-ityou-o-c3bo/",
+	"content": "\n[详细刷题视频合集](https://xiaochen1024.com/series/6196129fc1553b002e57bef5/6196208ec1553b002e57bef6)      \n      [刷题笔记](https://xiaochen1024.com/courseware/60b4f11ab1aa91002eb53b18)\n二分法的思路是：取mid,前后随便挑一个进行比较，如果它大，则暂时把ans给它。然后挪动指针。\n还是遍历比较轻松。\n```\nfunction peakIndexInMountainArray(arr: number[]): number {\n  // 这道题会有一个点在于：两端必定是单调递增或递减的，不存在同时出现两个山峰的可能。\n  let [left, right] = [0, arr.length - 1]\n  let ans = 0\n  while(left <= right) {\n    const mid = (left + right) >> 1\n    if(arr[mid] > arr[mid + 1]) {\n      ans = mid\n      right = mid - 1\n    } else {\n      left = mid + 1\n    }\n  }\n\n  return ans\n};\n```\n"
+}

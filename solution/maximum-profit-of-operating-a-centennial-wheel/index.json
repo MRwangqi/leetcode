@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximum-profit-of-operating-a-centennial-wheel",
+	"slug": "maximum-profit-by-ikaruga",
+	"url": "https://leetcode-cn.com/problems/maximum-profit-of-operating-a-centennial-wheel/solution/maximum-profit-by-ikaruga/",
+	"content": "### 思路\r\n1. 模拟\r\n\r\n### 答题\r\n```C++ []\r\n    int minOperationsMaxProfit(vector<int>& customers, int boardingCost, int runningCost) {\r\n        int profit = 0;\r\n        int maxProfit = 0;\r\n        int ans = -1;\r\n        int waitCnt = 0;\r\n        \r\n        int turn = 0;\r\n        while (waitCnt != 0 || turn < customers.size()) {\r\n            waitCnt += (turn < customers.size()) ? customers[turn] : 0;\r\n            int upCnt = min(waitCnt, 4);\r\n            waitCnt -= upCnt;\r\n            profit += upCnt * boardingCost - runningCost;\r\n            if (profit > maxProfit) {\r\n                maxProfit = profit;\r\n                ans = turn + 1;\r\n            }\r\n            turn++;\r\n        }\r\n        \r\n        return ans;\r\n    }\r\n```\r\n\r\n\r\n\r\n### 致谢\r\n感谢您的观看，希望对您有帮助，欢迎热烈的交流！  \r\n\r\n**如果感觉还不错就点个赞吧~**\r\n\r\n这是 [我的leetcode](https://github.com/AhJo53589/leetcode-cn) ，帮助我收集整理题目，可以方便的 `visual studio` 调试，欢迎关注，star\r\n\r\n"
+}

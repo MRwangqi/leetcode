@@ -1,0 +1,6 @@
+{
+	"titleSlug": "pascals-triangle-ii",
+	"slug": "by-zhou-tong-r-8373",
+	"url": "https://leetcode-cn.com/problems/pascals-triangle-ii/solution/by-zhou-tong-r-8373/",
+	"content": "杨辉三角的每行实际上是\n$$\nC_m^n = \\frac{m\\times (m-1)\\times (m-2)\\times......\\times (m-n+1)}{n!}\n$$\n其中 m 为行数，即 rowIndex，于是按照这一过程进行模拟\n\n~~~c\nclass Solution {\npublic:\n    vector<int> getRow(int rowIndex) {\n        vector<int> res;\n        res.push_back(1);\n        for(int i = 0; i < rowIndex; i++){\n            res.push_back((long)res[i]*(rowIndex-i)/(i+1));  \n        }\n        return res;\n    }\n};\n~~~\n\n时间复杂度 O(n)，空间复杂度 O(1)\n\n![截图_2022-10-02_16-15-51.png](https://pic.leetcode-cn.com/1664698569-coWMyr-%E6%88%AA%E5%9B%BE_2022-10-02_16-15-51.png)\n"
+}

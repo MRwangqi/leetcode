@@ -1,0 +1,6 @@
+{
+	"titleSlug": "find-the-most-competitive-subsequence",
+	"slug": "zhan-by-zhen-tian-xia-extj",
+	"url": "https://leetcode-cn.com/problems/find-the-most-competitive-subsequence/solution/zhan-by-zhen-tian-xia-extj/",
+	"content": "### 解题思路\n这很明显是用栈来解决的\n主要思路见代码和注释\n### 代码\n\n```cpp\nclass Solution {\npublic:\n    vector<int> mostCompetitive(vector<int>& nums, int k) {\n        int n = nums.size();\n        stack<int> stk;\n        for(int i = 0; i < n; i++){\n            if(stk.empty()){\n                stk.push(nums[i]); continue;\n            }\n            // 把 nums[i] 替换栈顶\n            if(stk.size() == k){\n                if(nums[i] >= stk.top()) continue;\n                while(!stk.empty() && nums[i] < stk.top() && n - i - 1 >= k - stk.size()){\n                    stk.pop();\n                }\n                stk.push(nums[i]);\n            }\n            else if(stk.size() < k){\n                while(!stk.empty() && stk.top() > nums[i] && n - i - 1 >= k - stk.size()){\n                    stk.pop();\n                }\n                stk.push(nums[i]);\n            }\n        }\n        vector<int> ans;\n        while(!stk.empty()){\n            ans.push_back(stk.top());\n            stk.pop();\n        }\n        reverse(ans.begin(),ans.end());\n        while(ans.size() > k)\n            ans.pop_back();\n        return ans;\n    }\n};\n```"
+}

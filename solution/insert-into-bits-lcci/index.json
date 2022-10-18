@@ -1,0 +1,6 @@
+{
+	"titleSlug": "insert-into-bits-lcci",
+	"slug": "by-zui-ai-myx-e5yv",
+	"url": "https://leetcode-cn.com/problems/insert-into-bits-lcci/solution/by-zui-ai-myx-e5yv/",
+	"content": "**解题思路：将M右移i位，将N的第j到第i位全置为0，结果为N|M**\r\n```\r\nint insertBits(int N, int M, int i, int j){\r\nreturn (N&~((0xffffffff>>(31-j+i))<<i)|M<<i);\r\n}\r\n```\r\n\r\n\r\n"
+}

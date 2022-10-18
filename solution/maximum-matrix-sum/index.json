@@ -1,0 +1,6 @@
+{
+	"titleSlug": "maximum-matrix-sum",
+	"slug": "1975-zui-da-fang-zhen-he-by-introversi0n-xwd3",
+	"url": "https://leetcode-cn.com/problems/maximum-matrix-sum/solution/1975-zui-da-fang-zhen-he-by-introversi0n-xwd3/",
+	"content": "### 解题思路\n负数个数为奇数，那么最终矩阵内可以化成一个负数\n\n负数个数为偶数，那么最终矩阵内可以全部化成正数\n\n如果含有0元素，那么矩阵内可以全部化成正数\n\n### 代码\n\n```cpp\nclass Solution {\npublic:\n    long long maxMatrixSum(vector<vector<int>>& matrix) {\n        vector<int> a;\n        int length_low = 0;\n        long long sum = 0;\n        int flag = 0;\n        int n = matrix.size();\n        for(int i=0;i<n;i++){\n            for(int j=0; j<n;j++){\n                if(matrix[i][j]<0){\n                    a.push_back(-matrix[i][j]);\n                    sum += -matrix[i][j];\n                    length_low++;\n                }else if(matrix[i][j]>0){\n                    a.push_back(matrix[i][j]);\n                    sum += matrix[i][j];\n                }else{\n                    flag = 1;\n                }\n            }\n        }\n        if(flag == 1){\n            return sum;\n        }\n        if(length_low%2 != 0){\n            sort(a.begin(),a.end());\n            sum -= 2*a[0];\n        }     \n        return sum;\n    }\n};\n```"
+}

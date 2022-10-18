@@ -1,0 +1,6 @@
+{
+	"titleSlug": "split-linked-list-in-parts",
+	"slug": "dai-ma-jian-ji-yi-chong-huan-bu-cuo-de-j-0s74",
+	"url": "https://leetcode-cn.com/problems/split-linked-list-in-parts/solution/dai-ma-jian-ji-yi-chong-huan-bu-cuo-de-j-0s74/",
+	"content": "\n[详细刷题视频合集](https://xiaochen1024.com/series/6196129fc1553b002e57bef5/6196208ec1553b002e57bef6)      \n      [刷题笔记](https://xiaochen1024.com/courseware/60b4f11ab1aa91002eb53b18)\n```\nvar splitListToParts = function (root, k) {\n  // 利用栈\n  const list = [];\n  let node = root;\n  while (node) {\n    list.push(node);\n    node = node.next;\n  }\n\n  let len = list.length;\n  let resLen = Math.floor(len / k);\n  let curry = len % k;\n  let m = 0;\n  let result = [];\n  for (let i = 0; i < k; i++) {\n    let arr = [];\n    let j = 0;\n    while (j < resLen) {\n      arr.push(list.shift() || null); // 或splice等数组方法操作\n      j++;\n    }\n    if (m < curry) {\n      arr.push(list.shift() || null);\n      m++;\n    }\n    let last = arr[arr.length - 1]; // 该项最后一个节点，断开链表\n    if (last) last.next = null;\n    result.push(arr.shift() || null);\n  }\n  return result;\n};\n\n```\n"
+}

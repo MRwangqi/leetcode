@@ -1,0 +1,6 @@
+{
+	"titleSlug": "stone-game-vi",
+	"slug": "1686-shi-zi-you-xi-vijava-by-wangzhizhi-j1xk",
+	"url": "https://leetcode-cn.com/problems/stone-game-vi/solution/1686-shi-zi-you-xi-vijava-by-wangzhizhi-j1xk/",
+	"content": "### 思路\n在游戏进行的过程中，想要本轮自己的得分最优化，要同时考虑自己能够获得尽可能多得分，并且可以让对手损失尽可能多的得分。令 ${\\rm values}[i] = {\\rm aliceValues}[i] + {\\rm bobValues}[i]$，${\\rm values}[x]$ 大，意味着自己可以获得对二者而言均比较大的石头，正好可以满足目标：自己的收益和让对方的损失权衡下来最大化。先对 ${\\rm values}$ 逆序排序，两人轮流顺序取当前得分和对应的石头即可（对二者而言这么取都是最有利于自己的）。\n\n### 代码实现\n```java []\nclass Solution {\n    public int stoneGameVI(int[] aliceValues, int[] bobValues) {\n        int n = aliceValues.length;\n        List<int[]> value = new ArrayList<>();\n        for (int i = 0; i < n; i++)\n            value.add(new int[] {i, aliceValues[i] + bobValues[i]});\n        value.sort((x, y) -> y[1] - x[1]);\n        int total = 0;\n        for (int i = 0; i < n; i++)\n            total += i % 2 == 0 ? aliceValues[value.get(i)[0]] : -bobValues[value.get(i)[0]];\n        return Integer.compare(total, 0);\n    }\n}\n```"
+}
